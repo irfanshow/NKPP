@@ -7,7 +7,7 @@
                     <!-- Page Heading -->
                     <div class="row">
                         <div class="card-body">
-                            <a href="create_at.php" class="btn btn-primary mb-3">Tambah Data</a>
+                            <a href="/admin/create_at" class="btn btn-primary mb-3">Tambah Data</a>
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>

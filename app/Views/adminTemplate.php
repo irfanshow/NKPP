@@ -9,6 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel="icon" href="../../img/logo.svg" type="image/icon type">
     <title>NKPP | Admin</title>
 
     <!-- Custom fonts for this template-->

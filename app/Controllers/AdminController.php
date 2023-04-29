@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\PjModel;
 use App\Controllers\BaseController;
 
 class AdminController extends BaseController
@@ -25,12 +26,54 @@ class AdminController extends BaseController
     //PJ
     public function PJview()
     {
-        return view('admin/pj');
+        $pjModel = new PjModel();
+        $pj = $pjModel->findAll();
+     
+        $data= [
+            'pj'=>$pj
+        ];
+
+
+        return view('admin/pj',$data);
     }
 
     public function PJcreate()
     {
         return view('admin/create_pj');
+    }
+
+    public function savePJ()
+    {
+        // $file = $this->request->getFile('foto');
+        // $nama = $file ->getRandomName();
+        if(!$this->validate([
+            'email' => 'required',
+            'password' => 'required',
+            'nama' => 'required',
+            'nip' =>'required',
+            'periode'=>'required',
+            'surat'=>'required',
+            
+        ])){
+            return redirect()->to('/admin/create_pj');
+        }
+        $pjModel = new PjModel();
+        $data=[
+            'email' => $this->request->getPost('email'),
+            'password'=> $this->request->getPost('password'),
+            'nama'=>$this->request->getPost('nama'),
+            'nip'=>$this->request->getPost('nip'),
+            'periode'=>$this->request->getPost('periode'),
+            'no_surat_dinas'=>$this->request->getPost('surat'),
+            
+
+        ];
+
+        $pjModel->protect(false)
+        ->save($data);
+                
+        // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+        return redirect()->to('/admin/pj');
     }
 
     //PT

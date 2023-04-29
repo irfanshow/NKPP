@@ -53,6 +53,7 @@ $routes->get('/admin/index', 'AdminController::index');
     //PJ
     $routes->get('/admin/pj', 'AdminController::PJview');
     $routes->get('/admin/create_pj', 'AdminController::PJcreate');
+    $routes->post('/admin/savePJ', 'AdminController::savePJ');
 
     //PT
     $routes->get('/admin/pt', 'AdminController::PTview');

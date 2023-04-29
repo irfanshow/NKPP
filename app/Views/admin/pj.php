@@ -21,6 +21,18 @@
                                 </thead>
                                 <tbody>
 
+                                <?php foreach ($pj as $no=>$pj):?>
+                    <tr>
+                        <td><?php echo $no+1?></td><br>
+                        <td><?php echo $pj['nip'];?></td><br>
+                        <td><?php echo $pj['nama']; ?></td>
+                        <td><?php echo $pj['email']; ?></td>
+                        <td><?php echo $pj['periode']; ?></td>
+                        <td><?php echo $pj['no_surat_dinas']; ?></td>
+
+                    </tr>
+                    <?php endforeach; ?>
+
                                 </tbody>
                             </table>
                         </div>

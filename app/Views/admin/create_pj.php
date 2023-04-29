@@ -7,7 +7,8 @@
 
                     <div class="row">
                         <div class="col-md-4-px-2">
-                            <form action="#" method="POST" enctype="multipart/form-data">
+                            
+                            <form action="/admin/savePJ" method="POST" enctype="multipart/form-data">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Email</label>
@@ -23,15 +24,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">NIP</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan NIP" name="nama">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan NIP" name="nip">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Periode</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Periode" name="nama">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Periode" name="periode" maxlength="4">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">No. Surat Dinas</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan No. Surat Dinas" name="nama">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan No. Surat Dinas" name="surat">
                                     </div>
                                 </div>
                                 <div class="card-footer">

@@ -2,26 +2,104 @@
 
 namespace App\Controllers;
 
+use App\Models\AtModel;
+use App\Models\KtModel;
 use App\Models\PjModel;
+use App\Models\PtModel;
 use App\Controllers\BaseController;
 
 class AdminController extends BaseController
 {
     public function index()
     {
-        return view('admin/index');
+        $atModel = new AtModel();
+        $ktModel = new KtModel();
+        $ptModel = new PtModel();
+        $pjModel = new PjModel();
+        //indikatorNKP
+        //indikatorNKT
+        $at = $atModel->CountAll();
+        $kt = $ktModel->CountAll();
+        $pt = $ptModel->CountAll();
+        $pj = $pjModel->CountAll();
+     
+        $data= [
+            'at'=>$at,
+            'kt'=>$kt,
+            'pt'=>$pt,
+            'pj'=>$pj,
+        ];
+
+        return view('admin/index',$data);
     }
 
     //AT
     public function ATview()
     {
-        return view('admin/at');
+        $atModel = new AtModel();
+        $at = $atModel->getAll();
+     
+        $data= [
+            'at'=>$at
+        ];
+
+        return view('admin/at',$data);
     }
 
     public function ATcreate()
     {
-        return view('admin/create_at');
+
+        $kt = new KtModel();
+        $pt = new PtModel();
+
+        $data= [
+            'kt'=>$kt->findAll(),
+            'pt'=>$pt->findAll(),
+        ];
+
+        return view('admin/create_at',$data);
     }
+
+    public function saveAT()
+    {
+        // $file = $this->request->getFile('foto');
+        // $nama = $file ->getRandomName();
+        if(!$this->validate([
+            'email' => 'required',
+            'password' => 'required',
+            'nama' => 'required',
+            'nip' =>'required',
+            'unit' =>'required',
+            'kt' =>'required',
+            'pt' =>'required',
+            'periode'=>'required',
+            'surat'=>'required',
+            
+        ])){
+            return redirect()->to('/admin/create_at');
+        }
+        $atModel = new AtModel();
+        $data=[
+            'email_at' => $this->request->getPost('email'),
+            'password_at'=> $this->request->getPost('password'),
+            'nama_at'=>$this->request->getPost('nama'),
+            'nip_at'=>$this->request->getPost('nip'),
+            'unit_kerja_at'=>$this->request->getPost('unit'),
+            'idKT'=>$this->request->getPost('kt'),
+            'idPT'=>$this->request->getPost('pt'),
+            'periode_at'=>$this->request->getPost('periode'),
+            'no_surat_dinas_at'=>$this->request->getPost('surat'),
+            
+
+        ];
+
+        $atModel->protect(false)
+        ->save($data);
+                
+        // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+        return redirect()->to('/admin/at');
+    }
+
 
     //PJ
     public function PJview()
@@ -59,12 +137,12 @@ class AdminController extends BaseController
         }
         $pjModel = new PjModel();
         $data=[
-            'email' => $this->request->getPost('email'),
-            'password'=> $this->request->getPost('password'),
-            'nama'=>$this->request->getPost('nama'),
-            'nip'=>$this->request->getPost('nip'),
-            'periode'=>$this->request->getPost('periode'),
-            'no_surat_dinas'=>$this->request->getPost('surat'),
+            'email_pj' => $this->request->getPost('email'),
+            'password_pj'=> $this->request->getPost('password'),
+            'nama_pj'=>$this->request->getPost('nama'),
+            'nip_pj'=>$this->request->getPost('nip'),
+            'periode_pj'=>$this->request->getPost('periode'),
+            'no_surat_dinas_pj'=>$this->request->getPost('surat'),
             
 
         ];
@@ -79,23 +157,135 @@ class AdminController extends BaseController
     //PT
     public function PTview()
     {
-        return view('admin/pt');
+        $ptModel = new PtModel();
+        $pt = $ptModel->getAll();
+     
+        $data= [
+            'pt'=>$pt
+        ];
+
+        return view('admin/pt',$data);
     }
+
 
     public function PTcreate()
     {
-        return view('admin/create_pt');
+
+        $pj = new PjModel();
+
+        $data= [
+            'pj'=>$pj->findAll()
+        ];
+
+        return view('admin/create_pt',$data);
+    }
+
+    public function savePT()
+    {
+        // $file = $this->request->getFile('foto');
+        // $nama = $file ->getRandomName();
+        if(!$this->validate([
+            'email' => 'required',
+            'password' => 'required',
+            'nama' => 'required',
+            'nip' =>'required',
+            'unit' =>'required',
+            'pj' =>'required',
+            'periode'=>'required',
+            'surat'=>'required',
+            
+        ])){
+            return redirect()->to('/admin/create_pt');
+        }
+        $ktModel = new PtModel();
+        $data=[
+            'email_pt' => $this->request->getPost('email'),
+            'password_pt'=> $this->request->getPost('password'),
+            'nama_pt'=>$this->request->getPost('nama'),
+            'nip_pt'=>$this->request->getPost('nip'),
+            'unit_kerja_pt'=>$this->request->getPost('unit'),
+            'idPJ'=>$this->request->getPost('pj'),
+            'periode_pt'=>$this->request->getPost('periode'),
+            'no_surat_dinas_pt'=>$this->request->getPost('surat'),
+            
+
+        ];
+
+        $ktModel->protect(false)
+        ->save($data);
+                
+        // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+        return redirect()->to('/admin/pt');
     }
 
     //KT
     public function KTview()
     {
-        return view('admin/kt');
+
+        $ktModel = new KtModel();
+        $kt = $ktModel->getAll();
+   
+     
+        $data= [
+            'kt'=>$kt,
+
+        ];
+
+        return view('admin/kt',$data);
     }
 
     public function KTcreate()
     {
-        return view('admin/create_kt');
+        $ktModel = new KtModel();
+        $pj = new PjModel();
+        $pt = new PtModel();
+
+        $data= [
+            'pj'=>$pj->findAll(),
+            'pt'=>$pt->findAll(),
+        ];
+
+        return view('admin/create_kt',$data);
+    }
+
+    public function saveKT()
+    {
+        // $file = $this->request->getFile('foto');
+        // $nama = $file ->getRandomName();
+        if(!$this->validate([
+            'email' => 'required',
+            'password' => 'required',
+            'nama' => 'required',
+            'nip' =>'required',
+            'unit' =>'required',
+            'pt' =>'required',
+            'pj' =>'required',
+            'periode'=>'required',
+            'surat'=>'required',
+            
+        ])){
+            return redirect()->to('/admin/create_kt');
+        }
+        $ktModel = new KtModel();
+        $data=[
+            'email_kt' => $this->request->getPost('email'),
+            'password_kt'=> $this->request->getPost('password'),
+            'nama_kt'=>$this->request->getPost('nama'),
+            'nip_kt'=>$this->request->getPost('nip'),
+            'unit_kerja_kt'=>$this->request->getPost('unit'),
+            'idPJ'=>$this->request->getPost('pj'),
+            'idPT'=>$this->request->getPost('pt'),
+            'periode_kt'=>$this->request->getPost('periode'),
+            'no_surat_dinas_kt'=>$this->request->getPost('surat'),
+            
+
+        ];
+
+        $ktModel->protect(false)
+        ->save($data);
+                
+        // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+        return redirect()->to('/admin/kt');
     }
 
     //NKP

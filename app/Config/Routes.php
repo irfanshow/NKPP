@@ -37,10 +37,12 @@ $routes->get('/admin/index', 'AdminController::index');
     //AT
     $routes->get('/admin/at', 'AdminController::ATview');
     $routes->get('/admin/create_at', 'AdminController::ATcreate');
+    $routes->post('/admin/saveAT', 'AdminController::saveAT');
 
     //KT
     $routes->get('/admin/kt', 'AdminController::KTview');
     $routes->get('/admin/create_kt', 'AdminController::KTcreate');
+    $routes->post('/admin/saveKT', 'AdminController::saveKT');
 
     //NKP
     $routes->get('/admin/nkp', 'AdminController::NKPview');
@@ -58,6 +60,7 @@ $routes->get('/admin/index', 'AdminController::index');
     //PT
     $routes->get('/admin/pt', 'AdminController::PTview');
     $routes->get('/admin/create_pt', 'AdminController::PTcreate');
+    $routes->post('/admin/savePT', 'AdminController::savePT');
 
 //AT
     $routes->get('/at/index', 'ATController::index');

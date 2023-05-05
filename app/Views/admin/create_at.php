@@ -7,7 +7,7 @@
 
                     <div class="row">
                         <div class="col-md-4-px-2">
-                            <form action="#" method="POST" enctype="multipart/form-data">
+                            <form action="/admin/saveAT" method="POST" enctype="multipart/form-data">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Email</label>
@@ -23,27 +23,37 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">NIP</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan NIP" name="nama">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan NIP" name="nip">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Unit Kerja</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Unit Kerja" name="nama">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Unit Kerja" name="unit">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Nama Ketua Tim</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nama Ketua Tim" name="nama">
+                                        <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon" name="kt">
+                                        <!-- <option selected>Choose...</option> -->
+                                        <?php foreach ($kt as $kt) { ?>
+                                            <option value="<?= $kt['idKT']?>"><?= $kt['nama_kt']?></option>
+                                        <?php } ?>
+                                    </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Nama Pengendali Teknis</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nama Pengendali Teknis" name="nama">
+                                        <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon" name="pt">
+                                        <!-- <option selected>Choose...</option> -->
+                                        <?php foreach ($pt as $pt) { ?>
+                                            <option value="<?= $pt['idPT']?>"><?= $pt['nama_pt']?></option>
+                                        <?php } ?>
+                                    </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Periode</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Periode" name="nama">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Periode" name="periode" maxlength="4">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">No. Surat Dinas</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan No. Surat Dinas" name="nama">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan No. Surat Dinas" name="surat">
                                     </div>
                                 </div>
                                 <div class="card-footer">

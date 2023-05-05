@@ -24,11 +24,11 @@
                                 <?php foreach ($pj as $no=>$pj):?>
                     <tr>
                         <td><?php echo $no+1?></td><br>
-                        <td><?php echo $pj['nip'];?></td><br>
-                        <td><?php echo $pj['nama']; ?></td>
-                        <td><?php echo $pj['email']; ?></td>
-                        <td><?php echo $pj['periode']; ?></td>
-                        <td><?php echo $pj['no_surat_dinas']; ?></td>
+                        <td><?php echo $pj['nip_pj'];?></td><br>
+                        <td><?php echo $pj['nama_pj']; ?></td>
+                        <td><?php echo $pj['email_pj']; ?></td>
+                        <td><?php echo $pj['periode_pj']; ?></td>
+                        <td><?php echo $pj['no_surat_dinas_pj']; ?></td>
 
                     </tr>
                     <?php endforeach; ?>

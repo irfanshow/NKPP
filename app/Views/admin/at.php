@@ -24,6 +24,23 @@
                                 </thead>
                                 <tbody>
 
+                                
+                                <?php foreach ($at as $no=>$at):?>
+                    <tr>
+                        <td><?php echo $no+1?></td><br>
+                        <td><?php echo $at['nip_at'];?></td><br>
+                        <td><?php echo $at['nama_at']; ?></td>
+                        <td><?php echo $at['email_at']; ?></td>
+                        <td><?php echo $at['unit_kerja_at']; ?></td>
+                        <td><?php echo $at['nama_kt']; ?></td>
+                        <td><?php echo $at['nama_pt']; ?></td>
+                        <td><?php echo $at['periode_at']; ?></td>
+                        <td><?php echo $at['no_surat_dinas_at']; ?></td>
+
+                    </tr>
+                    <?php endforeach; ?>
+
+
                                 </tbody>
                             </table>
                         </div>

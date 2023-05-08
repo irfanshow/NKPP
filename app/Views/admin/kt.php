@@ -26,8 +26,8 @@
 
                                 <?php foreach ($kt as $no=>$kt):?>
                     <tr>
-                        <td><?php echo $no+1?></td><br>
-                        <td><?php echo $kt['nip_kt'];?></td><br>
+                        <td><?php echo $no+1?></td>
+                        <td><?php echo $kt['nip_kt'];?></td>
                         <td><?php echo $kt['nama_kt']; ?></td>
                         <td><?php echo $kt['email_kt']; ?></td>
                         <td><?php echo $kt['unit_kerja_kt']; ?></td>

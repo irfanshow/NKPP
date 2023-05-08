@@ -27,8 +27,8 @@
                                 
                                 <?php foreach ($at as $no=>$at):?>
                     <tr>
-                        <td><?php echo $no+1?></td><br>
-                        <td><?php echo $at['nip_at'];?></td><br>
+                        <td><?php echo $no+1?></td>
+                        <td><?php echo $at['nip_at'];?></td>
                         <td><?php echo $at['nama_at']; ?></td>
                         <td><?php echo $at['email_at']; ?></td>
                         <td><?php echo $at['unit_kerja_at']; ?></td>

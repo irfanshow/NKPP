@@ -47,6 +47,7 @@ $routes->get('/admin/index', 'AdminController::index');
     //NKP
     $routes->get('/admin/nkp', 'AdminController::NKPview');
     $routes->get('/admin/create_nkp', 'AdminController::NKPcreate');
+    $routes->post('/admin/saveNKP', 'AdminController::saveNKP');
 
     // NKT
     $routes->get('/admin/nkt', 'AdminController::NKTview');

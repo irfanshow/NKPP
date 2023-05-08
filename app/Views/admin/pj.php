@@ -23,8 +23,8 @@
 
                                 <?php foreach ($pj as $no=>$pj):?>
                     <tr>
-                        <td><?php echo $no+1?></td><br>
-                        <td><?php echo $pj['nip_pj'];?></td><br>
+                        <td><?php echo $no+1?></td>
+                        <td><?php echo $pj['nip_pj'];?></td>
                         <td><?php echo $pj['nama_pj']; ?></td>
                         <td><?php echo $pj['email_pj']; ?></td>
                         <td><?php echo $pj['periode_pj']; ?></td>

@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="card-body">
                             <a href="/admin/create_nkp" class="btn btn-primary mb-3">Tambah Data</a>
-                            <table id="example2" class="table table-bordered table-hover">
+                            <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>No.</th>
@@ -17,10 +17,24 @@
                                         <th>Bobot 2</th>
                                         <th>Bobot 3</th>
                                         <th>Bobot 4</th>
+                                        <th>Soal Bagian</th>
                                         <th colspan="3">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+
+                                <?php foreach ($nkp as $no=>$nkp):?>
+                    <tr>
+                        <td><?php echo $no+1?></td>
+                        <td><?php echo $nkp['soal'];?></td>
+                        <td><?php echo $nkp['melebihi']; ?></td>
+                        <td><?php echo $nkp['memenuhi']; ?></td>
+                        <td><?php echo $nkp['perlu_perhatian']; ?></td>
+                        <td><?php echo $nkp['tidak_memenuhi']; ?></td>
+                        <td><?php echo $nkp['bagian']; ?></td>
+
+                    </tr>
+                    <?php endforeach; ?>
 
                                 </tbody>
                             </table>

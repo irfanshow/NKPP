@@ -11,7 +11,7 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">SOAl</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" name="soal">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" name="soal" autocomplete="off">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Bobot Melebihi Harapan</label>
@@ -28,6 +28,10 @@
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Bobot Tidak memenuhi harapan</label>
                                         <input type="text" class="form-control" id="exampleInputPassword1" name="tidak_memenuhi_harapan">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Bagian(Ex:AT/KT/PT)</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" name="bagian" maxlength="2>
                                     </div>
                                 </div>
                                 <div class="card-footer">

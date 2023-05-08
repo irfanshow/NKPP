@@ -6,6 +6,7 @@ use App\Models\AtModel;
 use App\Models\KtModel;
 use App\Models\PjModel;
 use App\Models\PtModel;
+use App\Models\NkpModel;
 use App\Controllers\BaseController;
 
 class AdminController extends BaseController
@@ -291,12 +292,57 @@ class AdminController extends BaseController
     //NKP
     public function NKPview()
     {
-        return view('admin/nkp');
+        $nkpModel = new NkpModel();
+        $nkp = $nkpModel->findAll();
+
+     
+        $data= [
+            'nkp'=>$nkp,
+
+        ];
+
+        return view('admin/nkp',$data);
     }
 
     public function NKPcreate()
     {
         return view('admin/create_nkp');
+    }
+
+    public function saveNKP()
+    {
+        // $file = $this->request->getFile('foto');
+        // $nama = $file ->getRandomName();
+        if(!$this->validate([
+            'soal' => 'required',
+            'melebihi_harapan' => 'required',
+            'memenuhi_harapan' => 'required',
+            'perlu_perhatian' =>'required',
+            'tidak_memenuhi_harapan' =>'required',
+            'bagian' =>'required',
+
+            
+        ])){
+            return redirect()->to('/admin/create_nkp');
+        }
+        $nkpModel = new NkpModel();
+        $data=[
+            'soal' => $this->request->getPost('soal'),
+            'melebihi'=> $this->request->getPost('melebihi_harapan'),
+            'memenuhi'=>$this->request->getPost('memenuhi_harapan'),
+            'perlu_perhatian'=>$this->request->getPost('perlu_perhatian'),
+            'tidak_memenuhi'=>$this->request->getPost('tidak_memenuhi_harapan'),
+            'bagian'=>$this->request->getPost('bagian'),
+
+            
+
+        ];
+
+        $nkpModel->protect(false)
+        ->save($data);
+                
+        // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+        return redirect()->to('/admin/nkp');
     }
 
     //NKT

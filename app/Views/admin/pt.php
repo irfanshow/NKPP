@@ -24,8 +24,8 @@
                                 <tbody>
                                 <?php foreach ($pt as $no=>$pt):?>
                     <tr>
-                        <td><?php echo $no+1?></td><br>
-                        <td><?php echo $pt['nip_pt'];?></td><br>
+                        <td><?php echo $no+1?></td>
+                        <td><?php echo $pt['nip_pt'];?></td>
                         <td><?php echo $pt['nama_pt']; ?></td>
                         <td><?php echo $pt['email_pt']; ?></td>
                         <td><?php echo $pt['unit_kerja_pt']; ?></td>

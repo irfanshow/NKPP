@@ -31,6 +31,8 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/login', 'Home::login');
+$routes->post('/proses_login', 'Home::proses_login');
+$routes->get('/logout', 'Home::logout');
 
 //Admin
 $routes->get('/admin/index', 'AdminController::index');
@@ -52,6 +54,7 @@ $routes->get('/admin/index', 'AdminController::index');
     // NKT
     $routes->get('/admin/nkt', 'AdminController::NKTview');
     $routes->get('/admin/create_nkt', 'AdminController::NKTcreate');
+    $routes->post('/admin/saveNKT', 'AdminController::saveNKT');
 
     //PJ
     $routes->get('/admin/pj', 'AdminController::PJview');
@@ -73,16 +76,23 @@ $routes->get('/admin/index', 'AdminController::index');
 
     $routes->get('/at/nkp', 'ATController::NKPView');
     $routes->get('/at/create_nkp', 'ATController::CreateNKP');
-    $routes->get('/at/edit_nkp', 'ATController::EditNKP');
-    $routes->get('/at/detail_nkp', 'ATController::DetailNKP');
+    $routes->post('/at/saveNKP', 'ATController::saveNKP');
+    $routes->get('/at/edit_nkp/(:num)', 'ATController::EditNKP/$1');
+    $routes->post('/at/updateNKP/(:num)', 'ATController::updateNKP/$1');
+    $routes->get('/at/detail_nkp/(:num)', 'ATController::DetailNKP/$1');
+    $routes->get('/at/nkp/delete/(:num)', 'ATController::deleteNKP/$1');
 
     $routes->get('/at/nkt', 'ATController::NKTView');
     $routes->get('/at/create_nkt', 'ATController::CreateNKT');
-    $routes->get('/at/edit_nkt', 'ATController::EditNKT');
-    $routes->get('/at/detail_nkt', 'ATController::DetailNKT');
+    $routes->post('/at/saveNKT', 'ATController::saveNKT');
+    $routes->get('/at/edit_nkt/(:num)', 'ATController::EditNKT/$1');
+    $routes->post('/at/updateNKT/(:num)', 'ATController::updateNKT/$1');
+    $routes->get('/at/detail_nkt/(:num)', 'ATController::DetailNKT/$1');
+    $routes->get('/at/nkt/delete/(:num)', 'ATController::deleteNKT/$1');
 
     $routes->get('/at/sasarankinerja', 'ATController::SasaranKinerjaView');
     $routes->get('/at/create_sasaran', 'ATController::CreateSasaran');
+    $routes->post('/at/saveSasaran', 'ATController::saveSasaran');
     $routes->get('/at/edit_sasaran', 'ATController::EditSasaran');
     $routes->get('/at/detail_sasaran', 'ATController::DetailSasaran');
 
@@ -111,6 +121,7 @@ $routes->get('/admin/index', 'AdminController::index');
 
     $routes->get('/kt/sasarankinerja', 'KTController::SasaranKinerjaView');
     $routes->get('/kt/create_sasaran', 'KTController::CreateSasaran');
+    $routes->post('/kt/saveSasaran', 'KTController::saveSasaran');
     $routes->get('/kt/edit_sasaran', 'KTController::EditSasaran');
     $routes->get('/kt/detail_sasaran', 'KTController::DetailSasaran');
 

@@ -11,6 +11,7 @@
 </head>
 
 <body style="background-color: #99C5D3;">
+
     <div class="container">
         <div class="row justify-content-center">
 
@@ -27,11 +28,19 @@
                                         <h1 class="h4 text-gray-900 mb-1">BPK Perwakilan Provinsi Lampung</h1>
                                         <h2 class="h4 text-gray-900 mb-4">Sistem Penilaian Kinerja Karyawan</h2>
                                     </div>
+
+                                    <?php if (session()->getFlashdata('msg') !== NULL) : ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <?php echo session()->getFlashdata('msg'); ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+<?php endif; ?>
+
                                     <hr>
-                                    <form action="/login/action" method="post">
+                                    <form action="/proses_login" method="post">
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">NIP </label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -40,11 +49,11 @@
                                         <div class="mb-3">
                                             <label for="exampleInputPassword1" class="form-label">Peran</label>
                                             <select class="form-select" aria-label="Default select example" name="peran">
-                                                <option value="1">Anggota Tim</option>
-                                                <option value="2">Ketua Tim</option>
-                                                <option value="3">Pengendali Teknis</option>
-                                                <option value="4">Penanggung Jawab</option>
-                                                <option value="5">Admin</option>
+                                                <option value="at">Anggota Tim</option>
+                                                <option value="kt">Ketua Tim</option>
+                                                <option value="pt">Pengendali Teknis</option>
+                                                <option value="pj">Penanggung Jawab</option>
+                                                <option value="admin">Admin</option>
                                             </select>
                                         </div>
                                         <button type="submit" class="btn btn-info">Masuk</button>

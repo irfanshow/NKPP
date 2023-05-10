@@ -95,7 +95,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                                 Indikator NKT</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Indikator</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $nkt ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -113,7 +113,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
                                                 Indikator NKP</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Indikator</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $nkp ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>

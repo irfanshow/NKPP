@@ -75,16 +75,16 @@
                             <div class="profile">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <p><strong>Nama :</strong> John Doe</p>
-                                        <p><strong>NIP :</strong> 25 tahun</p>
-                                        <p><strong>Unit Kerja :</strong> Jl. Jendral Sudirman No. 123</p>
-                                        <p><strong>Email :</strong> johndoe@example.com</p>
+                                        <p><strong>Nama :</strong> <?=$_SESSION['nama'];?></p>
+                                        <p><strong>NIP :</strong> <?=$_SESSION['nip'];?></p>
+                                        <p><strong>Unit Kerja :</strong> <?=$_SESSION['unit'];?></p>
+                                        <p><strong>Email :</strong> <?=$_SESSION['email'];?></p>
                                     </div>
                                     <div class="col-md-6">
-                                        <p><strong>Periode :</strong> Laki-laki</p>
-                                        <p><strong>No. Surat Dinas :</strong> Laki-laki</p>
-                                        <p><strong>Nama Pengendali Teknis :</strong> 08123456789</p>
-                                        <p><strong>Nama Penanggung Jawab :</strong> 08123456789</p>
+                                        <p><strong>Periode :</strong> <?=$_SESSION['periode'];?></p>
+                                        <p><strong>No. Surat Dinas :</strong> <?=$_SESSION['surat'];?></p>
+                                        <p><strong>Nama Pengendali Teknis :</strong> <?=$_SESSION['pt'];?></p>
+                                        <p><strong>Nama Penanggung Jawab :</strong> <?=$_SESSION['pj'];?></p>
                                     </div>
                                     <div class="px-2 card-body">
                                         <a href="/kt/profile" class="btn btn-primary">Ubah Profile</a>

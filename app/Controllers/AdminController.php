@@ -7,6 +7,7 @@ use App\Models\KtModel;
 use App\Models\PjModel;
 use App\Models\PtModel;
 use App\Models\NkpModel;
+use App\Models\NktModel;
 use App\Controllers\BaseController;
 
 class AdminController extends BaseController
@@ -17,18 +18,24 @@ class AdminController extends BaseController
         $ktModel = new KtModel();
         $ptModel = new PtModel();
         $pjModel = new PjModel();
+        $nkpModel = new NkpModel();
+        $nktModel = new NktModel();
         //indikatorNKP
         //indikatorNKT
         $at = $atModel->CountAll();
         $kt = $ktModel->CountAll();
         $pt = $ptModel->CountAll();
         $pj = $pjModel->CountAll();
+        $nkp = $nktModel->CountAll();
+        $nkt = $nkpModel->CountAll();
      
         $data= [
             'at'=>$at,
             'kt'=>$kt,
             'pt'=>$pt,
             'pj'=>$pj,
+            'nkp'=>$nkp,
+            'nkt'=>$nkt,
         ];
 
         return view('admin/index',$data);
@@ -348,12 +355,55 @@ class AdminController extends BaseController
     //NKT
     public function NKTview()
     {
-        return view('admin/nkt');
+        $nktModel = new NktModel();
+        $nkt = $nktModel->findAll();
+
+     
+        $data= [
+            'nkt'=>$nkt,
+     
+        ];
+        return view('admin/nkt',$data);
     }
 
     public function NKTcreate()
     {
+
         return view('admin/create_nkt');
+    }
+
+    public function saveNKT()
+    {
+        if(!$this->validate([
+            'soal' => 'required',
+            'melebihi_harapan' => 'required',
+            'memenuhi_harapan' => 'required',
+            'perlu_perhatian' =>'required',
+            'tidak_memenuhi_harapan' =>'required',
+            'bagian' =>'required',
+
+            
+        ])){
+            return redirect()->to('/admin/create_nkt');
+        }
+        $nktModel = new NktModel();
+        $data=[
+            'soal' => $this->request->getPost('soal'),
+            'melebihi'=> $this->request->getPost('melebihi_harapan'),
+            'memenuhi'=>$this->request->getPost('memenuhi_harapan'),
+            'perlu_perhatian'=>$this->request->getPost('perlu_perhatian'),
+            'tidak_memenuhi'=>$this->request->getPost('tidak_memenuhi_harapan'),
+            'bagian'=>$this->request->getPost('bagian'),
+
+            
+
+        ];
+
+        $nktModel->protect(false)
+        ->save($data);
+                
+        // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+        return redirect()->to('/admin/nkt');
     }
 
 }

@@ -10,4 +10,11 @@ class NktModel extends Model
     protected $primaryKey       = 'id_nkt';
     protected $useAutoIncrement = true;
     protected $allowedFields;
+
+    function getAT(){
+        return $this->db->table('nkt')
+        ->where('bagian = ','at')
+        ->Get()
+        ->getResultArray();
+    }
 }

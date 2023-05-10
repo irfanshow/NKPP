@@ -56,7 +56,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+                <form action="/at/saveSasaran" method="POST" enctype="multipart/form-data">
                     <!-- Page Heading -->
                     <div class="row">
 
@@ -70,15 +70,15 @@
                             </div>
                             <div class="mb-3">
                                 <label for="kuantititas" class="form-label">Kuantitas</label>
-                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant" required>
+                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant1" required>
                             </div>
                             <div class="mb-3">
                                 <label for="kualitas" class="form-label">Kualitas</label>
-                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual" required>
+                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual1" required>
                             </div>
                             <div class="mb-3">
                                 <label for="waktu" class="form-label">Waktu</label>
-                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu" required>
+                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu1" required>
                             </div>
 
                             <hr class="sidebar-divider my-0">
@@ -92,15 +92,15 @@
                             </div>
                             <div class="mb-3">
                                 <label for="kuantititas" class="form-label">Kuantitas</label>
-                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant" required>
+                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant2" required>
                             </div>
                             <div class="mb-3">
                                 <label for="kualitas" class="form-label">Kualitas</label>
-                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual" required>
+                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual2" required>
                             </div>
                             <div class="mb-3">
                                 <label for="waktu" class="form-label">Waktu</label>
-                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu" required>
+                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu2" required>
                             </div>
 
                             <hr class="sidebar-divider my-0">
@@ -114,7 +114,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="periode" class="form-label">Periode</label>
-                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan periode pelaksanaan" name="periode" required>
+                                <input type="number" class="form-control"  aria-describedby="emailHelp" placeholder="Masukan periode pelaksanaan" name="periode" required>
                             </div>
                             <div class="mb-3">
                                 <label for="catatan" class="form-label">Catatan</label>
@@ -123,8 +123,10 @@
 
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
+                        </form>
                     </div>
                 </div>
+                
                 <!-- Scroll to Top Button-->
                 <a class="scroll-to-top rounded" href="#page-top">
                     <i class="fas fa-angle-up"></i>

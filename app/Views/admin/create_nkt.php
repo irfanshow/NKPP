@@ -7,7 +7,7 @@
 
                     <div class="row">
                         <div class="col-md-4-px-2">
-                            <form action="#" method="POST" enctype="multipart/form-data">
+                            <form action="/admin/saveNKT" method="POST" enctype="multipart/form-data">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">SOAl</label>
@@ -19,7 +19,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Bobot Memenuhi Harapan</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" name="memeenuhi_harapan">
+                                        <input type="text" class="form-control" id="exampleInputPassword1" name="memenuhi_harapan">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Bobot Perlu Perhatian</label>

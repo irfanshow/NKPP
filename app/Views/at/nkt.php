@@ -68,7 +68,6 @@
                                         <th>No.</th>
                                         <th>Tanggal Pengisian</th>
                                         <th>Periode</th>
-                                        <th>Nilai</th>
                                         <th>Status</th>
                                         <th>Realisasi Nilai</th>
                                         <th>Review Nilai</th>
@@ -77,18 +76,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <th>1.</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th>
-                                        <a href="/at/detail_nkt" class="btn btn-primary mb-3">Detail</a>
-                                        <a href="#" class="btn btn-danger mb-3">Hapus</a>
-                                    </th>
+                                <?php foreach ($nktAT as $no=>$nktAT):?>
+                    <tr>
+                        <td><?php echo $no+1?></td>
+                        <td><?php echo $nktAT['tanggal'];?></td>
+                        <td><?php echo $nktAT['periode']; ?></td>
+                        <td><?php echo $nktAT['status']; ?></td>
+                        <td><?php echo $nktAT['status']; ?></td>
+                        <td><?php echo $nktAT['status']; ?></td>
+                        <td><?php echo $nktAT['nilai']; ?></td>
+
+                        
+                        <th>
+                            <a href="/at/detail_nkt/<?= $nktAT['id_nkt_at']?>" class="btn btn-primary mb-3">Detail</a>
+                            <a href="/at/nkt/delete/<?= $nktAT['id_nkt_at']?>" class="btn btn-danger mb-3">Hapus</a>
+                        </th>
+
+                    </tr>
+                         <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>

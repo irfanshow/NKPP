@@ -17,11 +17,23 @@
                                         <th>Bobot 2</th>
                                         <th>Bobot 3</th>
                                         <th>Bobot 4</th>
+                                        <th>Soal Bagian</th>
                                         <th colspan="3">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php foreach ($nkt as $no=>$nkt):?>
+                    <tr>
+                        <td><?php echo $no+1?></td>
+                        <td><?php echo $nkt['soal'];?></td>
+                        <td><?php echo $nkt['melebihi']; ?></td>
+                        <td><?php echo $nkt['memenuhi']; ?></td>
+                        <td><?php echo $nkt['perlu_perhatian']; ?></td>
+                        <td><?php echo $nkt['tidak_memenuhi']; ?></td>
+                        <td><?php echo $nkt['bagian']; ?></td>
 
+                    </tr>
+                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>

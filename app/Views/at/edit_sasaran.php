@@ -59,7 +59,7 @@
 
                     <!-- Page Heading -->
                     <div class="row">
-
+                    <form action="/at/updateSasaran/<?php echo $sasaranAT['id_kinerja_anggota'];?>" method="POST" enctype="multipart/form-data">
                         <div class="col">
                             <div class="mb-3">
                                 <h4>
@@ -70,15 +70,15 @@
                             </div>
                             <div class="mb-3">
                                 <label for="kuantititas" class="form-label">Kuantitas</label>
-                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Edit kuantitas/output yang akan dihasilkan" name="kuant" required>
+                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Edit kuantitas/output yang akan dihasilkan" name="kuant1" required value ="<?php echo $sasaranAT['kuantitas'];?>">
                             </div>
                             <div class="mb-3">
                                 <label for="kualitas" class="form-label">Kualitas</label>
-                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Edit kualitas/mutu yang akan dihasilkan" name="kual" required>
+                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Edit kualitas/mutu yang akan dihasilkan" name="kual1" required value ="<?php echo $sasaranAT['kualitas'];?>">
                             </div>
                             <div class="mb-3">
                                 <label for="waktu" class="form-label">Waktu</label>
-                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Edit waktu yang dibutuhkan" name="waktu" required>
+                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Edit waktu yang dibutuhkan" name="waktu1" required value ="<?php echo $sasaranAT['waktu'];?>">
                             </div>
 
                             <hr class="sidebar-divider my-0">
@@ -92,15 +92,15 @@
                             </div>
                             <div class="mb-3">
                                 <label for="kuantititas" class="form-label">Kuantitas</label>
-                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Edit kuantitas/output yang akan dihasilkan" name="kuant" required>
+                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Edit kuantitas/output yang akan dihasilkan" name="kuant2" required value ="<?php echo $sasaranAT['kuantitas2'];?>">
                             </div>
                             <div class="mb-3">
                                 <label for="kualitas" class="form-label">Kualitas</label>
-                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Edit kualitas/mutu yang akan dihasilkan" name="kual" required>
+                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Edit kualitas/mutu yang akan dihasilkan" name="kual2" required value ="<?php echo $sasaranAT['kualitas2'];?>">
                             </div>
                             <div class="mb-3">
                                 <label for="waktu" class="form-label">Waktu</label>
-                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Edit waktu yang dibutuhkan" name="waktu" required>
+                                <input type="number" class="form-control" id="waktu2" aria-describedby="emailHelp" placeholder="Edit waktu yang dibutuhkan" name="waktu2" required value ="<?php echo $sasaranAT['waktu2'];?>">
                             </div>
 
                             <hr class="sidebar-divider my-0">
@@ -114,15 +114,17 @@
                             </div>
                             <div class="mb-3">
                                 <label for="periode" class="form-label">Periode</label>
-                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Edit periode pelaksanaan" name="periode" required>
+                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Edit periode pelaksanaan" name="periode" required value ="<?php echo $sasaranAT['periode_at'];?>">
                             </div>
                             <div class="mb-3">
                                 <label for="catatan" class="form-label">Catatan</label>
-                                <input type="text" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Edit catatan jika perlu" name="catatan">
+                                <input type="text" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Edit catatan jika perlu" name="catatan" value ="<?php echo $sasaranAT['catatan_at'];?>"">
                             </div>
-                            <a href="#" class="btn btn-primary">Kirim</a>
+                            <button type="submit" class="btn btn-primary">Kirim</button>
+                           
                             <a href="#" class="btn btn-danger">Batal</a>
                         </div>
+                        </form>
                     </div>
                 </div>
                 <!-- Scroll to Top Button-->

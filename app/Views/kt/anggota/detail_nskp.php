@@ -48,7 +48,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ketua Tim</span>
-                                <img class="img-profile rounded-circle" src='../../img/undraw_profile.svg'>
+                                <img class="img-profile rounded-circle" src=' <?php base_url(); ?>/img/undraw_profile.svg'>
                             </a>
                         </li>
                     </ul>
@@ -63,7 +63,7 @@
                     <div class="row">
                         <div class="card-body">
                             <table style="text-align: center;" id="example4" class="table table-bordered table-hover">
-                                <th style="width: 1100px;">Periode :</th>
+                                <th style="width: 1100px;">Periode : <?php echo $sasaranAT['periode_at']; ?></th>
                             </table>
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
@@ -78,39 +78,44 @@
                                     <th style="width: 60px;">Realisasi Waktu</th>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th>1. </th>
-                                        <th>Menyusun dan Melaksanakn PKP</th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                    </tr>
-                                    <tr>
-                                        <th>2. </th>
-                                        <th>Menyusun KKP sesuai dengan PKP </th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                    </tr>
+
+                    <tr>
+                        <th>1. </th>
+                        <th>Menyusun dan Melaksanakn PKP</th>
+                        <td><?php echo $sasaranAT['kuantitas'];?></td>
+                        <td><?php echo $sasaranAT['kualitas']; ?></td>
+                        <td><?php echo $sasaranAT['waktu']; ?></td>
+                        <td><?php echo $sasaranAT['nilai']; ?></td>
+                        <td><?php echo $sasaranAT['realisasi_kuantitas'];?></td>
+                        <td><?php echo $sasaranAT['realisasi_kualitas']; ?></td>
+                        <td><?php echo $sasaranAT['realisasi_waktu']; ?></td>
+
+                    </tr>
+
+                    <tr>
+                        <th>2. </th>
+                        <th>Menyusun KKP sesuai dengan PKP </th>
+                        <td><?php echo $sasaranAT['kuantitas2'];?></td>
+                        <td><?php echo $sasaranAT['kualitas2']; ?></td>
+                        <td><?php echo $sasaranAT['waktu2']; ?></td>
+                        <td><?php echo $sasaranAT['nilai2']; ?></td>
+                        <td><?php echo $sasaranAT['realisasi_kuantitas'];?></td>
+                        <td><?php echo $sasaranAT['realisasi_kualitas']; ?></td>
+                        <td><?php echo $sasaranAT['realisasi_waktu']; ?></td>
+
+                    </tr>
+                  
                                 </tbody>
                             </table>
                             <table id="example4" class="table table-bordered table-hover">
-                                <th style="width: 1100px;">Catatan :</th>
+                                <th style="width: 1100px;">Catatan : <?php echo $sasaranAT['catatan_at']; ?></th>
                             </table>
                             <table id="example1" class="table table-bordered table-hover">
                                 <tr style="text-align: center;">
                                     <th style="width: 680px;">Nilai capaian SKP</th>
-                                    <th style="width: 83px;"></th>
+                                    <th style="width: 83px;"> <?php echo $sasaranAT['nilai_skp']; ?></th>
                                     <th style="max-width: 38px;">
-                                        <a href="/kt/anggota/realisasi" class="btn btn-danger">
+                                        <a href="/kt/anggota/realisasi/<?php echo $sasaranAT['id_kinerja_anggota']; ?>" class="btn btn-danger">
                                             <span class="text">Denail</span>
                                         </a>
                                         <a href="#" class="btn btn-success" style=" width: 100px;">

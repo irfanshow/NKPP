@@ -61,7 +61,7 @@
                     <!-- Page Heading -->
                     <div class="row">
                         <div class="col-md-12">
-
+                        <form action="/at/saveBimbingan" method="POST" enctype="multipart/form-data">
                             <div class="mb-3 mt-3 px-2">
                                 <label for="kendala" class="form-label">Kendala Pertama</label>
                                 <input type="text" class="form-control" id="kendala" aria-describedby="emailHelp" placeholder="Masukan Kendala Pertama" required name="kendala1">
@@ -70,10 +70,19 @@
                                 <label for="kendala2" class="form-label">Kendala Kedua</label>
                                 <input type="text" class="form-control" id="kendala2" aria-describedby="emailHelp" placeholder="Masukan Kendala Kedua" required name="kendala2">
                             </div>
+
+                            <input type="hidden" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="nama" value="<?php echo $_SESSION['nama']?>">
+
+                            <input type="hidden" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="nip" value="<?php echo $_SESSION['nip']?>">
+
+                            
+                            <input type="hidden" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="periode" value="<?php echo $_SESSION['periode']?>">
+
                             <div class="px-2">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
                 <!-- Scroll to Top Button-->

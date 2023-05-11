@@ -76,19 +76,27 @@
                                     <th>Aksi</th>
                                 </tr>
                                 <tr>
-                                    <th>1. </th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th><a href="/kt/anggota/detail_nkp" class="btn btn-primary">
-                                            <span class="text">Detail</span>
-                                        </a>
-                                    </th>
+                                <?php foreach ($nkpAT as $no=>$nkpAT):?>
+                    <tr>
+                        <td><?php echo $no+1?></td>
+                        <td><?php echo $nkpAT['tanggal'];?></td>
+                        <td><?php echo $nkpAT['periode']; ?></td>
+                        <td><?php echo $nkpAT['nama_at']; ?></td>
+                        <td><?php echo $nkpAT['nip_at']; ?></td>
+                        <td><?php echo $nkpAT['nilai']; ?></td>
+                        <td><?php echo $nkpAT['status']; ?></td>
+                        <td><?php echo $nkpAT['realisasi_nilai']; ?></td>
+                        <td><?php echo $nkpAT['nilai_nkp']; ?></td>
+
+                        
+                        <th><a href="/kt/anggota/detail_nkp/<?php echo $nkpAT['id_nkp_at']; ?>" class="btn btn-primary">
+                            <span class="text">Detail</span>
+                            </a>
+                        </th>
+
+                    </tr>
+                         <?php endforeach; ?>
+
                                 </tr>
                             </table>
                         </div>

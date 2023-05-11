@@ -67,12 +67,15 @@ $routes->get('/admin/index', 'AdminController::index');
     $routes->post('/admin/savePT', 'AdminController::savePT');
 
 //AT
-    $routes->get('/at/index', 'ATController::index');
+    $routes->get('/at/index/(:num)', 'ATController::index/$1');
 
     $routes->get('/at/bimbingan', 'ATController::BimbinganView');
     $routes->get('/at/create_bimbingan', 'ATController::CreateBimbingan');
-    $routes->get('/at/edit_bimbingan', 'ATController::EditBimbingan');
-    $routes->get('/at/detail_bimbingan', 'ATController::DetailBimbingan');
+    $routes->post('/at/saveBimbingan', 'ATController::saveBimbingan');
+    $routes->get('/at/edit_bimbingan/(:num)', 'ATController::EditBimbingan/$1');
+    $routes->post('/at/updateBimbingan/(:num)', 'ATController::updateBimbingan/$1');
+    $routes->get('/at/detail_bimbingan/(:num)', 'ATController::DetailBimbingan/$1');
+    $routes->get('/at/bimbingan/delete/(:num)', 'ATController::deleteBimbingan/$1');
 
     $routes->get('/at/nkp', 'ATController::NKPView');
     $routes->get('/at/create_nkp', 'ATController::CreateNKP');
@@ -93,10 +96,14 @@ $routes->get('/admin/index', 'AdminController::index');
     $routes->get('/at/sasarankinerja', 'ATController::SasaranKinerjaView');
     $routes->get('/at/create_sasaran', 'ATController::CreateSasaran');
     $routes->post('/at/saveSasaran', 'ATController::saveSasaran');
-    $routes->get('/at/edit_sasaran', 'ATController::EditSasaran');
-    $routes->get('/at/detail_sasaran', 'ATController::DetailSasaran');
+    $routes->get('/at/edit_sasaran/(:num)', 'ATController::EditSasaran/$1');
+    $routes->post('/at/updateSasaran/(:num)', 'ATController::updateSasaran/$1');
+    $routes->get('/at/detail_sasaran/(:num)', 'ATController::DetailSasaran/$1');
+    $routes->get('/at/sasaran/delete/(:num)', 'ATController::deleteSasaran/$1');
 
-    $routes->get('/at/profile', 'ATController::ProfileView');
+
+    $routes->get('/at/profile/(:num)', 'ATController::ProfileView/$1');
+    $routes->post('/at/saveProfile/(:num)', 'ATController::saveProfile/$1');
 
     $routes->get('/at/nkpp', 'ATController::NKPPView');
     $routes->get('/at/detail_nkpp', 'ATController::DetailNKPP');
@@ -132,12 +139,13 @@ $routes->get('/admin/index', 'AdminController::index');
 
 
     //ANGGOTA
-    $routes->get('/kt/anggota/realisasi', 'KTController::Realisasi');
+
 
     //NKP
     $routes->get('/kt/anggota/nkp_at', 'KTController::NKP_Anggota');
-    $routes->get('/kt/anggota/detail_nkp', 'KTController::DetailNKP_Anggota');
+    $routes->get('/kt/anggota/detail_nkp/(:num)', 'KTController::DetailNKP_Anggota/$1');
     $routes->get('/kt/anggota/realisasi_nkp', 'KTController::RealisasiNKP');
+
 
     //NKT
     $routes->get('/kt/anggota/nkt_at', 'KTController::NKP_Anggota');
@@ -146,7 +154,11 @@ $routes->get('/admin/index', 'AdminController::index');
 
     //NSKP
     $routes->get('/kt/anggota/nskp', 'KTController::NSKP_Anggota');
-    $routes->get('/kt/anggota/detail_nskp', 'KTController::DetailNSKP_Anggota');
+    $routes->get('/kt/anggota/detail_nskp/(:num)', 'KTController::DetailNSKP_Anggota/$1');
+    $routes->get('/kt/anggota/realisasi/(:num)', 'KTController::Realisasi/$1');
+    $routes->post('/kt/saveSasaranAT/(:num)', 'KTController::saveSasaranAT/$1');
+
+
 
     //Tanggapan
     $routes->get('/kt/anggota/do_tanggapan', 'KTController::DoTanggapan');

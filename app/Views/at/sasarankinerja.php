@@ -81,8 +81,8 @@
                         <td><?php echo $sasaranAT['nilai']; ?></td>
 
                         <td>
-                            <a href="/at/detail_sasaran" class="btn btn-primary mb-3">Detail</a>
-                            <a href="#" class="btn btn-danger mb-3">Hapus</a>
+                            <a href="/at/detail_sasaran/<?php echo $sasaranAT['id_kinerja_anggota']; ?>" class="btn btn-primary mb-3">Detail</a>
+                            <a href="/at/sasaran/delete/<?php echo $sasaranAT['id_kinerja_anggota']; ?>" class="btn btn-danger mb-3">Hapus</a>
                         </td>
 
                     </tr>

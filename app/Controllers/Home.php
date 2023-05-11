@@ -78,7 +78,7 @@ class Home extends BaseController
                 session()->set($ses_data);
                 if($peran == 'at')
                 {
-                    return redirect()->to('/at/index',);
+                    return redirect()->to('/at/nkt',);
                 }
                 // else if($peran == 'kt')
                 // {

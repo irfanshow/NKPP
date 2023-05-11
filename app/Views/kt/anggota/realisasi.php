@@ -63,7 +63,7 @@
                     <div class="row">
                         <div class="card-body">
                             <table style="text-align: center;" id="example4" class="table table-bordered table-hover">
-                                <th style="width: 1100px;">Periode :</th>
+                                <th style="width: 1100px;">Periode : <?php echo $sasaranAT['periode_at'];?></th>
                             </table>
                             <table id="example2" class="table table-bordered table-hover">
                                 <tr>
@@ -76,24 +76,24 @@
                                 <tr>
                                     <td>1.</td>
                                     <td>Menyusun dan melaksanakan PKP</td>
-                                    <td>PKP</td>
-                                    <td></td>
-                                    <td>Hari</td>
+                                    <td><?php echo $sasaranAT['kuantitas'];?> PKP</td>
+                                    <td><?php echo $sasaranAT['kualitas'];?></td>
+                                    <td><?php echo $sasaranAT['waktu'];?> Hari</td>
                                 </tr>
                                 <tr>
                                     <td>2.</td>
                                     <td>Menyusun KKP sesuai dengan PKP</td>
-                                    <td>KKP</td>
-                                    <td></td>
-                                    <td>Hari</td>
+                                    <td><?php echo $sasaranAT['kuantitas2'];?> KKP</td>
+                                    <td><?php echo $sasaranAT['kualitas2'];?></td>
+                                    <td><?php echo $sasaranAT['waktu2'];?> Hari</td>
                                 </tr>
                             </table>
                             <table id="example4" class="table table-bordered table-hover">
-                                <th style="width: 1100px;">Catatan :</th>
+                                <th style="width: 1100px;">Catatan : <?php echo $sasaranAT['catatan_at'];?></th>
                             </table>
                             <hr class="sidebar-divider my-0">
                             <div class="row">
-
+                            <form action="/kt/saveSasaranAT/<?php echo $sasaranAT['id_kinerja_anggota'];?>" method="POST" enctype="multipart/form-data">
                                 <div class="col">
                                     <div class="mb-3 mt-4">
                                         <h4>
@@ -108,7 +108,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="kualitas" class="form-label">Kualitas</label>
-                                        <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan realisasi kualitas yang dihasilkan" name="kuant" required>
+                                        <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan realisasi kualitas yang dihasilkan" name="kual" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="waktu" class="form-label">Waktu</label>
@@ -124,15 +124,15 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="kuantititas" class="form-label">Kuantitas</label>
-                                        <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan realisasi kuantitas yang dihasilkan" name="kuant" required>
+                                        <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan realisasi kuantitas yang dihasilkan" name="kuant2" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="kualitas" class="form-label">Kualitas</label>
-                                        <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan realisasi kualitas yang dihasilkan" name="kuant" required>
+                                        <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan realisasi kualitas yang dihasilkan" name="kual2" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="waktu" class="form-label">Waktu</label>
-                                        <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan realisasi waktu" name="waktu" required>
+                                        <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan realisasi waktu" name="waktu2" required>
                                     </div>
 
                                     <hr class="sidebar-divider my-0">
@@ -149,8 +149,13 @@
                                         <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan periode pelaksanaan" name="periode" required>
                                     </div>
 
+                                    <input type="hidden" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan periode pelaksanaan" name="waktuAT1" value ="<?php echo $sasaranAT['waktu'];?>">
+
+                                    <input type="hidden" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan periode pelaksanaan" name="waktuAT2" value ="<?php echo $sasaranAT['waktu2'];?>">
+
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>

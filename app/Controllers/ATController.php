@@ -2,8 +2,10 @@
 
 namespace App\Controllers;
 
+use App\Models\AtModel;
 use App\Models\NkpModel;
 use App\Models\NktModel;
+use App\Models\Bimbingan;
 use App\Models\NKPATModel;
 use App\Models\NKTATModel;
 use App\Models\SoalNKPModel;
@@ -12,15 +14,28 @@ use App\Controllers\BaseController;
 
 class ATController extends BaseController
 {
-    public function index()
+    public function index($id)
     {
-        return view('at/index');
+        $atModel = new AtModel();
+        
+        $at = $atModel->find($id);
+
+        $data=[
+            'at' => $at
+        ];
+        return view('at/index',$data);
     }
 
     //BImbingan
     public function BimbinganView()
     {
-        return view('at/bimbingan');
+        $bimbinganModel = new Bimbingan();
+        $bimbingan = $bimbinganModel->findAll();
+
+        $data=[
+            'bimbingan' => $bimbingan
+        ];
+        return view('at/bimbingan',$data);
     }
 
     public function CreateBimbingan()
@@ -28,14 +43,106 @@ class ATController extends BaseController
         return view('at/create_bimbingan');
     }
 
-    public function DetailBimbingan()
+    public function saveBimbingan()
     {
-        return view('at/detail_bimbingan');
+        // $file = $this->request->getFile('foto');
+        // $nama = $file ->getRandomName();
+        if(!$this->validate([
+            'kendala1' => 'required',
+            'kendala2' => 'required',
+            
+        ])){
+            return redirect()->to('/at/create_bimbingan');
+        }
+        $bimbinganModel = new Bimbingan();
+        $data1=[
+            'bimbingan_satu' => $this->request->getPost('kendala1'),
+            'bimbingan_dua'=> $this->request->getPost('kendala2'),
+            'nama'=>$this->request->getPost('nama'),
+            'periode'=>$this->request->getPost('periode'),
+            'nip' => "at",
+            'status' => "belum",
+
+            // 'nilai'=>$this->request->getPost('pt'),
+            // 'tanggal'=>$this->request->getPost('periode'),
+            
+        ];
+
+
+        $bimbinganModel->protect(false)
+        ->save($data1);
+
+                
+        // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+        return redirect()->to('/at/bimbingan');
     }
 
-    public function EditBimbingan()
+    public function DetailBimbingan($id)
     {
-        return view('at/edit_bimbingan');
+
+        $bimbinganModel = new Bimbingan();
+        $bimbingan = $bimbinganModel->find($id);
+
+        $data=[
+            'bimbingan' => $bimbingan
+        ];
+
+        return view('at/detail_bimbingan',$data);
+    }
+
+    public function EditBimbingan($id)
+    {
+        $bimbinganModel = new Bimbingan();
+        $bimbingan = $bimbinganModel->find($id);
+
+        $data= [
+           'bimbingan'=>$bimbingan,
+
+        ];
+        return view('at/edit_bimbingan',$data);
+    }
+
+    public function updateBimbingan($id)
+    {
+        // $file = $this->request->getFile('foto');
+        // $nama = $file ->getRandomName();
+        if(!$this->validate([
+            'kendala1' => 'required',
+            'kendala2' => 'required',
+            
+        ])){
+            return redirect()->to('/at/edit_bimbingan/'.$id);
+        }
+        $bimbinganModel = new Bimbingan();
+        $data1=[
+            'bimbingan_satu' => $this->request->getPost('kendala1'),
+            'bimbingan_dua'=> $this->request->getPost('kendala2'),
+            'nama'=>$this->request->getPost('nama'),
+            'periode'=>$this->request->getPost('periode'),
+            'nip' => "at",
+            'status' => "belum",
+
+            // 'nilai'=>$this->request->getPost('pt'),
+            // 'tanggal'=>$this->request->getPost('periode'),
+            
+        ];
+
+
+        $bimbinganModel->protect(false)
+        ->update($id,$data1);
+
+                
+        // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+        return redirect()->to('/at/detail_bimbingan/'.$id);
+    }
+
+    public function deleteBimbingan($id)
+    {
+        $bimbingan = new Bimbingan();
+        $bimbingan->delete($id);
+
+
+        return redirect()->to('/at/bimbingan');
     }
 
     //NKP
@@ -111,8 +218,9 @@ class ATController extends BaseController
         $data=[
             'nilai' => $nkp,
             'periode'=>$this->request->getPost('periode'),
-
             'status'=> "proses",
+            'nama_at' =>$this->request->getPost('nama'),
+            'nip_at' =>$this->request->getPost('nip')
 
             // 'nilai'=>$this->request->getPost('pt'),
             // 'tanggal'=>$this->request->getPost('periode'),
@@ -324,6 +432,8 @@ class ATController extends BaseController
             'periode'=>$this->request->getPost('periode'),
 
             'status'=> "proses",
+            'nama_at' =>$this->request->getPost('nama'),
+            'nip_at' =>$this->request->getPost('nip')
 
             
         ];
@@ -488,51 +598,151 @@ class ATController extends BaseController
             'kuantitas' => $this->request->getPost('kuant1'),
             'kualitas'=> $this->request->getPost('kual1'),
             'waktu'=>$this->request->getPost('waktu1'),
+            'kuantitas2' => $this->request->getPost('kuant2'),
+            'kualitas2'=> $this->request->getPost('kual2'),
+            'waktu2'=>$this->request->getPost('waktu2'),
             'periode_at'=>$this->request->getPost('periode'),
             'catatan_at'=>$this->request->getPost('catatan'),
             'status'=>"belum",
+            'nama_at' =>$this->request->getPost('nama'),
+            'nip_at' =>$this->request->getPost('nip')
             // 'nilai'=>$this->request->getPost('pt'),
             // 'tanggal'=>$this->request->getPost('periode'),
             
         ];
 
-        $data2=[
-            'kuantitas' => $this->request->getPost('kuant2'),
-            'kualitas'=> $this->request->getPost('kual2'),
-            'waktu'=>$this->request->getPost('waktu2'),
-            'periode_at'=>$this->request->getPost('periode'),
-            'catatan_at'=>$this->request->getPost('catatan'),
-            'status'=>"belum",
-
-            // 'nilai'=>$this->request->getPost('pt'),
-            // 'tanggal'=>$this->request->getPost('periode'),
-            
-        ];
 
         $sasaranModel->protect(false)
         ->save($data1);
 
-        $sasaranModel->protect(false)
-        ->save($data2);
                 
         // $file->move(ROOTPATH . 'public/assets/img/',$nama);
         return redirect()->to('/at/sasarankinerja');
     }
 
-    public function DetailSasaran()
+    public function DetailSasaran($id)
     {
-        return view('at/detail_sasaran');
+        $SasaranATModel = new SasaranATModel();
+
+        $sasaranAT = $SasaranATModel->find($id);
+     
+        $data= [
+            'sasaranAT'=>$sasaranAT
+        ];
+        return view('at/detail_sasaran',$data);
     }
 
-    public function EditSasaran()
+    public function EditSasaran($id)
     {
-        return view('at/edit_sasaran');
+        $sasaranModel = new SasaranATModel();
+        $sasaranAT = $sasaranModel->find($id);
+
+        $data= [
+            'sasaranAT'=>$sasaranAT
+
+        ];
+        return view('at/edit_sasaran',$data);
+    }
+
+    public function updateSasaran($id)
+    {
+        // $file = $this->request->getFile('foto');
+        // $nama = $file ->getRandomName();
+        if(!$this->validate([
+            'kuant1' => 'required',
+            'kual1' => 'required',
+            'waktu1' => 'required',
+            'kuant2' => 'required',
+            'kual2' => 'required',
+            'waktu2' => 'required',
+            'periode' =>'required',
+
+            
+        ])){
+            return redirect()->to('/at/edit_sasaran/'.$id);
+        }
+        $sasaranModel = new SasaranATModel();
+        $data1=[
+            'kuantitas' => $this->request->getPost('kuant1'),
+            'kualitas'=> $this->request->getPost('kual1'),
+            'waktu'=>$this->request->getPost('waktu1'),
+            'kuantitas2' => $this->request->getPost('kuant2'),
+            'kualitas2'=> $this->request->getPost('kual2'),
+            'waktu2'=>$this->request->getPost('waktu2'),
+            'periode_at'=>$this->request->getPost('periode'),
+            'catatan_at'=>$this->request->getPost('catatan'),
+            'status'=>"belum",
+            'nama_at' =>$this->request->getPost('nama'),
+            'nip_at' =>$this->request->getPost('nip')
+            // 'nilai'=>$this->request->getPost('pt'),
+            // 'tanggal'=>$this->request->getPost('periode'),
+            
+        ];
+
+
+        $sasaranModel->protect(false)
+        ->update($id,$data1);
+
+                
+        // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+        return redirect()->to('/at/detail_sasaran/'.$id);
+    }
+
+    public function deleteSasaran($id)
+    {
+        $sasaranModel = new SasaranATModel();
+        $sasaranModel->delete($id);
+
+
+        return redirect()->to('/at/sasarankinerja');
     }
 
     //Profile
-    public function ProfileVIew()
+    public function ProfileVIew($id)
     {
-        return view('at/profile');
+
+        $atModel = new AtModel();
+        
+        $at = $atModel->find($id);
+
+        $data=[
+            'at' => $at
+        ];
+
+        return view('at/profile',$data);
+    }
+
+    public function saveProfile($id)
+    {
+        // $file = $this->request->getFile('foto');
+        // $nama = $file ->getRandomName();
+        if(!$this->validate([
+            'nama' => 'required',
+            'nip' => 'required',
+            'unit' => 'required',
+            'periode' => 'required',
+            
+        ])){
+            return redirect()->to('/at/profile');
+        }
+        $atModel = new AtModel();
+        $data1=[
+            'nama_at' => $this->request->getPost('nama'),
+            'nip_at'=> $this->request->getPost('nip'),
+            'unit_kerja_at'=>$this->request->getPost('unit'),
+            'periode_at'=>$this->request->getPost('periode'),
+
+            //Foto
+            
+        ];
+
+
+        $atModel->protect(false)
+        ->update($id,$data1);
+
+                
+        // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+        return redirect()->to('/at/index/'.$id);
     }
 
     //NKPP

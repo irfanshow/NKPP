@@ -61,27 +61,27 @@
 
                     <div class="row">
                         <div class="col-md-4-px-2">
-                            <form action="#" method="POST" enctype="multipart/form-data">
+                            <form action="/at/saveProfile/<?php echo $_SESSION['id']?>" method="POST" enctype="multipart/form-data">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Nama</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nama Pegawai" name="nama">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nama Pegawai" name="nama" value ="<?php echo $at['nama_at']?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">NIP</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan NIP" name="nama">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan NIP" name="nip" value ="<?php echo $at['nip_at']?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Unit Kerja</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Unit Kerja" name="nama">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Unit Kerja" name="unit" value ="<?php echo $at['unit_kerja_at']?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Periode</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Periode" name="nama">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Periode" name="periode" value ="<?php echo $at['periode_at']?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="file-upload">Upload Gambar </label>
-                                        <input type="file" id="file-upload" name="file-upload">
+                                        <input type="file" id="file-upload" name="gambar">
                                     </div>
                                 </div>
                                 <hr>

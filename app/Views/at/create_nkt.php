@@ -85,7 +85,9 @@
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
+                            <input type="hidden" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="nama" value="<?php echo $_SESSION['nama']?>">
 
+                            <input type="hidden" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="nip" value="<?php echo $_SESSION['nip']?>">
                             <div class="px-2">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>

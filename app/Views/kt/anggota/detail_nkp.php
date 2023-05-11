@@ -48,7 +48,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ketua Tim</span>
-                                <img class="img-profile rounded-circle" src='../../img/undraw_profile.svg'>
+                                <img class="img-profile rounded-circle" src='<?php echo base_url();?>/img/undraw_profile.svg'>
                             </a>
                         </li>
                     </ul>
@@ -62,7 +62,7 @@
                         <div class="card-body">
                             <table style="text-align: center;" id="example2" class="table table-bordered table-hover">
                                 <th>
-                                    Nama Anggota Tim :
+                                    Nama Anggota Tim : <?php echo $nkp['nama_at'];?>
                                 </th>
 
                             </table>
@@ -79,22 +79,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php foreach ($soal as $no=>$soal):?>
                                     <tr>
-                                        <th>1.</th>
-                                        <th>Mampu menerapkan sistem/metode bekerja yang efektif sesuai dengan kondisi di lapangan, sehingga Tim Pemeriksa bekerja lebih efektif dan efisien, termasuk di dalamnya merancang prosedur alternatif untuk mengatasi hambatan pelaksanaan atau langkah P2.</th>
-                                        <th><input type="radio" name="1" value="A"></th>
-                                        <th><input type="radio" name="1" value="B"></th>
-                                        <th><input type="radio" name="1" value="C"></th>
-                                        <th><input type="radio" name="1" value="D"></th>
+                                        <th><?php echo $no+1?></th>
+                                        <th><?php echo $soal['soal'];?></th>
+                                       <?php if ($nkp['nilai'] == 29.975) : ?>
+
+                                        <th><input type="radio" checked name="nilai<?php echo $no+1?>" value="100"></th>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="85"></th>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="70"></th>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="55"></th>
+
+                                        <?php elseif ($nkp['nilai'] == 85) : ?>
+                                        <th><input type="radio"  name="nilai<?php echo $no+1?>" value="100"></th>
+                                        <th><input type="radio" checked name="nilai<?php echo $no+1?>" value="85"></th>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="70"></th>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="55"></th>
                                     </tr>
-                                    <tr>
-                                        <th>2.</th>
-                                        <th>Mampu menyelesaikan Pemeriksaan menggunakan sumber daya yang ada dengan baik walaupun dengan banyak hambatan teknis (faktor lokasi, fasilitas, geografis, kestabilan politik daerah, dan lain-lain).</th>
-                                        <th><input type="radio" name="2" value="A"></th>
-                                        <th><input type="radio" name="2" value="B"></th>
-                                        <th><input type="radio" name="2" value="C"></th>
-                                        <th><input type="radio" name="2" value="D"></th>
-                                    </tr>
+
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
 

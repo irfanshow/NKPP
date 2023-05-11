@@ -76,19 +76,30 @@
                                     <th>Aksi</th>
                                 </tr>
                                 <tr>
-                                    <th>1. </th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th><a href="/kt/anggota/detail_nskp" class="btn btn-primary">
+                                    
+                                <?php foreach ($sasaranAT as $no=>$sasaranAT):?>
+                                    <tr>
+                        <td><?php echo $no+1?></td>
+                        <td><?php echo $sasaranAT['tanggal'];?></td>
+                        <td><?php echo $sasaranAT['periode_at']; ?></td>
+                        <td><?php echo $sasaranAT['nama_at']; ?></td>
+                        <td><?php echo $sasaranAT['nip_at']; ?></td>
+                        <td><?php echo $sasaranAT['nilai']; ?></td>
+                        <td><?php echo $sasaranAT['status']; ?></td>
+                        <td><?php echo $sasaranAT['realisasi_nilai_at']; ?></td>
+                        <td><?php echo $sasaranAT['nilai_skp']; ?></td>
+
+
+        
+
+                        <th><a href="/kt/anggota/detail_nskp/<?php echo $sasaranAT['id_kinerja_anggota']; ?>" class="btn btn-primary">
                                             <span class="text">Detail</span>
                                         </a>
                                     </th>
+                                    </tr>
+                    <?php endforeach; ?>
+                    
+
                                 </tr>
                             </table>
                         </div>

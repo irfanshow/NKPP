@@ -56,12 +56,12 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <a style="float: right;" href="/at/edit_sasaran" class="btn btn-primary">Edit Sasaran Kinerja</a>
+                    <a style="float: right;" href="/at/edit_sasaran/<?php echo $sasaranAT['id_kinerja_anggota'];?>" class="btn btn-primary">Edit Sasaran Kinerja</a>
                     <h3 class="px-2 mb-0 text-gray-800">Detail Data Sasaran Kinerja</h3>
 
                     <div class="alert alert-success mt-3" role="alert">Sasaran kinerja sudah di realisasi!</div>
                     <table style="text-align: center;" id="example4" class="table table-bordered table-hover">
-                        <th style="width: 1100px;">Periode :</th>
+                        <th style="width: 1100px;">Periode : <?php echo $sasaranAT['periode_at'];?></th>
                     </table>
                     <table id="example2" class="table table-bordered table-hover">
                         <tr>
@@ -81,39 +81,39 @@
                         <tr>
                             <td>1.</td>
                             <td>Menyusun dan Melaksanakn PKP</td>
-                            <td>PKP</td>
-                            <td></td>
-                            <td>Hari</td>
-                            <td>PKP</td>
-                            <td></td>
-                            <td>Hari</td>
-                            <td>PKP</td>
-                            <td></td>
-                            <td>Hari</td>
-                            <td></td>
+                            <td><?php echo $sasaranAT['kuantitas'];?> PKP</td>
+                            <td><?php echo $sasaranAT['kualitas'];?></td>
+                            <td><?php echo $sasaranAT['waktu'];?> Hari</td>
+                            <td><?php echo $sasaranAT['realisasi_kuantitas'];?> PKP</td>
+                            <td><?php echo $sasaranAT['realisasi_kualitas'];?></td>
+                            <td><?php echo $sasaranAT['realisasi_waktu'];?> Hari</td>
+                            <td><?php echo $sasaranAT['review_kuantitas'];?> PKP</td>
+                            <td><?php echo $sasaranAT['review_kualitas'];?></td>
+                            <td><?php echo $sasaranAT['review_waktu'];?> Hari</td>
+                            <td><?php echo $sasaranAT['perhitungan1'];?></td>
                         </tr>
                         <tr>
                             <td>2.</td>
                             <td>menyusun KKP sesuai dengan PKP </td>
-                            <td>KKP</td>
-                            <td></td>
-                            <td>Hari</td>
-                            <td>PKP</td>
-                            <td></td>
-                            <td>Hari</td>
-                            <td>PKP</td>
-                            <td></td>
-                            <td>Hari</td>
-                            <td></td>
+                            <td><?php echo $sasaranAT['kuantitas2'];?> KKP</td>
+                            <td><?php echo $sasaranAT['kualitas2'];?></td>
+                            <td><?php echo $sasaranAT['waktu2'];?> Hari</td>
+                            <td><?php echo $sasaranAT['realisasi_kuantitas2'];?> KKP</td>
+                            <td><?php echo $sasaranAT['realisasi_kualitas2'];?></td>
+                            <td><?php echo $sasaranAT['realisasi_waktu2'];?> Hari</td>
+                            <td><?php echo $sasaranAT['review_kuantitas2'];?> KKP</td>
+                            <td><?php echo $sasaranAT['review_kualitas2'];?></td>
+                            <td><?php echo $sasaranAT['review_waktu2'];?> Hari</td>
+                            <td><?php echo $sasaranAT['perhitungan2'];?></td>
                         </tr>
                     </table>
 
                     <table id="example4" class="table table-bordered table-hover">
-                        <th style="width: 1100px;">Catatan :</th>
+                        <th style="width: 1100px;">Catatan : <?php echo $sasaranAT['catatan_at'];?></th>
                     </table>
                     <table style="text-align: center;" id="example4" class="table table-bordered table-hover">
                         <th style="width: 1100px;">Detail Capaian SKP</th>
-                        <th>39,99</th>
+                        <th><?php echo $sasaranAT['nilai_skp'];?></th>
                     </table>
                 </div>
             </div>

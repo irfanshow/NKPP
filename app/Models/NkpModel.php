@@ -18,4 +18,18 @@ class NkpModel extends Model
         ->getResultArray();
     }
 
+    function getKT(){
+        return $this->db->table('nkp')
+        ->where('bagian = ','kt')
+        ->Get()
+        ->getResultArray();
+    }
+
+    function getPT(){
+        return $this->db->table('nkp')
+        ->where('bagian = ','pt')
+        ->Get()
+        ->getResultArray();
+    }
+
 }

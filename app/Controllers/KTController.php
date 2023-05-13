@@ -7,6 +7,7 @@ use App\Models\NkpModel;
 use App\Models\NktModel;
 use App\Models\Bimbingan;
 use App\Models\NKPATModel;
+use App\Models\NKPKTModel;
 use App\Models\NKTATModel;
 use App\Models\SasaranATModel;
 use App\Models\SasaranKTModel;
@@ -51,22 +52,196 @@ class KTController extends BaseController
     //NKP
     public function NKPView()
     {
-        return view('kt/nkp');
+        $nkpKTModel = new NKPKTModel();
+        $nkpKT = $nkpKTModel->findAll();
+     
+        $data= [
+            'nkpKT'=>$nkpKT
+        ];
+        return view('kt/nkp',$data);
     }
 
     public function CreateNKP()
     {
-        return view('kt/create_nkp');
+        $nkpModel = new NkpModel();
+        $nkp = $nkpModel->getAT();
+
+        $data= [
+            'nkp'=>$nkp,
+
+        ];
+        return view('kt/create_nkp',$data);
     }
 
-    public function DetailNKP()
+    public function saveNKPKT()
     {
-        return view('kt/detail_nkp');
+        // $file = $this->request->getFile('foto');
+        // $nama = $file ->getRandomName();
+        if(!$this->validate([
+            'periode' => 'required',
+
+            
+        ])){
+            return redirect()->to('/kt/create_nkp');
+        }
+
+        $no = 1;
+        $no1 = $this->request->getPost('nilai'.''.$no) * 0.5;
+        $no2 = $this->request->getPost('nilai'.''.$no+1) * 0.5;
+        $total1 = $no1+$no2;
+        $total1 = $total1*0.2;
+
+        $no3 = $this->request->getPost('nilai'.''.$no+2) * 0.4;
+        $no4 = $this->request->getPost('nilai'.''.$no+3) * 0.6;
+        $total2 = $no3+$no4;
+        $total2 = $total2*0.2;
+
+        $no5 = $this->request->getPost('nilai'.''.$no+4) * 0.5;
+        $no6 = $this->request->getPost('nilai'.''.$no+5) * 0.5;
+        $total3 = $no5+$no6;
+        $total3 = $total3*0.2;
+
+        $no7 = $this->request->getPost('nilai'.''.$no+6) * 0.4;
+        $no8 = $this->request->getPost('nilai'.''.$no+7) * 0.6;
+        $total4 = $no7+$no8;
+        $total4 = $total4*0.2;
+
+        $no9 = $this->request->getPost('nilai'.''.$no+8) * 0.25;
+        $no10 = $this->request->getPost('nilai'.''.$no+9) * 0.25;
+        $no11 = $this->request->getPost('nilai'.''.$no+10) * 0.25;
+        $no12 = $this->request->getPost('nilai'.''.$no+11) * 0.3;
+        $total5 = $no9+$no10+$no11+$no12;
+        $total5 = $total5*0.2;
+
+        $nkp = $total1+$total2+$total3+$total4+$total5;
+     
+        
+        
+        $nkpKTModel = new NKPKTModel();
+
+        $data=[
+            'nilai' => $nkp,
+            'periode'=>$this->request->getPost('periode'),
+            'status'=> "proses",
+            'nama_kt' =>$this->request->getPost('nama'),
+            'nip_kt' =>$this->request->getPost('nip')
+
+            // 'nilai'=>$this->request->getPost('pt'),
+            // 'tanggal'=>$this->request->getPost('periode'),
+            
+        ];
+
+
+        $nkpKTModel->protect(false)->save($data);
+
+
+                
+        // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+        return redirect()->to('/kt/nkp');
     }
 
-    public function EditNKP()
+    public function DetailNKP($id)
     {
-        return view('kt/edit_nkp');
+        $nkpKTModel = new NKPKTModel();
+        $nkp = $nkpKTModel->find($id);
+        $nkpModel = new NkpModel();
+        $soal = $nkpModel->getKT();
+        $data= [
+            'nkp'=>$nkp,
+            'soal'=>$soal
+
+        ];
+        return view('kt/detail_nkp',$data);
+    }
+
+    public function EditNKP($id)
+    {
+        $nkpKTModel = new NKPKTModel();
+        $nkp = $nkpKTModel->find($id);
+        $nkpModel = new NkpModel();
+        $soal = $nkpModel->getKT();
+
+        $data= [
+           'nkp'=>$nkp,
+            'soal'=>$soal
+
+        ];
+        return view('kt/edit_nkp',$data);
+    }
+
+    public function updateNKP($id)
+    {
+        if(!$this->validate([
+            'periode' => 'required',
+
+            
+        ])){
+            return redirect()->to('/kt/edit_nkp/'.$id);
+        }
+
+        $no = 1;
+        $no1 = $this->request->getPost('nilai'.''.$no) * 0.5;
+        $no2 = $this->request->getPost('nilai'.''.$no+1) * 0.5;
+        $total1 = $no1+$no2;
+        $total1 = $total1*0.2;
+
+        $no3 = $this->request->getPost('nilai'.''.$no+2) * 0.4;
+        $no4 = $this->request->getPost('nilai'.''.$no+3) * 0.6;
+        $total2 = $no3+$no4;
+        $total2 = $total2*0.2;
+
+        $no5 = $this->request->getPost('nilai'.''.$no+4) * 0.5;
+        $no6 = $this->request->getPost('nilai'.''.$no+5) * 0.5;
+        $total3 = $no5+$no6;
+        $total3 = $total3*0.2;
+
+        $no7 = $this->request->getPost('nilai'.''.$no+6) * 0.4;
+        $no8 = $this->request->getPost('nilai'.''.$no+7) * 0.6;
+        $total4 = $no7+$no8;
+        $total4 = $total4*0.2;
+
+        $no9 = $this->request->getPost('nilai'.''.$no+8) * 0.25;
+        $no10 = $this->request->getPost('nilai'.''.$no+9) * 0.25;
+        $no11 = $this->request->getPost('nilai'.''.$no+10) * 0.25;
+        $no12 = $this->request->getPost('nilai'.''.$no+11) * 0.3;
+        $total5 = $no9+$no10+$no11+$no12;
+        $total5 = $total5*0.2;
+
+        $nkp = $total1+$total2+$total3+$total4+$total5;
+     
+        
+        
+        $nkpKTModel = new NKPKTModel();
+
+        $data=[
+            'nilai' => $nkp,
+            'periode'=>$this->request->getPost('periode'),
+            'status'=> "proses",
+            'nama_kt' =>$this->request->getPost('nama'),
+            'nip_kt' =>$this->request->getPost('nip')
+
+            // 'nilai'=>$this->request->getPost('pt'),
+            // 'tanggal'=>$this->request->getPost('periode'),
+            
+        ];
+
+
+
+        $nkpKTModel->protect(false)->update($id,$data);
+        // $nkpSoalModel->protect(false)->save($data1);
+
+                
+        // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+        return redirect()->to('/kt/nkp');
+    }
+
+    public function deleteNKP($id)
+    {
+        $nkpKTModel = new NKPKTModel();
+        $nkpKTModel->delete($id);
+
+
+        return redirect()->to('/kt/nkp');
     }
 
     //NKT

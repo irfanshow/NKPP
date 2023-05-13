@@ -118,8 +118,12 @@ $routes->get('/admin/index', 'AdminController::index');
 
     $routes->get('/kt/nkp', 'KTController::NKPView');
     $routes->get('/kt/create_nkp', 'KTController::CreateNKP');
-    $routes->get('/kt/edit_nkp', 'KTController::EditNKP');
-    $routes->get('/kt/detail_nkp', 'KTController::DetailNKP');
+    $routes->post('/kt/saveNKP', 'KTController::saveNKPKT');
+    $routes->get('/kt/edit_nkp/(:num)', 'KTController::EditNKP/$1');
+    $routes->post('/kt/updateNKP/(:num)', 'KTController::updateNKP/$1');
+    $routes->get('/kt/detail_nkp/(:num)', 'KTController::DetailNKP/$1');
+    $routes->get('/kt/nkp/delete/(:num)', 'KTController::deleteNKP/$1');
+    
 
     $routes->get('/kt/nkt', 'KTController::NKTView');
     $routes->get('/kt/create_nkt', 'KTController::CreateNKT');

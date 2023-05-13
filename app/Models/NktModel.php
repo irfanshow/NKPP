@@ -18,6 +18,20 @@ class NktModel extends Model
         ->getResultArray();
     }
 
+    function getKT(){
+        return $this->db->table('nkt')
+        ->where('bagian = ','kt')
+        ->Get()
+        ->getResultArray();
+    }
+
+    function getPT(){
+        return $this->db->table('nkt')
+        ->where('bagian = ','pt')
+        ->Get()
+        ->getResultArray();
+    }
+
     function getNilaiAT(){
         return $this->db->table('nkt')
         ->select('nkt_at.waktu')

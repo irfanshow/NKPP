@@ -164,6 +164,11 @@
                                 <label for="catatan" class="form-label">Catatan</label>
                                 <input type="text" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="catatan">
                             </div>
+
+                            <input type="hidden" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="nama" value="<?php echo $_SESSION['nama']?>">
+
+                            <input type="hidden" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="nip" value="<?php echo $_SESSION['nip']?>">
+
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                         </form>

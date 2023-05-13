@@ -118,7 +118,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="catatan" class="form-label">Catatan</label>
-                                <input type="text" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Edit catatan jika perlu" name="catatan" value ="<?php echo $sasaranAT['catatan_at'];?>"">
+                                <input type="text" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Edit catatan jika perlu" name="catatan" value ="<?php echo $sasaranAT['catatan_at'];?>">
                             </div>
                             <button type="submit" class="btn btn-primary">Kirim</button>
                            

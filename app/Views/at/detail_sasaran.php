@@ -90,7 +90,7 @@
                             <td><?php echo $sasaranAT['review_kuantitas'];?> PKP</td>
                             <td><?php echo $sasaranAT['review_kualitas'];?></td>
                             <td><?php echo $sasaranAT['review_waktu'];?> Hari</td>
-                            <td><?php echo $sasaranAT['perhitungan1'];?></td>
+                            <td><?php echo $sasaranAT['nilai'];?></td>
                         </tr>
                         <tr>
                             <td>2.</td>
@@ -104,7 +104,7 @@
                             <td><?php echo $sasaranAT['review_kuantitas2'];?> KKP</td>
                             <td><?php echo $sasaranAT['review_kualitas2'];?></td>
                             <td><?php echo $sasaranAT['review_waktu2'];?> Hari</td>
-                            <td><?php echo $sasaranAT['perhitungan2'];?></td>
+                            <td><?php echo $sasaranAT['nilai2'];?></td>
                         </tr>
                     </table>
 

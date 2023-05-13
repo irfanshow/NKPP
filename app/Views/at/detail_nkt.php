@@ -73,16 +73,51 @@
                         </thead>
                         <tbody>
                         <?php foreach ($soal as $no=>$soal):?>
+                 
                                     <tr>
-                                        <th><?php echo $no+1?></th>
+                                    <th><?php echo $no+1?></th>
                                         <th><?php echo $soal['soal'];?></th>
-                                       
-                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="100"></th>
+                                       <?php if($soal['nilai']== 100):?>
+                                        <th><input type="radio" checked name="nilai<?php echo $no+1?>" value="100"></th>
                                         <th><input type="radio" name="nilai<?php echo $no+1?>" value="85"></th>
                                         <th><input type="radio" name="nilai<?php echo $no+1?>" value="70"></th>
                                         <th><input type="radio" name="nilai<?php echo $no+1?>" value="55"></th>
                                     </tr>
-                                    <?php endforeach; ?>
+
+                                    <tr>
+                                    <?php elseif($soal['nilai']== 85):?>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="100"></th>
+                                        <th><input type="radio" checked name="nilai<?php echo $no+1?>" value="85"></th>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="70"></th>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="55"></th>
+                                    </tr>
+
+                                    <tr>
+                                    <?php elseif($soal['nilai']==70):?>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="100"></th>
+                                        <th><input type="radio"  name="nilai<?php echo $no+1?>" value="85"></th>
+                                        <th><input type="radio" checked name="nilai<?php echo $no+1?>" value="70"></th>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="55"></th>
+                                    </tr>
+
+                                    <tr>
+                                    <?php elseif($soal['nilai']==55):?>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="100"></th>
+                                        <th><input type="radio"  name="nilai<?php echo $no+1?>" value="85"></th>
+                                        <th><input type="radio"  name="nilai<?php echo $no+1?>" value="70"></th>
+                                        <th><input type="radio" checked name="nilai<?php echo $no+1?>" value="55"></th>
+                                    </tr>
+
+                                    <tr>
+                                    <?php else :?>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="100"></th>
+                                        <th><input type="radio"  name="nilai<?php echo $no+1?>" value="85"></th>
+                                        <th><input type="radio"  name="nilai<?php echo $no+1?>" value="70"></th>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="55"></th>
+                                    </tr>
+                                        <?php endif; ?>
+
+                        <?php endforeach; ?>
                         </tbody>
                     </table>
 

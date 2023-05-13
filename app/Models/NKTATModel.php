@@ -10,4 +10,13 @@ class NKTATModel extends Model
     protected $primaryKey       = 'id_nkt_at';
     protected $useAutoIncrement = true;
     protected $allowedFields;
+
+    function getNilai($id){
+        return $this->db->table('nkt_at')
+        ->select('*')
+        ->from('nilai_nkt')
+        ->where('nkt_at.waktu = nilai_nkt.waktu') 
+        ->where('id_nkt_at ='.$id) 
+        ->Get()->getResultArray();
+    }
 }

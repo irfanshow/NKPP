@@ -48,7 +48,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ketua Tim</span>
-                                <img class="img-profile rounded-circle" src='../img/undraw_profile.svg'>
+                                <img class="img-profile rounded-circle" src='<?php echo base_url() ?>/img/undraw_profile.svg'>
                             </a>
                         </li>
                     </ul>
@@ -70,24 +70,24 @@
                         </div>
                         <div class="card-body">
                             <div class="text-center">
-                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="../img/undraw_posting_photo.svg" alt="...">
+                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="<?php  base_url() ?>/img/undraw_posting_photo.svg" alt="...">
                             </div>
                             <div class="profile">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <p><strong>Nama :</strong> <?=$_SESSION['nama'];?></p>
-                                        <p><strong>NIP :</strong> <?=$_SESSION['nip'];?></p>
-                                        <p><strong>Unit Kerja :</strong> <?=$_SESSION['unit'];?></p>
-                                        <p><strong>Email :</strong> <?=$_SESSION['email'];?></p>
+                                    <p><strong>Nama :</strong> <?=$kt['nama_kt'];?></p>
+                                        <p><strong>NIP :</strong> <?=$kt['nip_kt'];?></p>
+                                        <p><strong>Unit Kerja :</strong> <?=$kt['unit_kerja_kt'];?></p>
+                                        <p><strong>Email :</strong> <?=$kt['email_kt'];?></p>
                                     </div>
                                     <div class="col-md-6">
-                                        <p><strong>Periode :</strong> <?=$_SESSION['periode'];?></p>
-                                        <p><strong>No. Surat Dinas :</strong> <?=$_SESSION['surat'];?></p>
+                                        <p><strong>Periode :</strong> <?=$kt['periode_kt'];?></p>
+                                        <p><strong>No. Surat Dinas :</strong> <?=$kt['no_surat_dinas_kt'];?></p>
                                         <p><strong>Nama Pengendali Teknis :</strong> <?=$_SESSION['pt'];?></p>
                                         <p><strong>Nama Penanggung Jawab :</strong> <?=$_SESSION['pj'];?></p>
                                     </div>
                                     <div class="px-2 card-body">
-                                        <a href="/kt/profile" class="btn btn-primary">Ubah Profile</a>
+                                    <a href="/kt/profile/<?php echo $_SESSION['id'];?>" class="btn btn-primary">Ubah Profile</a>
                                     </div>
                                 </div>
                             </div>

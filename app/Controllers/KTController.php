@@ -2,8 +2,12 @@
 
 namespace App\Controllers;
 
+use App\Models\KtModel;
 use App\Models\NkpModel;
+use App\Models\NktModel;
+use App\Models\Bimbingan;
 use App\Models\NKPATModel;
+use App\Models\NKTATModel;
 use App\Models\SasaranATModel;
 use App\Models\SasaranKTModel;
 use App\Controllers\BaseController;
@@ -12,9 +16,15 @@ class KTController extends BaseController
 {
     public function index($id)
     {
-
+        $ktModel = new KtModel();
         
-        return view ("kt/index");
+        $kt = $ktModel->find($id);
+
+        $data=[
+            'kt' => $kt
+        ];
+        
+        return view ("kt/index",$data);
     }
 
     //BImbingan
@@ -83,7 +93,14 @@ class KTController extends BaseController
     //Sasaran
     public function SasaranKinerjaVIew()
     {
-        return view('kt/sasarankinerja');
+        $SasaranKTModel = new SasaranKTModel();
+        
+        $sasaranKT = $SasaranKTModel->findAll();
+     
+        $data= [
+            'sasaranKT'=>$sasaranKT
+        ];
+        return view('kt/sasarankinerja',$data);
     }
 
     public function CreateSasaran()
@@ -119,74 +136,178 @@ class KTController extends BaseController
             'kuantitas' => $this->request->getPost('kuant1'),
             'kualitas'=> $this->request->getPost('kual1'),
             'waktu'=>$this->request->getPost('waktu1'),
+
+            'kuantitas2' => $this->request->getPost('kuant2'),
+            'kualitas2'=> $this->request->getPost('kual2'),
+            'waktu2'=>$this->request->getPost('waktu2'),
+
+            'kuantitas3' => $this->request->getPost('kuant3'),
+            'kualitas3'=> $this->request->getPost('kual3'),
+            'waktu3'=>$this->request->getPost('waktu3'),
+
+            'kuantitas4' => $this->request->getPost('kuant4'),
+            'kualitas4'=> $this->request->getPost('kual4'),
+            'waktu4'=>$this->request->getPost('waktu4'),
+
             'periode_kt'=>$this->request->getPost('periode'),
             'catatan_kt'=>$this->request->getPost('catatan'),
             'status'=>"belum",
+            'nama_kt' =>$this->request->getPost('nama'),
+            'nip_kt' =>$this->request->getPost('nip')
             // 'nilai'=>$this->request->getPost('pt'),
             // 'tanggal'=>$this->request->getPost('periode'),
             
         ];
 
-        $data2=[
-            'kuantitas' => $this->request->getPost('kuant2'),
-            'kualitas'=> $this->request->getPost('kual2'),
-            'waktu'=>$this->request->getPost('waktu2'),
-            'periode_kt'=>$this->request->getPost('periode'),
-            'catatan_kt'=>$this->request->getPost('catatan'),
-            'status'=>"belum",
-            
-        ];
-
-        $data3=[
-            'kuantitas' => $this->request->getPost('kuant3'),
-            'kualitas'=> $this->request->getPost('kual3'),
-            'waktu'=>$this->request->getPost('waktu3'),
-            'periode_kt'=>$this->request->getPost('periode'),
-            'catatan_kt'=>$this->request->getPost('catatan'),
-            'status'=>"belum",
-            
-        ];
-
-        $data4=[
-            'kuantitas' => $this->request->getPost('kuant4'),
-            'kualitas'=> $this->request->getPost('kual4'),
-            'waktu'=>$this->request->getPost('waktu4'),
-            'periode_kt'=>$this->request->getPost('periode'),
-            'catatan_kt'=>$this->request->getPost('catatan'),
-            'status'=>"belum",
-            
-        ];
+ 
 
         $sasaranModel->protect(false)
         ->save($data1);
 
-        $sasaranModel->protect(false)
-        ->save($data2);
-
-        $sasaranModel->protect(false)
-        ->save($data3);
-
-        $sasaranModel->protect(false)
-        ->save($data4);
                 
         // $file->move(ROOTPATH . 'public/assets/img/',$nama);
         return redirect()->to('/kt/sasarankinerja');
     }
 
-    public function DetailSasaran()
+    public function DetailSasaran($id)
     {
-        return view('kt/detail_sasaran');
+        $SasaranKTModel = new SasaranKTModel();
+
+        $sasaranKT = $SasaranKTModel->find($id);
+     
+        $data= [
+            'sasaranKT'=>$sasaranKT
+        ];
+
+        return view('kt/detail_sasaran',$data);
     }
 
-    public function EditSasaran()
+    public function EditSasaran($id)
     {
-        return view('kt/edit_sasaran');
+        $sasaranModel = new SasaranKTModel();
+        $sasaranKT = $sasaranModel->find($id);
+
+        $data= [
+            'sasaranKT'=>$sasaranKT
+
+        ];
+        return view('kt/edit_sasaran',$data);
+    }
+
+    public function updateSasaran($id)
+    {
+        // $file = $this->request->getFile('foto');
+        // $nama = $file ->getRandomName();
+        if(!$this->validate([
+            'kuant1' => 'required',
+            'kual1' => 'required',
+            'waktu1' => 'required',
+            'kuant2' => 'required',
+            'kual2' => 'required',
+            'waktu2' => 'required',
+            'kuant3' => 'required',
+            'kual3' => 'required',
+            'waktu3' => 'required',
+            'kuant4' => 'required',
+            'kual4' => 'required',
+            'waktu4' => 'required',
+            'periode' =>'required',
+
+            
+        ])){
+            return redirect()->to('/kt/edit_sasaran/'.$id);
+        }
+        $sasaranModel = new SasaranKTModel();
+        $data1=[
+            'kuantitas' => $this->request->getPost('kuant1'),
+            'kualitas'=> $this->request->getPost('kual1'),
+            'waktu'=>$this->request->getPost('waktu1'),
+
+            'kuantitas2' => $this->request->getPost('kuant2'),
+            'kualitas2'=> $this->request->getPost('kual2'),
+            'waktu2'=>$this->request->getPost('waktu2'),
+
+            'kuantitas3' => $this->request->getPost('kuant3'),
+            'kualitas3'=> $this->request->getPost('kual3'),
+            'waktu3'=>$this->request->getPost('waktu3'),
+
+            'kuantitas4' => $this->request->getPost('kuant4'),
+            'kualitas4'=> $this->request->getPost('kual4'),
+            'waktu4'=>$this->request->getPost('waktu4'),
+
+            'periode_kt'=>$this->request->getPost('periode'),
+            'catatan_kt'=>$this->request->getPost('catatan'),
+            'status'=>"belum",
+            'nama_kt' =>$this->request->getPost('nama'),
+            'nip_kt' =>$this->request->getPost('nip')
+            // 'nilai'=>$this->request->getPost('pt'),
+            // 'tanggal'=>$this->request->getPost('periode'),
+            
+        ];
+
+ 
+
+        $sasaranModel->protect(false)
+        ->update($id,$data1);
+
+                
+        // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+        return redirect()->to('/kt/detail_sasaran/'.$id);
+    }
+
+    public function deleteSasaran($id)
+    {
+        $sasaranModel = new SasaranKTModel();
+        $sasaranModel->delete($id);
+
+
+        return redirect()->to('/kt/sasarankinerja');
     }
 
     //Profile
-    public function ProfileVIew()
+    public function ProfileVIew($id)
     {
-        return view('kt/profile');
+        $ktModel = new KtModel();
+        
+        $kt = $ktModel->find($id);
+
+        $data=[
+            'kt' => $kt
+        ];
+        return view('kt/profile',$data);
+    }
+
+    public function saveProfile($id)
+    {
+        // $file = $this->request->getFile('foto');
+        // $nama = $file ->getRandomName();
+        if(!$this->validate([
+            'nama' => 'required',
+            'nip' => 'required',
+            'unit' => 'required',
+            'periode' => 'required',
+            
+        ])){
+            return redirect()->to('/at/profile');
+        }
+        $ktModel = new KtModel();
+        $data1=[
+            'nama_kt' => $this->request->getPost('nama'),
+            'nip_kt'=> $this->request->getPost('nip'),
+            'unit_kerja_kt'=>$this->request->getPost('unit'),
+            'periode_kt'=>$this->request->getPost('periode'),
+
+            //Foto
+            
+        ];
+
+
+        $ktModel->protect(false)
+        ->update($id,$data1);
+
+                
+        // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+        return redirect()->to('/kt/index/'.$id);
     }
 
     //NKPP
@@ -229,26 +350,204 @@ class KTController extends BaseController
             return view ("kt/anggota/nkp_at",$data);
         }
 
-        public function RealisasiNKP()
+        public function RealisasiNKP($id)
         {
+        
+            $nkpATModel = new NKPATModel();
+            $nkp = $nkpATModel->find($id);
+            $nkpModel = new NkpModel();
+            $soal = $nkpModel->getAT();
+    
+            $data= [
+               'nkp'=>$nkp,
+                'soal'=>$soal
+    
+            ];
+
             
-            return view ("kt/anggota/realisasi_nkp");
+            
+            return view ("kt/anggota/realisasi_nkp",$data);
         }
+        
+        public function saveNKP($id)
+        {
+            // $file = $this->request->getFile('foto');
+            // $nama = $file ->getRandomName();
+            if(!$this->validate([
+                'periode' => 'required',
+    
+                
+            ])){
+                return redirect()->to('kt/anggota/realisasi_nkp/'.$id);
+            }
+    
+            $no = 1;
+            $no1 = $this->request->getPost('nilai'.''.$no) * 0.25;
+            $no2 = $this->request->getPost('nilai'.''.$no+1) * 0.25;
+            $no3 = $this->request->getPost('nilai'.''.$no+2) * 0.2;
+            $no4 = $this->request->getPost('nilai'.''.$no+3) * 0.3;
+            $total1 = $no1+$no2+$no3+$no4;
+            $total1 = $total1*0.3;
+    
+            $no5 = $this->request->getPost('nilai'.''.$no+4) * 0.4;
+            $no6 = $this->request->getPost('nilai'.''.$no+5) * 0.6;
+            $total2 = $no5+$no6;
+            $total2 = $total2*0.2;
+    
+            $no7 = $this->request->getPost('nilai'.''.$no+6) * 0.5;
+            $no8 = $this->request->getPost('nilai'.''.$no+7) * 0.5;
+            $total3 = $no7+$no8;
+            $total3 = $total3*0.3;
+    
+            $no9 = $this->request->getPost('nilai'.''.$no+8) * 0.2;
+            $no10 = $this->request->getPost('nilai'.''.$no+9) * 0.25;
+            $no11 = $this->request->getPost('nilai'.''.$no+10) * 0.25;
+            $no12 = $this->request->getPost('nilai'.''.$no+11) * 0.3;
+            $total4 = $no9+$no10+$no11+$no12;
+            $total4 = $total4*0.2;
+    
+            $nkp = $total1+$total2+$total3+$total4;
+         
+            
+            
+            $nkpATModel = new NKPATModel();
+           
+            $data=[
+                'realisasi_nilai' => $nkp,
+                'periode'=>$this->request->getPost('periode'),
+                'status'=> "realisasi",
+
+    
+                // 'nilai'=>$this->request->getPost('pt'),
+                // 'tanggal'=>$this->request->getPost('periode'),
+                
+            ];
+   
+    
+    
+            $nkpATModel->protect(false)->update($id,$data);
+            // $nkpSoalModel->protect(false)->save($data1);
+    
+                    
+            // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+            return redirect()->to('/kt/anggota/detail_nkp/'.$id);
+        }
+    
 
         //NKT
         public function DetailNKT_Anggota($id)
         {
-            return view ("kt/anggota/detail_nkt");
+            $nktATModel = new NKTATModel();
+            $nkt = $nktATModel->find($id);
+            $nktModel = new NktModel();
+            $soal = $nktModel->getAT();
+            $data= [
+                'nkt'=>$nkt,
+                'soal'=>$soal
+    
+            ];
+
+            return view ("kt/anggota/detail_nkt",$data);
         }
 
         public function NKT_Anggota()
         {
-            return view ("kt/anggota/nkt_at");
+            $nktATModel = new NKTATModel();
+            $nktAT = $nktATModel->findAll();
+         
+            $data= [
+                'nktAT'=>$nktAT
+            ];
+          
+            return view ("kt/anggota/nkt_at",$data);
         }
 
-        public function RealisasiNKT()
+        public function RealisasiNKT($id)
         {
-            return view ("kt/anggota/realisasi_nkt");
+            $nktATModel = new NKTATModel();
+            $nkt = $nktATModel->find($id);
+            $nktModel = new NktModel();
+            $soal = $nktModel->getAT();
+    
+            $data= [
+               'nkt'=>$nkt,
+                'soal'=>$soal
+    
+            ];
+
+            
+            
+            return view ("kt/anggota/realisasi_nkt",$data);
+        }
+
+        public function saveNKT($id)
+        {
+            // $file = $this->request->getFile('foto');
+            // $nama = $file ->getRandomName();
+            if(!$this->validate([
+                'periode' => 'required',
+    
+                
+            ])){
+                return redirect()->to('kt/anggota/realisasi_nkt/'.$id);
+            }
+    
+            $no = 1;
+            $no1 = $this->request->getPost('nilai'.''.$no) * 0.4;
+            $no2 = $this->request->getPost('nilai'.''.$no+1) * 0.6;
+            $total1 = $no1+$no2;
+            $total1 = $total1*0.1;
+    
+            $no3 = $this->request->getPost('nilai'.''.$no+2) * 0.2;
+            $no4 = $this->request->getPost('nilai'.''.$no+3) * 0.3;
+            $no5 = $this->request->getPost('nilai'.''.$no+4) * 0.5;
+            $total2 = $no3+$no4+$no5;
+            $total2 = $total2*0.25;
+    
+            $no6 = $this->request->getPost('nilai'.''.$no+5) * 0.5;
+            $no7 = $this->request->getPost('nilai'.''.$no+6) * 0.3;
+            $no8 = $this->request->getPost('nilai'.''.$no+7) * 0.2;
+            $total3 = $no6+$no7+$no8;
+            $total3 = $total3*0.25;
+    
+            $no9 = $this->request->getPost('nilai'.''.$no+8) * 0.33;
+            $no10 = $this->request->getPost('nilai'.''.$no+9) * 0.34;
+            $no11 = $this->request->getPost('nilai'.''.$no+10) * 0.33;
+            $total4 = $no9+$no10+$no11;
+            $total4 = $total4*0.25;
+    
+            $no12 = $this->request->getPost('nilai'.''.$no+11) * 0.4;
+            $no13 = $this->request->getPost('nilai'.''.$no+11) * 0.2;
+            $no14 = $this->request->getPost('nilai'.''.$no+11) * 0.4;
+            $total5 = $no12+$no13+$no14;
+            $total5 = $total5*0.15;
+    
+            $nkt = $total1+$total2+$total3+$total4+$total5;
+         
+         
+            
+            
+            $nktATModel = new NKTATModel();
+       
+            $data=[
+                'realisasi_nilai' => $nkt,
+                'periode'=>$this->request->getPost('periode'),
+    
+                'status'=> "sudah realisasi",
+    
+                // 'nilai'=>$this->request->getPost('pt'),
+                // 'tanggal'=>$this->request->getPost('periode'),
+                
+            ];
+    
+    
+    
+            $nktATModel->protect(false)->update($id,$data);
+        
+    
+                    
+            // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+            return redirect()->to('/kt/anggota/detail_nkt/'.$id);
         }
 
         //NSKP
@@ -404,15 +703,83 @@ class KTController extends BaseController
         }
 
         //Tanggapan
-        public function DoTanggapan()
+        public function DoTanggapan($id)
         {
-            return view ("kt/anggota/do_tanggapan");
+            $bimbinganModel = new Bimbingan();
+            $bimbingan = $bimbinganModel->find($id);
+    
+            $data=[
+                'bimbingan' => $bimbingan
+            ];
+
+
+            $bimbinganModel = new Bimbingan();
+            $data2=[
+                'tanggapan_satu' => $this->request->getPost('tanggapan1'),
+                'tanggapan_dua'=> $this->request->getPost('tanggapan2'),
+                // 'nama'=>$this->request->getPost('nama'),
+                // 'periode'=>$this->request->getPost('periode'),
+                // 'nip' => $this->request->getPost('nip'),
+                // 'bagian' =>"at",
+                'status' => "sudah ditanggapi",
+    
+                // 'nilai'=>$this->request->getPost('pt'),
+                // 'tanggal'=>$this->request->getPost('periode'),
+                
+            ];
+    
+    
+            $bimbinganModel->protect(false)
+            ->update($id,$data2);
+
+            return view ("kt/anggota/do_tanggapan",$data);
+        }
+
+        public function SaveTanggapan($id)
+        {
+
+            if(!$this->validate([
+                'tanggapan1' => 'required',
+                'tanggapan2' => 'required',
+                
+            ])){
+                return redirect()->to('/kt/anggota/do_tanggapan/'.$id);
+            }
+
+            $bimbinganModel = new Bimbingan();
+
+            $data2=[
+                'tanggapan_satu' => $this->request->getPost('tanggapan1'),
+                'tanggapan_dua'=> $this->request->getPost('tanggapan2'),
+                // 'nama'=>$this->request->getPost('nama'),
+                // 'periode'=>$this->request->getPost('periode'),
+                // 'nip' => $this->request->getPost('nip'),
+                // 'bagian' =>"at",
+                'status' => "sudah ditanggapi",
+    
+                // 'nilai'=>$this->request->getPost('pt'),
+                // 'tanggal'=>$this->request->getPost('periode'),
+                
+            ];
+    
+    
+            $bimbinganModel->protect(false)
+            ->update($id,$data2);
+
+            return redirect()->to("kt/anggota/tanggapan_bimbingan");
+          
         }
 
         //Bimbingan
         public function TanggapanBimbingan()
         {
-            return view ("kt/anggota/tanggapanbimbingan");
+            $bimbinganModel = new Bimbingan();
+            $bimbingan = $bimbinganModel->findAll();
+    
+            $data=[
+                'bimbingan' => $bimbingan
+            ];
+            return view ("kt/anggota/tanggapanbimbingan",$data);
         }
 
 

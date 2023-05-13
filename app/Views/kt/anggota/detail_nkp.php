@@ -83,27 +83,22 @@
                                     <tr>
                                         <th><?php echo $no+1?></th>
                                         <th><?php echo $soal['soal'];?></th>
-                                       <?php if ($nkp['nilai'] == 29.975) : ?>
+                                      
 
                                         <th><input type="radio" checked name="nilai<?php echo $no+1?>" value="100"></th>
                                         <th><input type="radio" name="nilai<?php echo $no+1?>" value="85"></th>
                                         <th><input type="radio" name="nilai<?php echo $no+1?>" value="70"></th>
                                         <th><input type="radio" name="nilai<?php echo $no+1?>" value="55"></th>
 
-                                        <?php elseif ($nkp['nilai'] == 85) : ?>
-                                        <th><input type="radio"  name="nilai<?php echo $no+1?>" value="100"></th>
-                                        <th><input type="radio" checked name="nilai<?php echo $no+1?>" value="85"></th>
-                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="70"></th>
-                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="55"></th>
                                     </tr>
 
-                                        <?php endif; ?>
+                                        
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
 
                             <div class="px-2">
-                                <a style="margin-right: 10px;" href="/kt/anggota/realisasi_nkp" class="btn btn-danger">
+                                <a style="margin-right: 10px;" href="/kt/anggota/realisasi_nkp/<?php echo $nkp['id_nkp_at'];?>" class="btn btn-danger">
                                     <span class="text">Denail</span>
                                 </a><a href="#" class="btn btn-success">
                                     <span class="text">Approved</span>

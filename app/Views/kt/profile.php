@@ -61,24 +61,25 @@
                     <h3 class="px-2 mb-0 text-gray-800">Mengubah Profile</h3>
 
                     <div class="row">
+                    <form action="/kt/saveProfile/<?php echo $_SESSION['id']?>" method="POST" enctype="multipart/form-data">
                         <div class="col-md-4-px-2">
                             <form action="#" method="POST" enctype="multipart/form-data">
                                 <div class="card-body">
-                                    <div class="form-group">
+                                <div class="form-group">
                                         <label for="exampleInputEmail1">Nama</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nama Pegawai" name="nama">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Nama Pegawai" name="nama" value ="<?php echo $kt['nama_kt']?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">NIP</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan NIP" name="nama">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan NIP" name="nip" value ="<?php echo $kt['nip_kt']?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Unit Kerja</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Unit Kerja" name="nama">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Unit Kerja" name="unit" value ="<?php echo $kt['unit_kerja_kt']?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Periode</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Periode" name="nama">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Periode" name="periode" value ="<?php echo $kt['periode_kt']?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="file-upload">Upload Gambar </label>

@@ -78,7 +78,7 @@
                         <td><?php echo $sasaranAT['tanggal'];?></td>
                         <td><?php echo $sasaranAT['periode_at']; ?></td>
                         <td><?php echo $sasaranAT['status']; ?></td>
-                        <td><?php echo $sasaranAT['nilai']; ?></td>
+                        <td><?php echo $sasaranAT['nilai_skp']; ?></td>
 
                         <td>
                             <a href="/at/detail_sasaran/<?php echo $sasaranAT['id_kinerja_anggota']; ?>" class="btn btn-primary mb-3">Detail</a>

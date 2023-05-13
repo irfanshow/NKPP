@@ -60,7 +60,7 @@
 
                     <!-- Page Heading -->
                     <div class="row">
-
+                    <form action="/kt/updateSasaran/<?php echo $sasaranKT['id_kinerja_kt'];?>" method="POST" enctype="multipart/form-data">
                         <div class="col">
                             <div class="mb-3">
                                 <h4>
@@ -71,15 +71,15 @@
                             </div>
                             <div class="mb-3">
                                 <label for="kuantititas" class="form-label">Kuantitas</label>
-                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant" required>
+                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant1" required value ="<?php echo $sasaranKT['kuantitas'];?>">
                             </div>
                             <div class="mb-3">
                                 <label for="kualitas" class="form-label">Kualitas</label>
-                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual" required>
+                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual1" required value ="<?php echo $sasaranKT['kualitas'];?>">
                             </div>
                             <div class="mb-3">
                                 <label for="waktu" class="form-label">Waktu</label>
-                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu" required>
+                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu1" required value ="<?php echo $sasaranKT['waktu'];?>">
                             </div>
 
                             <hr class="sidebar-divider my-0">
@@ -93,15 +93,15 @@
                             </div>
                             <div class="mb-3">
                                 <label for="kuantititas" class="form-label">Kuantitas</label>
-                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant" required>
+                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant2" required value ="<?php echo $sasaranKT['kuantitas2'];?>">
                             </div>
                             <div class="mb-3">
                                 <label for="kualitas" class="form-label">Kualitas</label>
-                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual" required>
+                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual2" required value ="<?php echo $sasaranKT['kualitas2'];?>">
                             </div>
                             <div class="mb-3">
                                 <label for="waktu" class="form-label">Waktu</label>
-                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu" required>
+                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu2" required value ="<?php echo $sasaranKT['waktu2'];?>">
                             </div>
 
                             <hr class="sidebar-divider my-0">
@@ -115,15 +115,15 @@
                             </div>
                             <div class="mb-3">
                                 <label for="kuantititas" class="form-label">Kuantitas</label>
-                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant" required>
+                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant3" required value ="<?php echo $sasaranKT['kuantitas3'];?>">
                             </div>
                             <div class="mb-3">
                                 <label for="kualitas" class="form-label">Kualitas</label>
-                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual" required>
+                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual3" required value ="<?php echo $sasaranKT['kualitas3'];?>">
                             </div>
                             <div class="mb-3">
                                 <label for="waktu" class="form-label">Waktu</label>
-                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu" required>
+                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu3" required value ="<?php echo $sasaranKT['waktu3'];?>">
                             </div>
 
                             <hr class="sidebar-divider my-0">
@@ -137,15 +137,15 @@
                             </div>
                             <div class="mb-3">
                                 <label for="kuantititas" class="form-label">Kuantitas</label>
-                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant" required>
+                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant4" required value ="<?php echo $sasaranKT['kuantitas4'];?>">
                             </div>
                             <div class="mb-3">
                                 <label for="kualitas" class="form-label">Kualitas</label>
-                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual" required>
+                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual4" required value ="<?php echo $sasaranKT['kualitas4'];?>">
                             </div>
                             <div class="mb-3">
                                 <label for="waktu" class="form-label">Waktu</label>
-                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu" required>
+                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu4" required value ="<?php echo $sasaranKT['waktu4'];?>">
                             </div>
 
                             <hr class="sidebar-divider my-0">
@@ -158,15 +158,16 @@
                             </div>
                             <div class="mb-3">
                                 <label for="periode" class="form-label">Periode</label>
-                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan periode pelaksanaan" name="periode" required>
+                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan periode pelaksanaan" name="periode" required value ="<?php echo $sasaranKT['periode_kt'];?>">
                             </div>
                             <div class="mb-3">
                                 <label for="catatan" class="form-label">Catatan</label>
-                                <input type="text" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="catatan">
+                                <input type="text" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="catatan" value ="<?php echo $sasaranKT['catatan_kt'];?>">
                             </div>
                             <button type="submit" class="btn btn-primary">Kirim</button>
-                            <button type="submit" class="btn btn-danger">Batal</button>
+                            <a href="#" class="btn btn-danger">Batal</a>
                         </div>
+                        </form>
                     </div>
                 </div>
 

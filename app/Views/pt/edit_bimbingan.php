@@ -61,17 +61,17 @@
                     <!-- Page Heading -->
                     <div class="row">
                         <div class="col-md-10">
-
+                        <form action="/pt/updateBimbingan/<?php echo $bimbingan['idBimbingan']?>" method="POST" enctype="multipart/form-data">
                             <div class="mb-3 mt-3 px-2">
                                 <label for="kendala" class="form-label">Kendala Pertama</label>
-                                <input type="text" class="form-control" id="kendala" aria-describedby="emailHelp" placeholder="Masukan Kendala Pertama" required name="kendala1">
+                                <input type="text" class="form-control" id="kendala" aria-describedby="emailHelp" placeholder="Masukan Kendala Pertama" required name="kendala1" value="<?php echo $bimbingan['bimbingan_satu']?>">
                             </div>
                             <div class="mb-3 px-2">
                                 <label for="kendala2" class="form-label">Kendala Kedua</label>
-                                <input type="text" class="form-control" id="kendala2" aria-describedby="emailHelp" placeholder="Masukan Kendala Kedua" required name="kendala2">
+                                <input type="text" class="form-control" id="kendala2" aria-describedby="emailHelp" placeholder="Masukan Kendala Kedua" required name="kendala2" value="<?php echo $bimbingan['bimbingan_dua']?>">
                             </div>
                             <div class="px-2">
-                                <a href="#" class="btn btn-primary">Kirim</a>
+                            <button type="submit" class="btn btn-primary">Kirim</button>
                                 <a href="#" class="btn btn-danger">Batal</a>
                             </div>
                         </div>

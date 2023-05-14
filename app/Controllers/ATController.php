@@ -31,7 +31,7 @@ class ATController extends BaseController
     public function BimbinganView()
     {
         $bimbinganModel = new Bimbingan();
-        $bimbingan = $bimbinganModel->findAll();
+        $bimbingan = $bimbinganModel->getAT();
 
         $data=[
             'bimbingan' => $bimbingan
@@ -427,85 +427,6 @@ class ATController extends BaseController
         $NilaiNKTModel = new NilaiNKTModel();
         
         $NKTModel = new NKTModel();
-        // $data2=[
-
-        // //No1
-        //     [
-        //         'nilai_soal' => $this->request->getPost('nilai'.''.$no) ,
-    
-        //     ],
-
-        //     //No2
-        //     [
-        //         'nilai_soal' => $this->request->getPost('nilai'.''.$no+1) ,
-    
-        //     ],
-           
-        //     //No3
-        //     [
-        //         'nilai_soal' => $this->request->getPost('nilai'.''.$no+2) ,
-    
-        //     ],
-        //     //No4
-        //     [
-        //         'nilai_soal' => $this->request->getPost('nilai'.''.$no+3) ,
-    
-        //     ],
-        //     //No5
-        //     [
-        //         'nilai_soal' => $this->request->getPost('nilai'.''.$no+4) ,
-    
-        //     ],
-        //     //No6
-        //     [
-        //         'nilai_soal' => $this->request->getPost('nilai'.''.$no+5) ,
-    
-        //     ],
-        //     //No7
-        //     [
-        //         'nilai_soal' => $this->request->getPost('nilai'.''.$no+6) ,
-    
-        //     ],
-        //     //No8
-        //     [
-        //         'nilai_soal' => $this->request->getPost('nilai'.''.$no+7) ,
-    
-        //     ],
-        //     //No9
-        //     [
-        //         'nilai_soal' => $this->request->getPost('nilai'.''.$no+8) ,
-    
-        //     ],
-        //     //No10
-        //     [
-        //         'nilai_soal' => $this->request->getPost('nilai'.''.$no+9) ,
-    
-        //     ],
-        //     //No11
-        //     [
-        //         'nilai_soal' => $this->request->getPost('nilai'.''.$no+10) ,
-    
-        //     ],
-        //     //No12
-        //     [
-        //         'nilai_soal' => $this->request->getPost('nilai'.''.$no+11) ,
-    
-        //     ],
-        //     //No13
-        //     [
-        //         'nilai_soal' => $this->request->getPost('nilai'.''.$no+12) ,
-    
-        //     ],
-        //     //No14
-        //     [
-        //         'nilai_soal' => $this->request->getPost('nilai'.''.$no+13) ,
-    
-        //     ],
-
-            
-        // ];
-
-
 
         $nktATModel->protect(false)->save($data);
         // $NKTModel->protect(false)->insertBatch($data2);

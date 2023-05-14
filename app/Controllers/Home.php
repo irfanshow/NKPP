@@ -174,7 +174,7 @@ class Home extends BaseController
                 session()->set($ses_data);
                 if($peran == 'pt')
                 {
-                    return redirect()->to('/pt/index',);
+                    return redirect()->to('/pt/nkt',);
                 }
     
                 else{

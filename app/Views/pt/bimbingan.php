@@ -73,17 +73,23 @@
                                     <th>Aksi</th>
                                 </tr>
                                 <tr>
-                                    <th>1.</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th>
-                                        <a href="/pt/detail_bimbingan" class="btn btn-primary">Detail</a>
-                                        <a href="#" class="btn btn-danger">Hapus</a>
-                                    </th>
-                                </tr>
+                                <?php foreach ($bimbingan as $no=>$bimbingan):?>
+                    <tr>
+                        <td><?php echo $no+1?></td>
+                        <td><?php echo $bimbingan['tanggal'];?></td>
+                        <td><?php echo $bimbingan['periode']; ?></td>
+                        <td><?php echo $bimbingan['bimbingan_satu']; ?></td>
+                        <td><?php echo $bimbingan['bimbingan_dua']; ?></td>
+                        <td><?php echo $bimbingan['status']; ?></td>
+
+                        
+                        <th>
+                            <a href="/pt/detail_bimbingan/<?= $bimbingan['idBimbingan']?>" class="btn btn-primary mb-3">Detail</a>
+                            <a href="/pt/bimbingan/delete/<?= $bimbingan['idBimbingan']?>" class="btn btn-danger mb-3">Hapus</a>
+                        </th>
+
+                    </tr>
+                         <?php endforeach; ?>
                             </table>
                         </div>
                     </div>

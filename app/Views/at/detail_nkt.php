@@ -56,7 +56,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <a style="float: right;" href="/at/edit_nkt//<?= $nkt['id_nkt_at']?>" class="btn btn-primary">Edit NKT</a>
+                    <a style="float: right;" href="/at/edit_nkt/<?= $nkt['id_nkt_at']?>" class="btn btn-primary">Edit NKT</a>
                     <h3 class="px-2 mb-0 text-gray-800">Detail NKT</h3>
 
                     <div class="alert alert-success mt-3" role="alert">NKT sudah di realisasi!</div>

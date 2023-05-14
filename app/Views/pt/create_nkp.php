@@ -58,8 +58,9 @@
                 <div class="container-fluid">
                     <h3 class="px-2 mb-0 text-gray-800">Penilaian Kompetensi Perilaku</h3>
                     <div class="row">
+                    <form action="/pt/saveNKP" method="POST" enctype="multipart/form-data">
                         <div class="card-body">
-                            <input type="number" class="form-control" id="kendala" aria-describedby="emailHelp" placeholder="Masukan Periode" required name="kendala1">
+                            <input type="number" class="form-control" id="kendala" aria-describedby="emailHelp" placeholder="Masukan Periode" required name="periode">
                             <table style="text-align: center;" id="example2" class="table table-bordered table-hover mt-3">
                                 <thead>
                                     <tr>
@@ -72,29 +73,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php foreach ($nkp as $no=>$nkp):?>
                                     <tr>
-                                        <th>1.</th>
-                                        <th>Mampu mengarahkan dan menyimpulkan Temuan Pemeriksaan secara valid, terstruktur, dan sistematis</th>
-                                        <th><input type="radio" name="1" value="A"></th>
-                                        <th><input type="radio" name="1" value="B"></th>
-                                        <th><input type="radio" name="1" value="C"></th>
-                                        <th><input type="radio" name="1" value="D"></th>
+                                        <th><?php echo $no+1?></th>
+                                        <th><?php echo $nkp['soal'];?></th>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="100"></th>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="85"></th>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="70"></th>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="55"></th>
                                     </tr>
-                                    <tr>
-                                        <th>2.</th>
-                                        <th>Mampu merangkum informasi yang kompleks menjadi sebuah kesimpulan yang sederhana dan mudah dipahami oleh orang lain</th>
-                                        <th><input type="radio" name="2" value="A"></th>
-                                        <th><input type="radio" name="2" value="B"></th>
-                                        <th><input type="radio" name="2" value="C"></th>
-                                        <th><input type="radio" name="2" value="D"></th>
-                                    </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
 
+                            <input type="hidden" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="nama" value="<?php echo $_SESSION['nama']?>">
+
+                            <input type="hidden" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="nip" value="<?php echo $_SESSION['nip']?>">
+                            
                             <div class="px-2">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
-
+                            </form>
                         </div>
                     </div>
                 </div>

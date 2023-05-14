@@ -56,12 +56,12 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <a style="float: right;" href="/pt/edit_sasaran" class="btn btn-primary">Edit Sasaran Kinerja</a>
+                    <a style="float: right;" href="/pt/edit_sasaran/<?php echo $sasaranPT['id_kinerja_pt'];?>" class="btn btn-primary">Edit Sasaran Kinerja</a>
                     <h3 class="px-2 mb-0 text-gray-800">Detail Data Sasaran Kinerja</h3>
 
                     <div class="alert alert-success mt-3" role="alert">Sasaran kinerja sudah di realisasi!</div>
                     <table style="text-align: center;" id="example4" class="table table-bordered table-hover">
-                        <th style="width: 1100px;">Periode :</th>
+                        <th style="width: 1100px;">Periode : <?php echo $sasaranPT['periode_pt'];?></th>
                     </table>
                     <table id="example2" class="table table-bordered table-hover">
                         <tr>
@@ -80,40 +80,55 @@
                         </tr>
                         <tr>
                             <td>1.</td>
-                            <td>Menyusun dan Melaksanakn PKP</td>
-                            <td>PKP</td>
-                            <td></td>
-                            <td>Hari</td>
-                            <td>PKP</td>
-                            <td></td>
-                            <td>Hari</td>
-                            <td>PKP</td>
-                            <td></td>
-                            <td>Hari</td>
-                            <td></td>
+                            <td>Mereviu KKP yang telah direviu oleh Ketua Tim (Hot Reviu)</td>
+                            <td><?php echo $sasaranPT['kuantitas'];?> PKP</td>
+                            <td><?php echo $sasaranPT['kualitas'];?></td>
+                            <td><?php echo $sasaranPT['waktu'];?> Hari</td>
+                            <td><?php echo $sasaranPT['realisasi_kuantitas'];?> PKP</td>
+                            <td><?php echo $sasaranPT['realisasi_kualitas'];?></td>
+                            <td><?php echo $sasaranPT['realisasi_waktu'];?> Hari</td>
+                            <td><?php echo $sasaranPT['review_kuantitas'];?> PKP</td>
+                            <td><?php echo $sasaranPT['review_kualitas'];?></td>
+                            <td><?php echo $sasaranPT['review_waktu'];?> Hari</td>
+                            <td><?php echo $sasaranPT['nilai'];?></td>
                         </tr>
                         <tr>
                             <td>2.</td>
-                            <td>menyusun KKP sesuai dengan PKP </td>
-                            <td>KKP</td>
-                            <td></td>
-                            <td>Hari</td>
-                            <td>PKP</td>
-                            <td></td>
-                            <td>Hari</td>
-                            <td>PKP</td>
-                            <td></td>
-                            <td>Hari</td>
-                            <td></td>
+                            <td>Melakukan Bimbingan kepada Ketua Tim</td>
+                            <td><?php echo $sasaranPT['kuantitas2'];?> PKP</td>
+                            <td><?php echo $sasaranPT['kualitas2'];?></td>
+                            <td><?php echo $sasaranPT['waktu2'];?> Hari</td>
+                            <td><?php echo $sasaranPT['realisasi_kuantitas2'];?> PKP</td>
+                            <td><?php echo $sasaranPT['realisasi_kualitas2'];?></td>
+                            <td><?php echo $sasaranPT['realisasi_waktu2'];?> Hari</td>
+                            <td><?php echo $sasaranPT['review_kuantitas2'];?> PKP</td>
+                            <td><?php echo $sasaranPT['review_kualitas2'];?></td>
+                            <td><?php echo $sasaranPT['review_waktu2'];?> Hari</td>
+                            <td><?php echo $sasaranPT['nilai2'];?></td>
                         </tr>
+                        <tr>
+                            <td>3.</td>
+                            <td>Penilaian Kinerja Ketua Tim</td>
+                            <td><?php echo $sasaranPT['kuantitas3'];?> PKP</td>
+                            <td><?php echo $sasaranPT['kualitas3'];?></td>
+                            <td><?php echo $sasaranPT['waktu3'];?> Hari</td>
+                            <td><?php echo $sasaranPT['realisasi_kuantitas3'];?> PKP</td>
+                            <td><?php echo $sasaranPT['realisasi_kualitas3'];?></td>
+                            <td><?php echo $sasaranPT['realisasi_waktu3'];?> Hari</td>
+                            <td><?php echo $sasaranPT['review_kuantitas3'];?> PKP</td>
+                            <td><?php echo $sasaranPT['review_kualitas3'];?></td>
+                            <td><?php echo $sasaranPT['review_waktu3'];?> Hari</td>
+                            <td><?php echo $sasaranPT['nilai3'];?></td>
+                        </tr>
+
                     </table>
 
                     <table id="example4" class="table table-bordered table-hover">
-                        <th style="width: 1100px;">Catatan :</th>
+                        <th style="width: 1100px;">Catatan : <?php echo $sasaranPT['catatan_pt'];?></th>
                     </table>
                     <table style="text-align: center;" id="example4" class="table table-bordered table-hover">
                         <th style="width: 1100px;">Detail Capaian SKP</th>
-                        <th>39,99</th>
+                        <th><?php echo $sasaranPT['nilai_skp'];?></th>
                     </table>
                 </div>
                 <!-- Scroll to Top Button-->

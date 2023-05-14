@@ -47,7 +47,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Pengendali Teknis</span>
-                                <img class="img-profile rounded-circle" src='../img/undraw_profile.svg'>
+                                <img class="img-profile rounded-circle" src='<?php echo base_url(); ?>/img/undraw_profile.svg'>
                             </a>
                         </li>
                     </ul>
@@ -69,23 +69,23 @@
                         </div>
                         <div class="card-body">
                             <div class="text-center">
-                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="../img/undraw_posting_photo.svg" alt="...">
+                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="<?php echo base_url(); ?>/img/undraw_posting_photo.svg" alt="...">
                             </div>
                             <div class="profile">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <p><strong>Nama :</strong> John Doe</p>
-                                        <p><strong>NIP :</strong> 25 tahun</p>
-                                        <p><strong>Unit Kerja :</strong> Jl. Jendral Sudirman No. 123</p>
-                                        <p><strong>Email :</strong> johndoe@example.com</p>
+                                    <p><strong>Nama :</strong> <?=$pt['nama_pt'];?></p>
+                                        <p><strong>NIP :</strong> <?=$pt['nip_pt'];?></p>
+                                        <p><strong>Unit Kerja :</strong> <?=$pt['unit_kerja_pt'];?></p>
+                                        <p><strong>Email :</strong> <?=$pt['email_pt'];?></p>
                                     </div>
                                     <div class="col-md-6">
-                                        <p><strong>Periode :</strong> Laki-laki</p>
-                                        <p><strong>No. Surat Dinas :</strong> Laki-laki</p>
-                                        <p><strong>Nama Penanggung Jawab :</strong> 08123456789</p>
+                                        <p><strong>Periode :</strong> <?=$pt['periode_pt'];?></p>
+                                        <p><strong>No. Surat Dinas :</strong> <?=$pt['no_surat_dinas_pt'];?></p>
+                                        <p><strong>Nama Penanggung Jawab :</strong> <?=$_SESSION['pj'];?></p>
                                     </div>
                                     <div class="px-2 card-body">
-                                        <a href="/pt/profile" class="btn btn-primary">Ubah Profile</a>
+                                        <a href="/pt/profile/<?php echo $_SESSION['id'];?>" class="btn btn-primary">Ubah Profile</a>
                                     </div>
                                 </div>
                             </div>

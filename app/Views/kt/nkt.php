@@ -69,7 +69,6 @@
                                         <th>No.</th>
                                         <th>Tanggal Pengisian</th>
                                         <th>Periode</th>
-                                        <th>Nilai</th>
                                         <th>Status</th>
                                         <th>Realisasi Nilai</th>
                                         <th>Review Nilai</th>
@@ -78,18 +77,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <th>1.</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th>
-                                        <a href="/kt/detail_nkt" class="btn btn-primary mb-3">Detail</a>
-                                        <a href="#" class="btn btn-danger mb-3">Hapus</a>
-                                    </th>
+                                <?php foreach ($nktKT as $no=>$nktKT):?>
+                    <tr>
+                        <td><?php echo $no+1?></td>
+                        <td><?php echo $nktKT['tanggal'];?></td>
+                        <td><?php echo $nktKT['periode']; ?></td>
+                        <td><?php echo $nktKT['status']; ?></td>
+                        <td><?php echo $nktKT['realisasi_nilai']; ?></td>
+                        <td><?php echo $nktKT['review_nilai']; ?></td>
+                        <td><?php echo $nktKT['nilai']; ?></td>
+
+                        
+                        <th>
+                            <a href="/kt/detail_nkt/<?= $nktKT['id_nkt_kt']?>" class="btn btn-primary mb-3">Detail</a>
+                            <a href="/kt/nkt/delete/<?= $nktKT['id_nkt_kt']?>" class="btn btn-danger mb-3">Hapus</a>
+                        </th>
+
+                    </tr>
+                         <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>

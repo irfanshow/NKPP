@@ -57,7 +57,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <a style="float: right;" href="/kt/edit_nkt" class="btn btn-primary">Edit NKT</a>
+                    <a style="float: right;" href="/kt/edit_nkt/<?= $nkt['id_nkt_kt']?>" class="btn btn-primary">Edit NKT</a>
                     <h3 class="px-2 mb-0 text-gray-800">Detail NKT</h3>
 
                     <div class="alert alert-success mt-3" role="alert">NKT sudah di realisasi!</div>
@@ -73,28 +73,58 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th>1.</th>
-                                <th>Mampu menerapkan sistem/metode bekerja yang efektif sesuai dengan kondisi di lapangan, sehingga Tim Pemeriksa bekerja lebih efektif dan efisien, termasuk di dalamnya merancang prosedur alternatif untuk mengatasi hambatan pelaksanaan atau langkah P2.</th>
-                                <th><input type="radio" name="1" value="A"></th>
-                                <th><input type="radio" name="1" value="B"></th>
-                                <th><input type="radio" name="1" value="C"></th>
-                                <th><input type="radio" name="1" value="D"></th>
-                            </tr>
-                            <tr>
-                                <th>2.</th>
-                                <th>Mampu menyelesaikan Pemeriksaan menggunakan sumber daya yang ada dengan baik walaupun dengan banyak hambatan teknis (faktor lokasi, fasilitas, geografis, kestabilan politik daerah, dan lain-lain).</th>
-                                <th><input type="radio" name="2" value="A"></th>
-                                <th><input type="radio" name="2" value="B"></th>
-                                <th><input type="radio" name="2" value="C"></th>
-                                <th><input type="radio" name="2" value="D"></th>
-                            </tr>
+                        <?php foreach ($soal as $no=>$soal):?>
+                 
+                 <tr>
+                 <th><?php echo $no+1?></th>
+                     <th><?php echo $soal['soal'];?></th>
+                    <?php if($soal['nilai']== 100):?>
+                     <th><input type="radio" checked name="nilai<?php echo $no+1?>" value="100"></th>
+                     <th><input type="radio" name="nilai<?php echo $no+1?>" value="85"></th>
+                     <th><input type="radio" name="nilai<?php echo $no+1?>" value="70"></th>
+                     <th><input type="radio" name="nilai<?php echo $no+1?>" value="55"></th>
+                 </tr>
+
+                 <tr>
+                 <?php elseif($soal['nilai']== 85):?>
+                     <th><input type="radio" name="nilai<?php echo $no+1?>" value="100"></th>
+                     <th><input type="radio" checked name="nilai<?php echo $no+1?>" value="85"></th>
+                     <th><input type="radio" name="nilai<?php echo $no+1?>" value="70"></th>
+                     <th><input type="radio" name="nilai<?php echo $no+1?>" value="55"></th>
+                 </tr>
+
+                 <tr>
+                 <?php elseif($soal['nilai']==70):?>
+                     <th><input type="radio" name="nilai<?php echo $no+1?>" value="100"></th>
+                     <th><input type="radio"  name="nilai<?php echo $no+1?>" value="85"></th>
+                     <th><input type="radio" checked name="nilai<?php echo $no+1?>" value="70"></th>
+                     <th><input type="radio" name="nilai<?php echo $no+1?>" value="55"></th>
+                 </tr>
+
+                 <tr>
+                 <?php elseif($soal['nilai']==55):?>
+                     <th><input type="radio" name="nilai<?php echo $no+1?>" value="100"></th>
+                     <th><input type="radio"  name="nilai<?php echo $no+1?>" value="85"></th>
+                     <th><input type="radio"  name="nilai<?php echo $no+1?>" value="70"></th>
+                     <th><input type="radio" checked name="nilai<?php echo $no+1?>" value="55"></th>
+                 </tr>
+
+                 <tr>
+                 <?php else :?>
+                     <th><input type="radio" name="nilai<?php echo $no+1?>" value="100"></th>
+                     <th><input type="radio"  name="nilai<?php echo $no+1?>" value="85"></th>
+                     <th><input type="radio"  name="nilai<?php echo $no+1?>" value="70"></th>
+                     <th><input type="radio" name="nilai<?php echo $no+1?>" value="55"></th>
+                 </tr>
+                     <?php endif; ?>
+
+     <?php endforeach; ?>
                         </tbody>
                     </table>
 
                     <table style="text-align: center;" id="example4" class="table table-bordered table-hover">
                         <th style="width: 1100px;">Nilai Kompetensi Teknis</th>
-                        <th>39,99</th>
+                        <th><?=$nkt['nilai']?></th>
                     </table>
                 </div>
                 <!-- Scroll to Top Button-->

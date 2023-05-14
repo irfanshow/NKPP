@@ -104,7 +104,7 @@
             </li>
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="/kt/anggota/do_tanggapan">
+                <a class="nav-link" href="/kt/anggota/tanggapan_bimbingan">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Tanggapan Bimbingan</span></a>
             </li>

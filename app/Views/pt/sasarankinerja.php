@@ -72,15 +72,21 @@
                                     <th>Aksi</th>
                                 </tr>
                                 <tr>
-                                    <td>1.</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <a href="/pt/detail_sasaran" class="btn btn-primary mb-3">Detail</a>
-                                        <a href="#" class="btn btn-danger mb-3">Hapus</a>
-                                    </td>
+                                <?php foreach ($sasaranPT as $no=>$sasaranPT):?>
+                    <tr>
+                        <td><?php echo $no+1?></td>
+                        <td><?php echo $sasaranPT['tanggal'];?></td>
+                        <td><?php echo $sasaranPT['periode_pt']; ?></td>
+                        <td><?php echo $sasaranPT['status']; ?></td>
+                        <td><?php echo $sasaranPT['nilai_skp']; ?></td>
+
+                        <td>
+                            <a href="/pt/detail_sasaran/<?php echo $sasaranPT['id_kinerja_pt']; ?>" class="btn btn-primary mb-3">Detail</a>
+                            <a href="/pt/sasaran/delete/<?php echo $sasaranPT['id_kinerja_pt']; ?>" class="btn btn-danger mb-3">Hapus</a>
+                        </td>
+
+                    </tr>
+                    <?php endforeach; ?>
                                 </tr>
                             </table>
                         </div>

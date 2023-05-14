@@ -76,17 +76,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <th>1.</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th>
-                                        <a href="/pt/detail_nkt" class="btn btn-primary mb-3">Detail</a>
-                                        <a href="#" class="btn btn-danger mb-3">Hapus</a>
-                                    </th>
+                                <?php foreach ($nktPT as $no=>$nktPT):?>
+                    <tr>
+                        <td><?php echo $no+1?></td>
+                        <td><?php echo $nktPT['tanggal'];?></td>
+                        <td><?php echo $nktPT['periode']; ?></td>
+                        <td><?php echo $nktPT['status']; ?></td>
+                        <td><?php echo $nktPT['realisasi_nilai']; ?></td>
+                        <td><?php echo $nktPT['review_nilai']; ?></td>
+                        <td><?php echo $nktPT['nilai']; ?></td>
+
+                        
+                        <th>
+                            <a href="/pt/detail_nkt/<?= $nktPT['id_nkt_pt']?>" class="btn btn-primary mb-3">Detail</a>
+                            <a href="/pt/nkt/delete/<?= $nktPT['id_nkt_pt']?>" class="btn btn-danger mb-3">Hapus</a>
+                        </th>
+
+                    </tr>
+                         <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>

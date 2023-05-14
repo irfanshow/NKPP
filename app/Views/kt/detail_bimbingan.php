@@ -58,7 +58,7 @@
                 <!-- Begin Page Content -->
 
                 <div class="container-fluid">
-                    <a style="float: right;" href="/kt/edit_bimbingan.php" class="btn btn-primary">Edit Bimbingan</a>
+                    <a style="float: right;" href="/kt/edit_bimbingan/<?php echo $bimbingan['idBimbingan']?>" class="btn btn-primary">Edit Bimbingan</a>
                     <h3 class="px-2 mb-0 text-gray-800">Detail Bimbingan</h3>
 
                     <div class="alert alert-success mt-3" role="alert">Bimbingan sudah ditanggapi!</div>
@@ -71,6 +71,15 @@
                                 <th>Tanggapan 1</th>
                                 <th>Tanggapan 2</th>
                             </tr>
+
+                            <tr>
+                    
+                    <td><?php echo $bimbingan['tanggal'];?></td>
+                    <td><?php echo $bimbingan['bimbingan_satu']; ?></td>
+                    <td><?php echo $bimbingan['bimbingan_dua']; ?></td>
+                    <td><?php echo $bimbingan['tanggapan_satu']; ?></td>
+                    <td><?php echo $bimbingan['tanggapan_dua']; ?></td>
+                </tr>
                         </table>
                 </div>
                 <!-- Scroll to Top Button-->

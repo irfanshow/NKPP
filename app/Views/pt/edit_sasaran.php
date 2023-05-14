@@ -59,26 +59,26 @@
 
                     <!-- Page Heading -->
                     <div class="row">
-
+                    <form action="/pt/updateSasaran/<?php echo $sasaranPT['id_kinerja_pt'];?>" method="POST" enctype="multipart/form-data">
                         <div class="col">
                             <div class="mb-3">
                                 <h4>
                                     <strong>
-                                        01. Nama Tugas Jabatan : Mereviu seluruh PKP yang disusun dan dilaksanakan AT atau yang telah direviu oleh KST, berdasarkan kesesuaian dengan P2
+                                        01. Nama Tugas Jabatan : Mereviu KKP yang telah direviu oleh Ketua Tim (Hot Reviu)
                                     </strong>
                                 </h4>
                             </div>
                             <div class="mb-3">
                                 <label for="kuantititas" class="form-label">Kuantitas</label>
-                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant" required>
+                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant1" required value ="<?php echo $sasaranPT['kuantitas'];?>">
                             </div>
                             <div class="mb-3">
                                 <label for="kualitas" class="form-label">Kualitas</label>
-                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual" required>
+                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual1" required value ="<?php echo $sasaranPT['kualitas'];?>">
                             </div>
                             <div class="mb-3">
                                 <label for="waktu" class="form-label">Waktu</label>
-                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu" required>
+                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu1" required value ="<?php echo $sasaranPT['waktu'];?>">
                             </div>
 
                             <hr class="sidebar-divider my-0">
@@ -86,21 +86,21 @@
                             <div class="mb-3 mt-4">
                                 <h4>
                                     <strong>
-                                        02. Nama Tugas Jabatan : Mereviu KKP seluruh AT atau yang telah direviu oleh KST, berdasarkan tanggung jawab PKP masing-masing
+                                        02. Nama Tugas Jabatan : Melakukan Bimbingan kepada Ketua Tim
                                     </strong>
                                 </h4>
                             </div>
                             <div class="mb-3">
                                 <label for="kuantititas" class="form-label">Kuantitas</label>
-                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant" required>
+                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant2" required value ="<?php echo $sasaranPT['kuantitas2'];?>">
                             </div>
                             <div class="mb-3">
                                 <label for="kualitas" class="form-label">Kualitas</label>
-                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual" required>
+                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual2" required value ="<?php echo $sasaranPT['kualitas2'];?>">
                             </div>
                             <div class="mb-3">
                                 <label for="waktu" class="form-label">Waktu</label>
-                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu" required>
+                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu2" required value ="<?php echo $sasaranPT['waktu2'];?>">
                             </div>
 
                             <hr class="sidebar-divider my-0">
@@ -108,46 +108,25 @@
                             <div class="mb-3 mt-4">
                                 <h4>
                                     <strong>
-                                        03. Nama Tugas Jabatan : Melakukan Bimbingan kepada AT/KST
+                                        03. Nama Tugas Jabatan : Penilaian Kinerja Ketua Tim
                                     </strong>
                                 </h4>
                             </div>
                             <div class="mb-3">
                                 <label for="kuantititas" class="form-label">Kuantitas</label>
-                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant" required>
+                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant3" required value ="<?php echo $sasaranPT['kuantitas3'];?>">
                             </div>
                             <div class="mb-3">
                                 <label for="kualitas" class="form-label">Kualitas</label>
-                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual" required>
+                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual3" required value ="<?php echo $sasaranPT['kualitas3'];?>">
                             </div>
                             <div class="mb-3">
                                 <label for="waktu" class="form-label">Waktu</label>
-                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu" required>
+                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu3" required value ="<?php echo $sasaranPT['waktu3'];?>">
                             </div>
 
                             <hr class="sidebar-divider my-0">
 
-                            <div class="mb-3 mt-4">
-                                <h4>
-                                    <strong>
-                                        04. Nama Tugas Jabatan : Penilaian Kinerja Anggota Tim
-                                    </strong>
-                                </h4>
-                            </div>
-                            <div class="mb-3">
-                                <label for="kuantititas" class="form-label">Kuantitas</label>
-                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="kualitas" class="form-label">Kualitas</label>
-                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="waktu" class="form-label">Waktu</label>
-                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu" required>
-                            </div>
-
-                            <hr class="sidebar-divider my-0">
                             <div class="mb-3 mt-4">
                                 <h4>
                                     <strong>
@@ -164,8 +143,9 @@
                                 <input type="text" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="catatan">
                             </div>
                             <button type="submit" class="btn btn-primary">Kirim</button>
-                            <button type="submit" class="btn btn-danger">Batal</button>
+                            <a href="#" class="btn btn-danger">Batal</a>
                         </div>
+                        </form>
                     </div>
                 </div>
                 <!-- Scroll to Top Button-->

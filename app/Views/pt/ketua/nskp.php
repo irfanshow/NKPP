@@ -68,26 +68,36 @@
                                     <th>Periode</th>
                                     <th>Nama</th>
                                     <th>NIP</th>
-                                    <th>Nilai</th>
                                     <th>Status</th>
                                     <th>Realisasi Nilai</th>
                                     <th>Nilai Capaian SKP</th>
                                     <th>Aksi</th>
                                 </tr>
                                 <tr>
-                                    <th>1. </th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th><a href="/pt/ketua/detail_nskp" class="btn btn-primary">
-                                            <span class="text">Detail</span>
-                                        </a>
-                                    </th>
+                                    
+                                <?php foreach ($sasaranKT as $no=>$sasaranKT):?>
+                                    <tr>
+                        <td><?php echo $no+1?></td>
+                        <td><?php echo $sasaranKT['tanggal'];?></td>
+                        <td><?php echo $sasaranKT['periode_kt']; ?></td>
+                        <td><?php echo $sasaranKT['nama_kt']; ?></td>
+                        <td><?php echo $sasaranKT['nip_kt']; ?></td>
+                        <td><?php echo $sasaranKT['nilai']; ?></td>
+                        <td><?php echo $sasaranKT['status']; ?></td>
+                        <td><?php echo $sasaranKT['nilai_skp']; ?></td>
+
+
+        
+
+                        <th>
+                            <a href="/pt/ketua/detail_nskp/<?php echo $sasaranKT['id_kinerja_kt']; ?>" class="btn btn-primary">
+                                <span class="text">Detail</span>
+                            </a>
+                        </th>
+                    </tr>
+                    <?php endforeach; ?>
+                    
+
                                 </tr>
                             </table>
                         </div>

@@ -62,7 +62,7 @@
                     <div class="row">
                         <div class="card-body">
                             <table style="text-align: center;" id="example4" class="table table-bordered table-hover">
-                                <th style="width: 1100px;">Periode :</th>
+                                <th style="width: 1100px;">Periode : <?php echo $sasaranKT['periode_kt'];?></th>
                             </table>
                             <table id="example2" class="table table-bordered table-hover">
                                 <tr>
@@ -74,77 +74,151 @@
                                 </tr>
                                 <tr>
                                     <td>1.</td>
-                                    <td>Menyusun dan melaksanakan PKP</td>
-                                    <td>PKP</td>
-                                    <td></td>
-                                    <td>Hari</td>
+                                    <td>Mereviu seluruh PKP yang disusun dan dilaksanakan AT atau yang telah direviu oleh KST, berdasarkan kesesuaian dengan P2</td>
+                                    <td><?php echo $sasaranKT['kuantitas'];?> PKP</td>
+                                    <td><?php echo $sasaranKT['kualitas'];?></td>
+                                    <td><?php echo $sasaranKT['waktu'];?> Hari</td>
                                 </tr>
                                 <tr>
                                     <td>2.</td>
-                                    <td>Menyusun KKP sesuai dengan PKP</td>
-                                    <td>KKP</td>
-                                    <td></td>
-                                    <td>Hari</td>
+                                    <td>Mereviu KKP seluruh AT atau yang telah direviu oleh KST, berdasarkan tanggung jawab PKP masing-masing</td>
+                                    <td><?php echo $sasaranKT['kuantitas2'];?> KKP</td>
+                                    <td><?php echo $sasaranKT['kualitas2'];?></td>
+                                    <td><?php echo $sasaranKT['waktu2'];?> Hari</td>
+                                </tr>
+                                <tr>
+                                    <td>3.</td>
+                                    <td>Melakukan Bimbingan kepada AT/KST</td>
+                                    <td><?php echo $sasaranKT['kuantitas3'];?> Form</td>
+                                    <td><?php echo $sasaranKT['kualitas3'];?></td>
+                                    <td><?php echo $sasaranKT['waktu3'];?> Hari</td>
+                                </tr>
+                                <tr>
+                                    <td>4.</td>
+                                    <td>Penilaian Kinerja Anggota Tim</td>
+                                    <td><?php echo $sasaranKT['kuantitas4'];?> Form</td>
+                                    <td><?php echo $sasaranKT['kualitas4'];?></td>
+                                    <td><?php echo $sasaranKT['waktu4'];?> Hari</td>
                                 </tr>
                             </table>
                             <table id="example4" class="table table-bordered table-hover">
-                                <th style="width: 1100px;">Catatan :</th>
+                                <th style="width: 1100px;">Catatan : <?php echo $sasaranKT['catatan_kt'];?></th>
                             </table>
                             <hr class="sidebar-divider my-0">
                             <div class="row">
-
+                            <form action="/pt/saveSasaranKT/<?php echo $sasaranKT['id_kinerja_kt'];?>" method="POST" enctype="multipart/form-data">
                                 <div class="col">
-                                    <div class="mb-3 mt-4">
-                                        <h4>
-                                            <strong>
-                                                01. Nama Tugas Jabatan : Menyusun dan melaksanakan PKP
-                                            </strong>
-                                        </h4>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="kuantititas" class="form-label">Kuantitas</label>
-                                        <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan realisasi kuantitas yang dihasilkan" name="kuant" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="kualitas" class="form-label">Kualitas</label>
-                                        <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan realisasi kualitas yang dihasilkan" name="kuant" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="waktu" class="form-label">Waktu</label>
-                                        <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan realisasi waktu" name="waktu" required>
-                                    </div>
-                                    <hr class="sidebar-divider my-0">
-                                    <div class="mb-3 mt-4">
-                                        <h4>
-                                            <strong>
-                                                02. Nama Tugas Jabatan : Menyusun KKP sesuai dengan PKP
-                                            </strong>
-                                        </h4>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="kuantititas" class="form-label">Kuantitas</label>
-                                        <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan realisasi kuantitas yang dihasilkan" name="kuant" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="kualitas" class="form-label">Kualitas</label>
-                                        <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan realisasi kualitas yang dihasilkan" name="kuant" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="waktu" class="form-label">Waktu</label>
-                                        <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan realisasi waktu" name="waktu" required>
-                                    </div>
-                                    <hr class="sidebar-divider my-0">
-                                    <div class="mb-3 mt-4">
-                                        <h4>
-                                            <strong>
-                                                Tambahan
-                                            </strong>
-                                        </h4>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="periode" class="form-label">Periode</label>
-                                        <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan periode pelaksanaan" name="periode" required>
-                                    </div>
+                                    
+                                <div class="mb-3 mt-4">
+                                <h4>
+                                    <strong>
+                                        01. Nama Tugas Jabatan : Mereviu seluruh PKP yang disusun dan dilaksanakan AT atau yang telah direviu oleh KST, berdasarkan kesesuaian dengan P2
+                                    </strong>
+                                </h4>
+                            </div>
+                            <div class="mb-3">
+                                <label for="kuantititas" class="form-label">Kuantitas</label>
+                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant1" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="kualitas" class="form-label">Kualitas</label>
+                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual1" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="waktu" class="form-label">Waktu</label>
+                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu1" required>
+                            </div>
+
+                            <hr class="sidebar-divider my-0">
+
+                            <div class="mb-3 mt-4">
+                                <h4>
+                                    <strong>
+                                        02. Nama Tugas Jabatan : Mereviu KKP seluruh AT atau yang telah direviu oleh KST, berdasarkan tanggung jawab PKP masing-masing
+                                    </strong>
+                                </h4>
+                            </div>
+                            <div class="mb-3">
+                                <label for="kuantititas" class="form-label">Kuantitas</label>
+                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant2" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="kualitas" class="form-label">Kualitas</label>
+                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual2" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="waktu" class="form-label">Waktu</label>
+                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu2" required>
+                            </div>
+
+                            <hr class="sidebar-divider my-0">
+
+                            <div class="mb-3 mt-4">
+                                <h4>
+                                    <strong>
+                                        03. Nama Tugas Jabatan : Melakukan Bimbingan kepada AT/KST
+                                    </strong>
+                                </h4>
+                            </div>
+                            <div class="mb-3">
+                                <label for="kuantititas" class="form-label">Kuantitas</label>
+                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant3" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="kualitas" class="form-label">Kualitas</label>
+                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual3" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="waktu" class="form-label">Waktu</label>
+                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu3" required>
+                            </div>
+
+                            <hr class="sidebar-divider my-0">
+
+                            <div class="mb-3 mt-4">
+                                <h4>
+                                    <strong>
+                                        04. Nama Tugas Jabatan : Penilaian Kinerja Anggota Tim
+                                    </strong>
+                                </h4>
+                            </div>
+                            <div class="mb-3">
+                                <label for="kuantititas" class="form-label">Kuantitas</label>
+                                <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan kuantitas/output yang akan dihasilkan" name="kuant4" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="kualitas" class="form-label">Kualitas</label>
+                                <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan kualitas/mutu yang akan dihasilkan" name="kual4" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="waktu" class="form-label">Waktu</label>
+                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan waktu yang dibutuhkan" name="waktu4" required>
+                            </div>
+
+                            <hr class="sidebar-divider my-0">
+                            <div class="mb-3 mt-4">
+                                <h4>
+                                    <strong>
+                                        Tambahan
+                                    </strong>
+                                </h4>
+                            </div>
+                            <div class="mb-3">
+                                <label for="periode" class="form-label">Periode</label>
+                                <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan periode pelaksanaan" name="periode" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="catatan" class="form-label">Catatan</label>
+                                <input type="text" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="catatan">
+                            </div>
+
+                            <input type="hidden" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan periode pelaksanaan" name="waktuKT1" value ="<?php echo $sasaranKT['waktu'];?>">
+
+                            <input type="hidden" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan periode pelaksanaan" name="waktuKT2" value ="<?php echo $sasaranKT['waktu2'];?>">
+
+                            <input type="hidden" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan periode pelaksanaan" name="waktuKT3" value ="<?php echo $sasaranKT['waktu3'];?>">
+
+                            <input type="hidden" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan periode pelaksanaan" name="waktuKT4" value ="<?php echo $sasaranKT['waktu4'];?>">
 
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>

@@ -63,7 +63,7 @@
                     <div class="row">
                     <form action="/kt/saveProfile/<?php echo $_SESSION['id']?>" method="POST" enctype="multipart/form-data">
                         <div class="col-md-4-px-2">
-                            <form action="#" method="POST" enctype="multipart/form-data">
+      
                                 <div class="card-body">
                                 <div class="form-group">
                                         <label for="exampleInputEmail1">Nama</label>

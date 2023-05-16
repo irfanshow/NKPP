@@ -86,7 +86,9 @@
 
                             <input type="hidden" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="nkp" value="<?php echo $nkpp["nilai_kinerja_nkp"]?>">
 
-                            <!-- <a href="/kt/detail_nkpp/<?= $nkpp['id_nkpp']?>" class="btn btn-primary mb-3">Detail</a> -->
+                            <input type="hidden" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="nkt" value="<?php echo $nkpp["nilai_kinerja_nkt"]?>">
+
+                            <!-- <a href="" class="btn btn-primary mb-3">Detail</a> -->
                             <button type="submit" class="btn btn-primary">Detail</button>
                             </form>
                             <a href="/kt/nkpp/delete/<?= $nkpp['id_nkpp']?>" class="btn btn-danger mb-3">Hapus</a>

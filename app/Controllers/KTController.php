@@ -929,12 +929,14 @@ class KTController extends BaseController
             
             $nkpATModel = new NKPATModel();
            
+            $nilai_kinerja = $nkp * 20/100;
             $data=[
                 
                 'nilai_nkp' => $nkp,
                 'realisasi_nilai' => $nkp,
                 'periode'=>$this->request->getPost('periode'),
                 'status'=> "realisasi",
+                'nilai_kinerja_nkp' => $nilai_kinerja,
 
     
                 // 'nilai'=>$this->request->getPost('pt'),
@@ -942,6 +944,22 @@ class KTController extends BaseController
                 
             ];
    
+            $nkppModel = new NkppModel();
+
+            $data2=[
+                'nilai_nkp' => $nkp,
+                'nilai_kinerja_nkp' => $nilai_kinerja,
+                'periode'=>$this->request->getPost('periode'),
+                'status'=> "realisasi",
+                'bagian' => "at",
+                'nip' =>$this->request->getPost('nip'),
+                'id_nkp' =>$this->request->getPost('id_nkp'),
+                
+    
+                
+            ];
+    
+            $nkppModel->protect(false)->save($data2);
     
     
             $nkpATModel->protect(false)->update($id,$data);

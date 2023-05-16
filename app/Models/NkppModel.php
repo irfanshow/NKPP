@@ -14,14 +14,25 @@ class NkppModel extends Model
     function getAT(){
         return $this->db->table('nkpp')
         ->where('bagian = ','at')
+        ->where('id_nkp != 0')
         ->where ('nip = ',$_SESSION['nip'])
         ->Get()
         ->getResultArray();
     }
 
+    function getATData(){
+        return $this->db->table('nkpp')
+        ->join('nkp_at','nkp_at.id_nkp_at = nkpp.id_nkp')
+        ->where('bagian = ','at')
+        ->where('id_nkp != 0')
+        ->where ('nip = ',$_SESSION['nip'])
+        ->Get()->getResult();
+    }
+
     function getKT(){
         return $this->db->table('nkpp')
         ->where('bagian = ','kt')
+        ->where('id_nkp != 0')
         ->where ('nip = ',$_SESSION['nip'])
         ->Get()
         ->getResultArray();

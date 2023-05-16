@@ -70,17 +70,25 @@
                                     <th>Nilai</th>
                                     <th>Aksi</th>
                                 </tr>
-                                <tr>
-                                    <td>1.</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                <?php foreach ($nkpp as $no=>$nkpp):?>
+                    <tr>
+                        <td><?php echo $no+1?></td>
+                        <td><?php echo $nkpp['tanggal'];?></td>
+                        <td><?php echo $nkpp['periode']; ?></td>
+                        <td><?php echo $nkpp['status']; ?></td>
+                        <td><?php echo $nkpp['nkpp']; ?></td>
                                     <td>
-                                        <a href="/at/detail_nkpp" class="btn btn-primary mb-3">Detail</a>
+                                        <form action="/at/detail_nkpp/<?= $nkpp['id_nkpp']?>" method="post" class="mb-2">
+
+                                        <input type="hidden" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="id_nkp" value="<?php echo $nkpp["id_nkp"]?>">
+                                        
+                                        <!-- <a href="/at/detail_nkpp" class="btn btn-primary mb-3">Detail</a> -->
+                                        <button type="submit" class="btn btn-primary">Detail</button>
+                                        </form>
                                         <a href="#" class="btn btn-danger mb-3">Hapus</a>
                                     </td>
-                                </tr>
+                                    </tr>
+                         <?php endforeach; ?>
                             </table>
                         </div>
                     </div>

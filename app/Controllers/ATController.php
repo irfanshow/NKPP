@@ -6,6 +6,7 @@ use App\Models\AtModel;
 use App\Models\NkpModel;
 use App\Models\NktModel;
 use App\Models\Bimbingan;
+use App\Models\NkppModel;
 use App\Models\NKPATModel;
 use App\Models\NKTATModel;
 use App\Models\SoalNKPModel;
@@ -216,7 +217,7 @@ class ATController extends BaseController
         
         
         $nkpATModel = new NKPATModel();
-        $nkpSoalModel = new SoalNKPModel();
+
         $data=[
             'nilai_nkp' => $nkp,
             'nilai' => $nkp,
@@ -229,6 +230,23 @@ class ATController extends BaseController
             // 'tanggal'=>$this->request->getPost('periode'),
             
         ];
+
+        $nkppModel = new NkppModel();
+
+        $nilai_kinerja = $nkp * 20/100;
+        $data2=[
+            'nilai_nkp' => $nkp,
+            'nilai_kinerja_nkp' => $nilai_kinerja,
+            'periode'=>$this->request->getPost('periode'),
+            'status'=> "proses",
+            'bagian' => "at",
+            'nip' =>$this->request->getPost('nip')
+            
+
+            
+        ];
+
+        $nkppModel->protect(false)->save($data2);
 
 
         $nkpATModel->protect(false)->save($data);
@@ -744,12 +762,45 @@ class ATController extends BaseController
     //NKPP
     public function NKPPVIew()
     {
-        return view('at/nkpp');
+        $nkppModel = new NkppModel();
+        // $nkpATModel = new NKPATModel();
+        
+        $nkpp = $nkppModel->getAT();
+        // $nkp = $nkpATModel->find(14);
+
+        $data=[
+            'nkpp' => $nkpp,
+            // 'nkp' => $nkp
+        ];
+        return view('at/nkpp',$data);
     }
 
-    public function DetailNKPP()
+    public function DetailNKPP($id)
     {
-        return view('at/detail_nkpp');
+        $nkppModel = new NkppModel();
+        $nkpATModel = new NKPATModel();
+        
+        $nkpp = $nkppModel
+        ->find($id);
+
+        $id_nkp=$this->request->getPost('id_nkp');
+        $nkp = $nkpATModel->find($id_nkp);
+        
+        $nilai_sasaran=(float)$this->request->getPost('sasaran');
+        $nilai_nkp=(float)$this->request->getPost('nkp');
+        $nilai_nkt=(float)$this->request->getPost('nkt');
+
+        // var_dump($nilai_sasaran);
+        // var_dump($nilai_nkp);
+        // var_dump($nkp);
+
+        $nilai_nkpp = $nilai_sasaran + $nilai_nkp + $nilai_nkt;
+        $data=[
+            'nkpp' => $nkpp,
+            'nilai_nkpp' => $nilai_nkpp,
+            'nkp' => $nkp,
+        ];
+        return view('at/detail_nkpp',$data);
     }
 
 }

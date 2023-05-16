@@ -106,7 +106,7 @@ $routes->get('/admin/index', 'AdminController::index');
     $routes->post('/at/saveProfile/(:num)', 'ATController::saveProfile/$1');
 
     $routes->get('/at/nkpp', 'ATController::NKPPView');
-    $routes->get('/at/detail_nkpp', 'ATController::DetailNKPP');
+    $routes->post('/at/detail_nkpp/(:num)', 'ATController::DetailNKPP/$1');
 
 //KT
     $routes->get('/kt/index/(:num)', 'KTController::index/$1');

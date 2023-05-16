@@ -69,7 +69,6 @@
                                     <th>Periode</th>
                                     <th>Nama</th>
                                     <th>NIP</th>
-                                    <th>Nilai</th>
                                     <th>Status</th>
                                     <th>Realisasi Nilai</th>
                                     <th>Review Nilai</th>
@@ -77,20 +76,27 @@
                                     <th>Aksi</th>
                                 </tr>
                                 <tr>
-                                    <th>1. </th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th><a href="/pt/anggota/detail_sasaran" class="btn btn-primary">
+                                    
+                                    <?php foreach ($sasaranAT as $no=>$sasaranAT):?>
+                                        <tr>
+                            <td><?php echo $no+1?></td>
+                            <td><?php echo $sasaranAT['tanggal'];?></td>
+                            <td><?php echo $sasaranAT['periode_at']; ?></td>
+                            <td><?php echo $sasaranAT['nama_at']; ?></td>
+                            <td><?php echo $sasaranAT['nip_at']; ?></td>
+                            <td><?php echo $sasaranAT['status']; ?></td>
+                            <td><?php echo $sasaranAT['nilai']; ?></td>
+                            <td><?php echo $sasaranAT['review_nilai']; ?></td>
+                            <td><?php echo $sasaranAT['nilai_skp']; ?></td>
+    
+                                    <th><a href="/pt/anggota/detail_sasaran/<?php echo $sasaranAT['id_kinerja_anggota']; ?>" class="btn btn-primary">
                                             <span class="text">Detail</span>
                                         </a>
                                     </th>
+                                    </tr>
+                    <?php endforeach; ?>
+                    
+
                                 </tr>
                             </table>
                         </div>

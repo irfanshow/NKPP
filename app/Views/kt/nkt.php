@@ -85,7 +85,7 @@
                         <td><?php echo $nktKT['status']; ?></td>
                         <td><?php echo $nktKT['realisasi_nilai']; ?></td>
                         <td><?php echo $nktKT['review_nilai']; ?></td>
-                        <td><?php echo $nktKT['nilai']; ?></td>
+                        <td><?php echo $nktKT['nilai_nkt']; ?></td>
 
                         
                         <th>

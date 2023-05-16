@@ -61,7 +61,7 @@
                         <div class="card-body">
                             <table style="text-align: center;" id="example2" class="table table-bordered table-hover">
                                 <th>
-                                    Nama Anggota Tim :
+                                    Nama Anggota Tim : <?php echo $nkt['nama_at'];?>
                                 </th>
 
                             </table>
@@ -78,27 +78,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php foreach ($soal as $no=>$soal):?>
                                     <tr>
-                                        <th>1.</th>
-                                        <th>Mampu memahami proses bisnis sesuai pembagian tugas dalam PKP</th>
-                                        <th><input type="radio" name="1" value="A"></th>
-                                        <th><input type="radio" name="1" value="B"></th>
-                                        <th><input type="radio" name="1" value="C"></th>
-                                        <th><input type="radio" name="1" value="D"></th>
+                                        <th><?php echo $no+1?></th>
+                                        <th><?php echo $soal['soal'];?></th>
+                                      
+
+                                        <th><input type="radio" checked name="nilai<?php echo $no+1?>" value="100"></th>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="85"></th>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="70"></th>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="55"></th>
+
                                     </tr>
-                                    <tr>
-                                        <th>2.</th>
-                                        <th>Mampu menjelaskan perbedaan (gap) yang terjadi antara praktek riil dengan dokumen proses bisnis formal yang ada</th>
-                                        <th><input type="radio" name="2" value="A"></th>
-                                        <th><input type="radio" name="2" value="B"></th>
-                                        <th><input type="radio" name="2" value="C"></th>
-                                        <th><input type="radio" name="2" value="D"></th>
-                                    </tr>
+
+                                        
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
 
                             <div class="px-2">
-                                <a style="margin-right: 10px;" href="/pt/anggota/do_review_nkt" class="btn btn-danger">
+                                <a style="margin-right: 10px;" href="/pt/anggota/do_review_nkt/<?php echo $nkt['id_nkt_at']?>" class="btn btn-danger">
                                     <span class="text">Denail</span>
                                 </a><a href="#" class="btn btn-success">
                                     <span class="text">Approved</span>

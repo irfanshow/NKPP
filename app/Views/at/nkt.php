@@ -82,9 +82,9 @@
                         <td><?php echo $nktAT['tanggal'];?></td>
                         <td><?php echo $nktAT['periode']; ?></td>
                         <td><?php echo $nktAT['status']; ?></td>
-                        <td><?php echo $nktAT['status']; ?></td>
-                        <td><?php echo $nktAT['status']; ?></td>
-                        <td><?php echo $nktAT['nilai']; ?></td>
+                        <td><?php echo $nktAT['realisasi_nilai']; ?></td>
+                        <td><?php echo $nktAT['review_nilai']; ?></td>
+                        <td><?php echo $nktAT['nilai_nkt']; ?></td>
 
                         
                         <th>

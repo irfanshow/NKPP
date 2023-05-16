@@ -58,14 +58,15 @@
                 <div class="container-fluid">
                     <h3 class="px-2 mb-0 text-gray-800">Realisasi NKP Pengendali Teknis</h3>
                     <div class="row">
+                    <form action="/pj/saveNKPPT/<?= $nkp['id_nkp_pt']?>" method="POST" enctype="multipart/form-data">
                         <div class="card-body">
                             <table style="text-align: center;" id="example2" class="table table-bordered table-hover">
                                 <th>
-                                    Nama Pengendali Teknis :
+                                    Nama Pengendali Teknis : <?php echo $nkp['nama_pt'];?>
                                 </th>
 
                             </table>
-                            <input type="number" class="form-control" id="kendala" aria-describedby="emailHelp" placeholder="Masukan Periode" required name="kendala1">
+                            <input type="number" class="form-control" id="kendala" aria-describedby="emailHelp" placeholder="Masukan Periode" required name="periode">
                             <table style="text-align: center;" id="example2" class="table table-bordered table-hover mt-3">
                                 <thead>
                                     <tr>
@@ -78,32 +79,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php foreach ($soal as $no=>$soal):?>
                                     <tr>
-                                        <th>1.</th>
-                                        <th>Mampu menerapkan sistem/metode bekerja yang efektif sesuai dengan kondisi di lapangan, sehingga Tim Pemeriksa bekerja lebih efektif dan efisien, termasuk di dalamnya merancang prosedur alternatif untuk mengatasi hambatan pelaksanaan atau langkah P2.</th>
-                                        <th><input type="radio" name="1" value="A"></th>
-                                        <th><input type="radio" name="1" value="B"></th>
-                                        <th><input type="radio" name="1" value="C"></th>
-                                        <th><input type="radio" name="1" value="D"></th>
+                                        <th><?php echo $no+1?></th>
+                                        <th><?php echo $soal['soal'];?></th>
+                                       
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="100"></th>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="85"></th>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="70"></th>
+                                        <th><input type="radio" name="nilai<?php echo $no+1?>" value="55"></th>
                                     </tr>
-                                    <tr>
-                                        <th>2.</th>
-                                        <th>Mampu menyelesaikan Pemeriksaan menggunakan sumber daya yang ada dengan baik walaupun dengan banyak hambatan teknis (faktor lokasi, fasilitas, geografis, kestabilan politik daerah, dan lain-lain).</th>
-                                        <th><input type="radio" name="2" value="A"></th>
-                                        <th><input type="radio" name="2" value="B"></th>
-                                        <th><input type="radio" name="2" value="C"></th>
-                                        <th><input type="radio" name="2" value="D"></th>
-                                    </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
 
                             <div class="px-2">
                                 <a href="#" class="btn btn-primary">
-                                    <span class="text">Submit</span>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                                 </a>
 
                             </div>
-
+                            </form>
                         </div>
                     </div>
                 </div>

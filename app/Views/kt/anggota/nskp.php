@@ -83,8 +83,8 @@
                         <td><?php echo $sasaranAT['periode_at']; ?></td>
                         <td><?php echo $sasaranAT['nama_at']; ?></td>
                         <td><?php echo $sasaranAT['nip_at']; ?></td>
-                        <td><?php echo $sasaranAT['nilai']; ?></td>
                         <td><?php echo $sasaranAT['status']; ?></td>
+                        <td><?php echo $sasaranAT['nilai']; ?></td>
                         <td><?php echo $sasaranAT['nilai_skp']; ?></td>
 
 

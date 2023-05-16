@@ -195,7 +195,7 @@ class Home extends BaseController
                     'nip'     => $data4['nip_pj'],
                     'nama' => $data4['nama_pj'],
                     'email' => $data4['email_pj'],
-                    'unit' => $data4['unit_kerja_pj'],
+                    // 'unit' => $data4['unit_kerja_pj'],
                     'surat' => $data4['no_surat_dinas_pj'],
                     'periode' => $data4['periode_pj'],
           
@@ -204,7 +204,7 @@ class Home extends BaseController
                 session()->set($ses_data);
                 if($peran == 'pj')
                 {
-                    return redirect()->to('/pj/index',);
+                    return redirect()->to('/pj/pengendali/tanggapan_bimbingan',);
                 }
     
                 else{

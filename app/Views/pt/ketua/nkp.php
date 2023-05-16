@@ -84,7 +84,7 @@
                         <td><?php echo $nkpKT['nilai']; ?></td>
                         <td><?php echo $nkpKT['status']; ?></td>
                         <td><?php echo $nkpKT['realisasi_nilai']; ?></td>
-                        <td><?php echo $nkpKT['realisasi_nilai']; ?></td>
+                        <td><?php echo $nkpKT['nilai_nkp']; ?></td>
 
                         
                         <th><a href="/pt/ketua/detail_nkp/<?php echo $nkpKT['id_nkp_kt']; ?>" class="btn btn-primary">

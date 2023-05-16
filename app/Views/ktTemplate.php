@@ -35,7 +35,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/kt/index">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/kt/index/<?php echo $_SESSION['id']?>">
                 <div class="sidebar-brand-icon">
                     <img src='<?php base_url(); ?>/img/logo.svg' width="60px">
                 </div>

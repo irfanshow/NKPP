@@ -62,7 +62,7 @@
                     <div class="row">
                         <div class="card-body">
                             <table style="text-align: center;" id="example4" class="table table-bordered table-hover">
-                                <th style="width: 1100px;">Periode :</th>
+                                <th style="width: 1100px;">Periode : <?php echo $sasaranKT['periode_kt']; ?></th>
                             </table>
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
@@ -82,43 +82,74 @@
                                 <tbody>
                                     <tr>
                                         <th>1. </th>
-                                        <th>Menyusun dan Melaksanakn PKP</th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
+                                        <th>Mereviu seluruh PKP yang disusun dan dilaksanakan AT atau yang telah direviu oleh KST, berdasarkan kesesuaian dengan P2</th>
+                                        <td><?php echo $sasaranKT['kuantitas'];?></td>
+                        <td><?php echo $sasaranKT['kualitas']; ?></td>
+                        <td><?php echo $sasaranKT['waktu']; ?></td>
+                        <td><?php echo $sasaranKT['realisasi_kuantitas'];?></td>
+                        <td><?php echo $sasaranKT['realisasi_kualitas']; ?></td>
+                        <td><?php echo $sasaranKT['realisasi_waktu']; ?></td>
+                        <td><?php echo $sasaranKT['review_kuantitas'];?></td>
+                        <td><?php echo $sasaranKT['review_kualitas']; ?></td>
+                        <td><?php echo $sasaranKT['review_waktu']; ?></td>
+                        <td><?php echo $sasaranKT['nilai']; ?></td>
                                     </tr>
                                     <tr>
                                         <th>2. </th>
-                                        <th>Menyusun KKP sesuai dengan PKP </th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
+                                        <th>Mereviu KKP seluruh AT atau yang telah direviu oleh KST, berdasarkan tanggung jawab PKP masing-masing</th>
+                                        <td><?php echo $sasaranKT['kuantitas2'];?></td>
+                        <td><?php echo $sasaranKT['kualitas2']; ?></td>
+                        <td><?php echo $sasaranKT['waktu2']; ?></td>
+                        <td><?php echo $sasaranKT['realisasi_kuantitas2'];?></td>
+                        <td><?php echo $sasaranKT['realisasi_kualitas2']; ?></td>
+                        <td><?php echo $sasaranKT['realisasi_waktu2']; ?></td>
+                        <td><?php echo $sasaranKT['review_kuantitas2'];?></td>
+                        <td><?php echo $sasaranKT['review_kualitas2']; ?></td>
+                        <td><?php echo $sasaranKT['review_waktu2']; ?></td>
+                        <td><?php echo $sasaranKT['nilai2']; ?></td>
                                     </tr>
+
+                                    <tr>
+                                        <th>3. </th>
+                                        <th>Melakukan Bimbingan kepada AT/KST </th>
+                                        <td><?php echo $sasaranKT['kuantitas3'];?></td>
+                        <td><?php echo $sasaranKT['kualitas3']; ?></td>
+                        <td><?php echo $sasaranKT['waktu3']; ?></td>
+                        <td><?php echo $sasaranKT['realisasi_kuantitas3'];?></td>
+                        <td><?php echo $sasaranKT['realisasi_kualitas3']; ?></td>
+                        <td><?php echo $sasaranKT['realisasi_waktu3']; ?></td>
+                        <td><?php echo $sasaranKT['review_kuantitas3'];?></td>
+                        <td><?php echo $sasaranKT['review_kualitas3']; ?></td>
+                        <td><?php echo $sasaranKT['review_waktu3']; ?></td>
+                        <td><?php echo $sasaranKT['nilai3']; ?></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>4. </th>
+                                        <th>Penilaian Kinerja Anggota Tim </th>
+                                        <td><?php echo $sasaranKT['kuantitas4'];?></td>
+                        <td><?php echo $sasaranKT['kualitas4']; ?></td>
+                        <td><?php echo $sasaranKT['waktu4']; ?></td>
+                        <td><?php echo $sasaranKT['realisasi_kuantitas4'];?></td>
+                        <td><?php echo $sasaranKT['realisasi_kualitas4']; ?></td>
+                        <td><?php echo $sasaranKT['realisasi_waktu4']; ?></td>
+                        <td><?php echo $sasaranKT['review_kuantitas4'];?></td>
+                        <td><?php echo $sasaranKT['review_kualitas4']; ?></td>
+                        <td><?php echo $sasaranKT['review_waktu4']; ?></td>
+                        <td><?php echo $sasaranKT['nilai4']; ?></td>
+                                    </tr>
+
                                 </tbody>
                             </table>
                             <table id="example4" class="table table-bordered table-hover">
-                                <th style="width: 1100px;">Catatan :</th>
+                                <th style="width: 1100px;">Catatan : <?php echo $sasaranKT['catatan_kt']; ?></th>
                             </table>
                             <table id="example1" class="table table-bordered table-hover">
                                 <tr style="text-align: center;">
                                     <th style="width: 680px;">Nilai capaian SKP</th>
-                                    <th style="width: 83px;"></th>
+                                    <th style="width: 83px;"><?php echo $sasaranKT['nilai_skp']; ?></th>
                                 </tr>
-                            </table><a href="/pj/ketua/do_review_sasaran" class="btn btn-danger">
+                            </table><a href="/pj/ketua/do_review_sasaran/<?php echo $sasaranKT['id_kinerja_kt']; ?>" class="btn btn-danger">
                                 <span class="text">Denail</span>
                             </a>
                             <a href="#" class="btn btn-success" style=" width: 100px;">

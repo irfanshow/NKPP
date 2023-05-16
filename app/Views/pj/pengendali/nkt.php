@@ -75,19 +75,23 @@
                                     <th>Aksi</th>
                                 </tr>
                                 <tr>
-                                    <th>1. </th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th><a href="/pj/pengendali/detail_nkt" class="btn btn-primary">
+                                <?php foreach ($nktPT as $no=>$nktPT):?>
+                    <tr>
+                        <td><?php echo $no+1?></td>
+                        <td><?php echo $nktPT['tanggal'];?></td>
+                        <td><?php echo $nktPT['periode']; ?></td>
+                        <td><?php echo $nktPT['nama_pt']; ?></td>
+                        <td><?php echo $nktPT['nip_pt']; ?></td>
+                        <td><?php echo $nktPT['nilai']; ?></td>
+                        <td><?php echo $nktPT['status']; ?></td>
+                        <td><?php echo $nktPT['realisasi_nilai']; ?></td>
+                        <td><?php echo $nktPT['nilai_nkt']; ?></td>
+                                    <th><a href="/pj/pengendali/detail_nkt/<?php echo $nktPT['id_nkt_pt']; ?>" class="btn btn-primary">
                                             <span class="text">Detail</span>
                                         </a>
                                     </th>
+                                    </tr>
+                         <?php endforeach; ?>
                                 </tr>
                             </table>
                         </div>

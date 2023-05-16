@@ -83,9 +83,9 @@
                         <td><?php echo $nkpKT['tanggal'];?></td>
                         <td><?php echo $nkpKT['periode']; ?></td>
                         <td><?php echo $nkpKT['status']; ?></td>
-                        <td><?php echo $nkpKT['status']; ?></td>
-                        <td><?php echo $nkpKT['status']; ?></td>
-                        <td><?php echo $nkpKT['nilai']; ?></td>
+                        <td><?php echo $nkpKT['realisasi_nilai']; ?></td>
+                        <td><?php echo $nkpKT['review_nilai']; ?></td>
+                        <td><?php echo $nkpKT['nilai_nkp']; ?></td>
 
                         
                         <th>

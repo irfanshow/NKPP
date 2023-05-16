@@ -68,8 +68,8 @@
                                         <th>No.</th>
                                         <th>Tanggal Pengisian</th>
                                         <th>Periode</th>
-                                        <th>Nilai</th>
                                         <th>Status</th>
+                                        <th>Nilai</th>
                                         <th>Realisasi Nilai</th>
                                         <th>Nilai Kompetensi Teknis</th>
                                         <th>Aksi</th>
@@ -84,7 +84,7 @@
                         <td><?php echo $nktPT['status']; ?></td>
                         <td><?php echo $nktPT['realisasi_nilai']; ?></td>
                         <td><?php echo $nktPT['review_nilai']; ?></td>
-                        <td><?php echo $nktPT['nilai']; ?></td>
+                        <td><?php echo $nktPT['nilai_nkt']; ?></td>
 
                         
                         <th>

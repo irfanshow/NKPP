@@ -75,27 +75,27 @@
                                 <tr>
                                     <td>1.</td>
                                     <td>Menyusun dan melaksanakan PKP</td>
-                                    <td>PKP</td>
-                                    <td></td>
-                                    <td>Hari</td>
-                                    <td>PKP</td>
-                                    <td></td>
-                                    <td>Hari</td>
+                                    <td><?php echo $sasaranAT['kuantitas'];?> PKP</td>
+                                    <td><?php echo $sasaranAT['kualitas'];?></td>
+                                    <td><?php echo $sasaranAT['waktu'];?> Hari</td>
+                                    <td><?php echo $sasaranAT['realisasi_kuantitas'];?> PKP</td>
+                                    <td><?php echo $sasaranAT['realisasi_kualitas'];?></td>
+                                    <td><?php echo $sasaranAT['realisasi_waktu'];?> Hari</td>
                                 </tr>
                                 <tr>
                                     <td>2.</td>
                                     <td>Menyusun KKP sesuai dengan PKP</td>
-                                    <td>KKP</td>
-                                    <td></td>
-                                    <td>Hari</td>
-                                    <td>KKP</td>
-                                    <td></td>
-                                    <td>Hari</td>
+                                    <td><?php echo $sasaranAT['kuantitas2'];?> KKP</td>
+                                    <td><?php echo $sasaranAT['kualitas2'];?></td>
+                                    <td><?php echo $sasaranAT['waktu2'];?> Hari</td>
+                                    <td><?php echo $sasaranAT['realisasi_kuantitas2'];?> PKP</td>
+                                    <td><?php echo $sasaranAT['realisasi_kualitas2'];?></td>
+                                    <td><?php echo $sasaranAT['realisasi_waktu2'];?> Hari</td>
                                 </tr>
                             </table>
                             <hr class="sidebar-divider my-0">
                             <div class="row">
-
+                            <form action="/pt/saveSasaranAT/<?php echo $sasaranAT['id_kinerja_anggota'];?>" method="POST" enctype="multipart/form-data">
                                 <div class="col">
                                     <div class="mb-3 mt-3">
                                         <h4>
@@ -110,7 +110,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="kualitas" class="form-label">Kualitas</label>
-                                        <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan Review Kualitas" name="kuant" required>
+                                        <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan Review Kualitas" name="kual" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="waktu" class="form-label">Waktu</label>
@@ -128,15 +128,15 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="kuantititas" class="form-label">Kuantitas</label>
-                                        <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan Review Kuantitas" name="kuant" required>
+                                        <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan Review Kuantitas" name="kuant2" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="kualitas" class="form-label">Kualitas</label>
-                                        <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan Review Kualitas" name="kuant" required>
+                                        <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan Review Kualitas" name="kual2" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="waktu" class="form-label">Waktu</label>
-                                        <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan Review Waktu" name="waktu" required>
+                                        <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan Review Waktu" name="waktu2" required>
                                     </div>
 
                                     <hr class="sidebar-divider my-0">
@@ -150,11 +150,17 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="periode" class="form-label">Periode</label>
-                                        <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan Review Periode" name="kuant" required>
+                                        <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan Review Periode" name="periode" required>
                                     </div>
+
+                                    
+                                    <input type="hidden" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan periode pelaksanaan" name="waktuAT1" value ="<?php echo $sasaranAT['waktu'];?>">
+
+                                    <input type="hidden" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan periode pelaksanaan" name="waktuAT2" value ="<?php echo $sasaranAT['waktu2'];?>">
 
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>

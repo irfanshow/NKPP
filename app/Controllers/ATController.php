@@ -218,6 +218,7 @@ class ATController extends BaseController
         $nkpATModel = new NKPATModel();
         $nkpSoalModel = new SoalNKPModel();
         $data=[
+            'nilai_nkp' => $nkp,
             'nilai' => $nkp,
             'periode'=>$this->request->getPost('periode'),
             'status'=> "proses",
@@ -414,6 +415,7 @@ class ATController extends BaseController
         $nktATModel = new NKTATModel();
       
         $data=[
+            'nilai_nkt' => $nkt,
             'nilai' => $nkt,
             'periode'=>$this->request->getPost('periode'),
 

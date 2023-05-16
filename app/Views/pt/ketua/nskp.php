@@ -82,8 +82,8 @@
                         <td><?php echo $sasaranKT['periode_kt']; ?></td>
                         <td><?php echo $sasaranKT['nama_kt']; ?></td>
                         <td><?php echo $sasaranKT['nip_kt']; ?></td>
-                        <td><?php echo $sasaranKT['nilai']; ?></td>
                         <td><?php echo $sasaranKT['status']; ?></td>
+                        <td><?php echo $sasaranKT['nilai']; ?></td>
                         <td><?php echo $sasaranKT['nilai_skp']; ?></td>
 
 

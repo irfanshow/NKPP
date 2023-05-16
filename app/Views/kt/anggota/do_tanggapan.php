@@ -75,7 +75,7 @@
                                     <th><?php echo $bimbingan['nama']; ?></th>
                                     <th><?php echo $bimbingan['nip']; ?></th>
                                     <th><?php echo $bimbingan['bimbingan_satu']; ?></th>
-                                    <th><?php echo $bimbingan['bimbingan_satu']; ?></th>
+                                    <th><?php echo $bimbingan['bimbingan_dua']; ?></th>
                                 </tr>
                             </table>
                             <hr class="sidebar-divider my-0">

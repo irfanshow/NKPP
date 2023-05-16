@@ -147,7 +147,7 @@ $routes->get('/admin/index', 'AdminController::index');
     $routes->post('/kt/saveProfile/(:num)', 'KTController::saveProfile/$1');
 
     $routes->get('/kt/nkpp', 'KTController::NKPPView');
-    $routes->get('/kt/detail_nkpp', 'KTController::DetailNKPP');
+    $routes->post('/kt/detail_nkpp/(:num)', 'KTController::DetailNKPP/$1');
 
 
     //ANGGOTA
@@ -182,47 +182,57 @@ $routes->get('/admin/index', 'AdminController::index');
     $routes->get('/kt/anggota/tanggapan_bimbingan', 'KTController::TanggapanBimbingan');
   
 //PJ
-    $routes->get('/pj/index', 'PJController::index');
-    $routes->get('/pj/profile', 'PJController::Profile');
+    $routes->get('/pj/index/(:num)', 'PJController::index/$1');
+    $routes->get('/pj/profile/(:num)', 'PJController::Profile/$1');
+    $routes->post('/pj/saveProfile/(:num)', 'PJController::saveProfile/$1');
 
         //Ketua
             //NKP
-            $routes->get('/pj/ketua/detail_nkp', 'PJController::DetailNKP');
+            $routes->get('/pj/ketua/detail_nkp/(:num)', 'PJController::DetailNKP/$1');
             $routes->get('/pj/ketua/review_nkp', 'PJController::ReviewNKP');
+            $routes->post('/pj/saveNKPKT/(:num)', 'PJController::saveNKPKT/$1');
 
             //NKT
-            $routes->get('/pj/ketua/detail_nkt', 'PJController::DetailNKT');
+            $routes->get('/pj/ketua/detail_nkt/(:num)', 'PJController::DetailNKT/$1');
             $routes->get('/pj/ketua/review_nkt', 'PJController::ReviewNKT');
+            $routes->post('/pj/saveNKTKT/(:num)', 'PJController::saveNKTKT/$1');
 
             //Sasaran
-            $routes->get('/pj/ketua/detail_sasaran', 'PJController::DetailSasaran');
+            $routes->get('/pj/ketua/detail_sasaran/(:num)', 'PJController::DetailSasaran/$1');
             $routes->get('/pj/ketua/review_sasaran', 'PJController::ReviewSasaran');
+            $routes->post('/pj/saveSasaranKT/(:num)', 'PJController::saveSasaranKT/$1');
 
             //DO
-            $routes->get('/pj/ketua/do_review_nkp', 'PJController::DoReviewNKP');
-            $routes->get('/pj/ketua/do_review_nkt', 'PJController::DoReviewNKT');
-            $routes->get('/pj/ketua/do_review_sasaran', 'PJController::DoReviewSasaran');
+            $routes->get('/pj/ketua/do_review_nkp/(:num)', 'PJController::DoReviewNKP/$1');
+            $routes->get('/pj/ketua/do_review_nkt/(:num)', 'PJController::DoReviewNKT/$1');
+            $routes->get('/pj/ketua/do_review_sasaran/(:num)', 'PJController::DoReviewSasaran/$1');
           
 
         //Pengendali
-            $routes->get('/pj/pengendali/realisasi', 'PJController::Realisasi');
+           
 
             //NKP
             $routes->get('/pj/pengendali/nkp', 'PJController::NKP_Pengendali');
-            $routes->get('/pj/pengendali/detail_nkp', 'PJController::DetailNKP_Pengendali');
-            $routes->get('/pj/pengendali/realisasi_nkp', 'PJController::RealisasiNKP');
+            $routes->get('/pj/pengendali/detail_nkp/(:num)', 'PJController::DetailNKP_Pengendali/$1');
+            $routes->get('/pj/pengendali/realisasi_nkp/(:num)', 'PJController::RealisasiNKP/$1');
+            $routes->post('/pj/saveNKPPT/(:num)', 'PJController::saveNKPPT/$1');
 
             //NKT
-            $routes->get('/pj/pengendali/nkt', 'PJController::NKP_Pengendali');
-            $routes->get('/pj/pengendali/detail_nkt', 'PJController::DetailNKT_Pengendali');
-            $routes->get('/pj/pengendali/realisasi_nkt', 'PJController::RealisasiNKT');
+            $routes->get('/pj/pengendali/nkt', 'PJController::NKt_Pengendali');
+            $routes->get('/pj/pengendali/detail_nkt/(:num)', 'PJController::DetailNKT_Pengendali/$1');
+            $routes->get('/pj/pengendali/realisasi_nkt/(:num)', 'PJController::RealisasiNKT/$1');
+            $routes->post('/pj/saveNKTPT/(:num)', 'PJController::saveNKTPT/$1');
 
             //NSKP
             $routes->get('/pj/pengendali/nskp', 'PJController::NSKP_Pengendali');
-            $routes->get('/pj/pengendali/detail_nskp', 'PJController::DetailNSKP_Pengendali');
+            $routes->get('/pj/pengendali/realisasi/(:num)', 'PJController::Realisasi/$1');
+            $routes->get('/pj/pengendali/detail_nskp/(:num)', 'PJController::DetailNSKP_Pengendali/$1');
+            $routes->post('/pj/saveSasaranPT/(:num)', 'PJController::saveSasaranPT/$1');
 
             //Tanggapan
-            $routes->get('/pj/pengendali/do_tanggapan', 'PJController::DoTanggapan');
+            $routes->get('/pj/pengendali/do_tanggapan/(:num)', 'PJController::DoTanggapan/$1');
+            $routes->post('/pj/pengendali/saveTanggapan/(:num)', 'PJController::SaveTanggapan/$1');
+ 
         
             //BImbingan
             $routes->get('/pj/pengendali/tanggapan_bimbingan', 'PJController::TanggapanBimbingan');
@@ -272,21 +282,25 @@ $routes->get('/pt/detail_nkpp', 'PTController::DetailNKPP');
 
     //ANGGOTA
         //NKP
-        $routes->get('/pt/anggota/detail_nkp', 'PTController::DetailNKPAnggota');
+        $routes->get('/pt/anggota/detail_nkp/(:num)', 'PTController::DetailNKPAnggota/$1');
         $routes->get('/pt/anggota/review_nkp', 'PTController::ReviewNKP');
+        $routes->post('/pt/saveNKPAT/(:num)', 'PTController::saveNKPAT/$1');
 
         //NKT
-        $routes->get('/pt/anggota/detail_nkt', 'PTController::DetailNKTAnggota');
+        $routes->get('/pt/anggota/detail_nkt/(:num)', 'PTController::DetailNKTAnggota/$1');
         $routes->get('/pt/anggota/review_nkt', 'PTController::ReviewNKT');
+        $routes->get('/pt/anggota/review_nkt', 'PTController::ReviewNKT');
+        $routes->post('/pt/saveNKTAT/(:num)', 'PTController::saveNKTAT/$1');
+
 
         //Sasaran
-        $routes->get('/pt/anggota/detail_sasaran', 'PTController::DetailSasaranAnggota');
         $routes->get('/pt/anggota/review_sasaran', 'PTController::ReviewSasaran');
-
+        $routes->get('/pt/anggota/detail_sasaran/(:num)', 'PTController::DetailSasaranAnggota/$1');
+        $routes->post('/pt/saveSasaranAT/(:num)', 'PTController::saveSasaranAT/$1');
         //DO
-        $routes->get('/pt/anggota/do_review_nkp', 'PTController::DoReviewNKP');
-        $routes->get('/pt/anggota/do_review_nkt', 'PTController::DoReviewNKT');
-        $routes->get('/pt/anggota/do_review_sasaran', 'PTController::DoReviewSasaran');
+        $routes->get('/pt/anggota/do_review_nkp/(:num)', 'PTController::DoReviewNKP/$1');
+        $routes->get('/pt/anggota/do_review_nkt/(:num)', 'PTController::DoReviewNKT/$1');
+        $routes->get('/pt/anggota/do_review_sasaran/(:num)', 'PTController::DoReviewSasaran/$1');
 
     //KETUA
 
@@ -299,8 +313,8 @@ $routes->get('/pt/detail_nkpp', 'PTController::DetailNKPP');
 
         //NKT
         $routes->get('/pt/ketua/nkt', 'PTController::NKT_Ketua');
-        $routes->get('/pt/anggota/detail_nkt/(:num)', 'PTController::DetailNKT_Ketua/$1');
-        $routes->get('/pt/anggota/realisasi_nkt/(:num)', 'PTController::RealisasiNKT/$1');
+        $routes->get('/pt/ketua/detail_nkt/(:num)', 'PTController::DetailNKT_Ketua/$1');
+        $routes->get('/pt/ketua/realisasi_nkt/(:num)', 'PTController::RealisasiNKT/$1');
         $routes->post('/pt/saveNKTKT/(:num)', 'PTController::saveNKTKT/$1');
 
         //NSKP
@@ -310,11 +324,14 @@ $routes->get('/pt/detail_nkpp', 'PTController::DetailNKPP');
         $routes->post('/pt/saveSasaranKT/(:num)', 'PTController::saveSasaranKT/$1');
     
 
-        //Tanggapan
-        $routes->get('/pt/ketua/do_tanggapan', 'PTController::DoTanggapan');
+    //Tanggapan
+    $routes->get('/pt/ketua/do_tanggapan/(:num)', 'PTController::DoTanggapan/$1');
+    $routes->post('/pt/ketua/saveTanggapan/(:num)', 'PTController::SaveTanggapan/$1');
+ 
+    //BImbingan
+    $routes->get('/pt/ketua/tanggapan_bimbingan', 'PTController::TanggapanBimbingan');
 
-        //BImbingan
-        $routes->get('/pt/ketua/tanggapan_bimbingan', 'PTController::TanggapanBimbingan');
+        
 
 /*
  * --------------------------------------------------------------------

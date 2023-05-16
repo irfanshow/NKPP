@@ -56,7 +56,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <h3 class="px-2 mb-0 text-gray-800">Data Sasaran Kinerja Anggota Tim </h3>
+                    <h3 class="px-2 mb-0 text-gray-800">Data Sasaran Kinerja Pengendali Teknis </h3>
 
                     <!-- Page Heading -->
                     <div class="row">
@@ -68,26 +68,29 @@
                                     <th>Periode</th>
                                     <th>Nama</th>
                                     <th>NIP</th>
-                                    <th>Nilai</th>
                                     <th>Status</th>
                                     <th>Realisasi Nilai</th>
                                     <th>Nilai Capaian SKP</th>
                                     <th>Aksi</th>
                                 </tr>
                                 <tr>
-                                    <th>1. </th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th><a href="/pj/pengendali/detail_nskp" class="btn btn-primary">
+                                <?php foreach ($sasaranPT as $no=>$sasaranPT):?>
+                    <tr>
+                        <td><?php echo $no+1?></td>
+                        <td><?php echo $sasaranPT['tanggal'];?></td>
+                        <td><?php echo $sasaranPT['periode_pt']; ?></td>
+                        <td><?php echo $sasaranPT['nama_pt'];?></td>
+                        <td><?php echo $sasaranPT['nip_pt']; ?></td>
+                        <td><?php echo $sasaranPT['status']; ?></td>
+                        <td><?php echo $sasaranPT['nilai']; ?></td>
+                        <td><?php echo $sasaranPT['nilai_skp']; ?></td>
+
+                                    <th><a href="/pj/pengendali/detail_nskp/<?php echo $sasaranPT['id_kinerja_pt']; ?>" class="btn btn-primary">
                                             <span class="text">Detail</span>
                                         </a>
                                     </th>
+                                    </tr>
+                    <?php endforeach; ?>
                                 </tr>
                             </table>
                         </div>

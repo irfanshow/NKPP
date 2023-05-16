@@ -72,16 +72,27 @@
                                     <th>Aksi</th>
                                 </tr>
                                 <tr>
-                                    <td>1.</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <a href="/kt/detail_nkpp" class="btn btn-primary mb-3">Detail</a>
-                                        <a href="#" class="btn btn-danger mb-3">Hapus</a>
-                                    </td>
-                                </tr>
+                                <?php foreach ($nkpp as $no=>$nkpp):?>
+                    <tr>
+                        <td><?php echo $no+1?></td>
+                        <td><?php echo $nkpp['tanggal'];?></td>
+                        <td><?php echo $nkpp['periode']; ?></td>
+                        <td><?php echo $nkpp['status']; ?></td>
+                        <td><?php echo $nkpp['nkpp']; ?></td>
+                        <td>
+                            <form action="/kt/detail_nkpp/<?= $nkpp['id_nkpp']?>" method="post" class="mb-2">
+
+                            <input type="hidden" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="sasaran" value="<?php echo $nkpp["nilai_kinerja_sasaran"]?>">
+
+                            <input type="hidden" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="nkp" value="<?php echo $nkpp["nilai_kinerja_nkp"]?>">
+
+                            <!-- <a href="/kt/detail_nkpp/<?= $nkpp['id_nkpp']?>" class="btn btn-primary mb-3">Detail</a> -->
+                            <button type="submit" class="btn btn-primary">Detail</button>
+                            </form>
+                            <a href="/kt/nkpp/delete/<?= $nkpp['id_nkpp']?>" class="btn btn-danger mb-3">Hapus</a>
+                        </td>
+                    </tr>
+                         <?php endforeach; ?>
                             </table>
                         </div>
                     </div>

@@ -69,21 +69,21 @@
                         </div>
                         <div class="card-body">
                             <div class="text-center">
-                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="../img/undraw_posting_photo.svg" alt="...">
+                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="<?php echo base_url(); ?>/img/undraw_posting_photo.svg" alt="...">
                             </div>
                             <div class="profile">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <p><strong>Nama :</strong> John Doe</p>
-                                        <p><strong>NIP :</strong> 25 tahun</p>
-                                        <p><strong>Email :</strong> johndoe@example.com</p>
+                                    <p><strong>Nama :</strong> <?=$pj['nama_pj'];?></p>
+                                        <p><strong>NIP :</strong> <?=$pj['nip_pj'];?></p>
+                                        <p><strong>Email :</strong> <?=$pj['email_pj'];?></p>
                                     </div>
                                     <div class="col-md-6">
-                                        <p><strong>Periode :</strong> Laki-laki</p>
-                                        <p><strong>No. Surat Dinas :</strong> Laki-laki</p>
+                                        <p><strong>Periode :</strong> <?=$pj['periode_pj'];?></p>
+                                        <p><strong>No. Surat Dinas :</strong> <?=$pj['no_surat_dinas_pj'];?></p>
                                     </div>
                                     <div class="px-2 card-body">
-                                        <a href="/pj/profile" class="btn btn-primary">Ubah Profile</a>
+                                        <a href="/pj/profile/<?php echo $_SESSION['id'];?>" class="btn btn-primary">Ubah Profile</a>
                                     </div>
                                 </div>
                             </div>

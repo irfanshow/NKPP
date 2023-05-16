@@ -62,7 +62,7 @@
                     <div class="row">
                         <div class="card-body">
                             <table style="text-align: center;" id="example4" class="table table-bordered table-hover">
-                                <th style="width: 1100px;">Periode :</th>
+                                <th style="width: 1100px;">Periode : <?php echo $sasaranPT['periode_pt'];?></th>
                             </table>
                             <table id="example2" class="table table-bordered table-hover">
                                 <tr>
@@ -74,25 +74,33 @@
                                 </tr>
                                 <tr>
                                     <td>1.</td>
-                                    <td>Menyusun dan melaksanakan PKP</td>
-                                    <td>PKP</td>
-                                    <td></td>
-                                    <td>Hari</td>
+                                    <td>Mereviu KKP yang telah direviu oleh Ketua Tim (Hot Reviu)</td>
+                                    <td><?php echo $sasaranPT['kuantitas'];?> PKP</td>
+                                    <td><?php echo $sasaranPT['kualitas'];?></td>
+                                    <td><?php echo $sasaranPT['waktu'];?> Hari</td>
                                 </tr>
                                 <tr>
                                     <td>2.</td>
-                                    <td>Menyusun KKP sesuai dengan PKP</td>
-                                    <td>KKP</td>
-                                    <td></td>
-                                    <td>Hari</td>
+                                    <td>Melakukan Bimbingan kepada Ketua Tim</td>
+                                    <td><?php echo $sasaranPT['kuantitas2'];?> KKP</td>
+                                    <td><?php echo $sasaranPT['kualitas2'];?></td>
+                                    <td><?php echo $sasaranPT['waktu2'];?> Hari</td>
                                 </tr>
+                                <tr>
+                                    <td>3.</td>
+                                    <td>Penilaian Kinerja Ketua Tim</td>
+                                    <td><?php echo $sasaranPT['kuantitas3'];?> Form</td>
+                                    <td><?php echo $sasaranPT['kualitas3'];?></td>
+                                    <td><?php echo $sasaranPT['waktu3'];?> Hari</td>
+                                </tr>
+
                             </table>
                             <table id="example4" class="table table-bordered table-hover">
-                                <th style="width: 1100px;">Catatan :</th>
+                                <th style="width: 1100px;">Catatan : <?php echo $sasaranPT['catatan_pt'];?></th>
                             </table>
                             <hr class="sidebar-divider my-0">
                             <div class="row">
-
+                            <form action="/pj/saveSasaranPT/<?php echo $sasaranPT['id_kinerja_pt'];?>" method="POST" enctype="multipart/form-data">
                                 <div class="col">
                                     <div class="mb-3 mt-4">
                                         <h4>
@@ -103,15 +111,15 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="kuantititas" class="form-label">Kuantitas</label>
-                                        <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan realisasi kuantitas yang dihasilkan" name="kuant" required>
+                                        <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan realisasi kuantitas yang dihasilkan" name="kuant1" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="kualitas" class="form-label">Kualitas</label>
-                                        <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan realisasi kualitas yang dihasilkan" name="kuant" required>
+                                        <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan realisasi kualitas yang dihasilkan" name="kual1" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="waktu" class="form-label">Waktu</label>
-                                        <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan realisasi waktu" name="waktu" required>
+                                        <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan realisasi waktu" name="waktu1" required>
                                     </div>
                                     <hr class="sidebar-divider my-0">
                                     <div class="mb-3 mt-4">
@@ -123,15 +131,35 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="kuantititas" class="form-label">Kuantitas</label>
-                                        <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan realisasi kuantitas yang dihasilkan" name="kuant" required>
+                                        <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan realisasi kuantitas yang dihasilkan" name="kuant2" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="kualitas" class="form-label">Kualitas</label>
-                                        <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan realisasi kualitas yang dihasilkan" name="kuant" required>
+                                        <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan realisasi kualitas yang dihasilkan" name="kual2" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="waktu" class="form-label">Waktu</label>
-                                        <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan realisasi waktu" name="waktu" required>
+                                        <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan realisasi waktu" name="waktu2" required>
+                                    </div>
+                                    <hr class="sidebar-divider my-0">
+                                    <div class="mb-3 mt-4">
+                                        <h4>
+                                            <strong>
+                                                03. Nama Tugas Jabatan : Penilaian Kinerja Ketua Tim
+                                            </strong>
+                                        </h4>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="kuantititas" class="form-label">Kuantitas</label>
+                                        <input type="number" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan realisasi kuantitas yang dihasilkan" name="kuant3" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="kualitas" class="form-label">Kualitas</label>
+                                        <input type="number" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan realisasi kualitas yang dihasilkan" name="kual3" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="waktu" class="form-label">Waktu</label>
+                                        <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan realisasi waktu" name="waktu3" required>
                                     </div>
                                     <hr class="sidebar-divider my-0">
                                     <div class="mb-3 mt-4">
@@ -145,6 +173,12 @@
                                         <label for="periode" class="form-label">Periode</label>
                                         <input type="number" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan periode pelaksanaan" name="periode" required>
                                     </div>
+
+                                    <input type="hidden" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan periode pelaksanaan" name="waktuPT1" value ="<?php echo $sasaranPT['waktu'];?>">
+
+                                    <input type="hidden" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan periode pelaksanaan" name="waktuPT2" value ="<?php echo $sasaranPT['waktu2'];?>">
+
+                                    <input type="hidden" class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan periode pelaksanaan" name="waktuPT3" value ="<?php echo $sasaranPT['waktu3'];?>">
 
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>

@@ -6,6 +6,7 @@ use App\Models\KtModel;
 use App\Models\NkpModel;
 use App\Models\NktModel;
 use App\Models\Bimbingan;
+use App\Models\NkppModel;
 use App\Models\NKPATModel;
 use App\Models\NKPKTModel;
 use App\Models\NKTATModel;
@@ -220,8 +221,10 @@ class KTController extends BaseController
         
         
         $nkpKTModel = new NKPKTModel();
+        $nkppModel = new NkppModel();
 
         $data=[
+            'nilai_nkp' => $nkp,
             'nilai' => $nkp,
             'periode'=>$this->request->getPost('periode'),
             'status'=> "proses",
@@ -233,8 +236,21 @@ class KTController extends BaseController
             
         ];
 
+        $nilai_kinerja = $nkp * 20/100;
+        $data2=[
+            'nilai_nkp' => $nkp,
+            'nilai_kinerja_nkp' => $nilai_kinerja,
+            'periode'=>$this->request->getPost('periode'),
+            'status'=> "proses",
+            'bagian' => "kt",
+            'nip' =>$this->request->getPost('nip')
+            
+
+            
+        ];
 
         $nkpKTModel->protect(false)->save($data);
+        $nkppModel->protect(false)->save($data2);
 
 
                 
@@ -314,6 +330,7 @@ class KTController extends BaseController
         
         
         $nkpKTModel = new NKPKTModel();
+        $nkppModel = new NkppModel();
 
         $data=[
             'nilai' => $nkp,
@@ -327,9 +344,22 @@ class KTController extends BaseController
             
         ];
 
+        $nilai_kinerja = $nkp * 20/100;
+        $data2=[
+            'nilai_nkp' => $nkp,
+            'nilai_kinerja_sasaran' => $nilai_kinerja,
+            'periode'=>$this->request->getPost('periode'),
+            'status'=> "proses",
+            'bagian' => "kt",
+            'nip' =>$this->request->getPost('nip')
+            
+            
 
+            
+        ];
 
         $nkpKTModel->protect(false)->update($id,$data);
+        $nkppModel->protect(false)->update($id,$data2);
         // $nkpSoalModel->protect(false)->save($data1);
 
                 
@@ -420,8 +450,11 @@ class KTController extends BaseController
         
         
         $nktKTModel = new NKTKTModel();
+        $nkppModel = new NkppModel();
+        
 
         $data=[
+            'nilai_nkt' => $nkt,
             'nilai' => $nkt,
             'periode'=>$this->request->getPost('periode'),
             'status'=> "proses",
@@ -436,8 +469,7 @@ class KTController extends BaseController
 
         $nktKTModel->protect(false)->save($data);
 
-
-                
+     
         // $file->move(ROOTPATH . 'public/assets/img/',$nama);
         return redirect()->to('/kt/nkt');
     }
@@ -525,6 +557,7 @@ class KTController extends BaseController
         
         
         $nktKTModel = new NKTKTModel();
+        $nkppModel = new NkppModel();
 
         $data=[
             'nilai' => $nkt,
@@ -540,7 +573,6 @@ class KTController extends BaseController
 
 
         $nktKTModel->protect(false)->update($id,$data);
-
 
                 
         // $file->move(ROOTPATH . 'public/assets/img/',$nama);
@@ -779,12 +811,31 @@ class KTController extends BaseController
     //NKPP
     public function NKPPVIew()
     {
-        return view('kt/nkpp');
+        $nkppModel = new NkppModel();
+        
+        $nkpp = $nkppModel->getKT();
+
+        $data=[
+            'nkpp' => $nkpp
+        ];
+        return view('kt/nkpp',$data);
     }
 
-    public function DetailNKPP()
+    public function DetailNKPP($id)
     {
-        return view('kt/detail_nkpp');
+        $nkppModel = new NkppModel();
+        
+        $nkpp = $nkppModel->find($id);
+        $nilai_sasaran=$this->request->getPost('sasaran');
+        $nilai_nkp=$this->request->getPost('nkp');
+        $nilai_nkt=$this->request->getPost('nkt');
+
+        $nilai_nkpp = $nilai_sasaran + $nilai_nkp + $nilai_nkt;
+        $data=[
+            'nkpp' => $nkpp,
+            'nilai_nkpp' => $nilai_nkpp,
+        ];
+        return view('kt/detail_nkpp',$data);
     }
 
         //ANGGOTA
@@ -879,6 +930,8 @@ class KTController extends BaseController
             $nkpATModel = new NKPATModel();
            
             $data=[
+                
+                'nilai_nkp' => $nkp,
                 'realisasi_nilai' => $nkp,
                 'periode'=>$this->request->getPost('periode'),
                 'status'=> "realisasi",
@@ -996,6 +1049,7 @@ class KTController extends BaseController
             $nktATModel = new NKTATModel();
        
             $data=[
+                'nilai_nkt' => $nkt,
                 'realisasi_nilai' => $nkt,
                 'periode'=>$this->request->getPost('periode'),
     
@@ -1126,6 +1180,7 @@ class KTController extends BaseController
                 'status'=>"sudah",
                 'nilai'=>$nilaiSKP1,
                 'nilai2'=>$nilaiSKP2,
+                'realisasi_nilai'=>$TotalnilaiSKP,
                 'nilai_skp'=>$TotalnilaiSKP,
                 // 'realisasi_nilai_at'=>$TotalnilaiSKP,
                 // 'nilai'=>$this->request->getPost('pt'),
@@ -1191,23 +1246,7 @@ class KTController extends BaseController
 
 
             $bimbinganModel = new Bimbingan();
-            $data2=[
-                'tanggapan_satu' => $this->request->getPost('tanggapan1'),
-                'tanggapan_dua'=> $this->request->getPost('tanggapan2'),
-                // 'nama'=>$this->request->getPost('nama'),
-                // 'periode'=>$this->request->getPost('periode'),
-                // 'nip' => $this->request->getPost('nip'),
-                // 'bagian' =>"at",
-                'status' => "sudah ditanggapi",
-    
-                // 'nilai'=>$this->request->getPost('pt'),
-                // 'tanggal'=>$this->request->getPost('periode'),
-                
-            ];
-    
-    
-            $bimbinganModel->protect(false)
-            ->update($id,$data2);
+
 
             return view ("kt/anggota/do_tanggapan",$data);
         }
@@ -1251,7 +1290,7 @@ class KTController extends BaseController
         public function TanggapanBimbingan()
         {
             $bimbinganModel = new Bimbingan();
-            $bimbingan = $bimbinganModel->findAll();
+            $bimbingan = $bimbinganModel->getAT();
     
             $data=[
                 'bimbingan' => $bimbingan

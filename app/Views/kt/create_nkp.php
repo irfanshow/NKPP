@@ -86,6 +86,7 @@
                                 </tbody>
                             </table>
 
+
                             <input type="hidden" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="nama" value="<?php echo $_SESSION['nama']?>">
 
                             <input type="hidden" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="nip" value="<?php echo $_SESSION['nip']?>">

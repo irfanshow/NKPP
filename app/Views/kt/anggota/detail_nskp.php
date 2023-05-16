@@ -99,9 +99,9 @@
                         <td><?php echo $sasaranAT['kualitas2']; ?></td>
                         <td><?php echo $sasaranAT['waktu2']; ?></td>
                         <td><?php echo $sasaranAT['nilai2']; ?></td>
-                        <td><?php echo $sasaranAT['realisasi_kuantitas'];?></td>
-                        <td><?php echo $sasaranAT['realisasi_kualitas']; ?></td>
-                        <td><?php echo $sasaranAT['realisasi_waktu']; ?></td>
+                        <td><?php echo $sasaranAT['realisasi_kuantitas2'];?></td>
+                        <td><?php echo $sasaranAT['realisasi_kualitas2']; ?></td>
+                        <td><?php echo $sasaranAT['realisasi_waktu2']; ?></td>
 
                     </tr>
                   

@@ -6,9 +6,13 @@ use App\Models\PtModel;
 use App\Models\NkpModel;
 use App\Models\NktModel;
 use App\Models\Bimbingan;
+use App\Models\NKPATModel;
 use App\Models\NKPKTModel;
 use App\Models\NKPPTModel;
+use App\Models\NKTATModel;
+use App\Models\NKTKTModel;
 use App\Models\NKTPTModel;
+use App\Models\SasaranATModel;
 use App\Models\SasaranKTModel;
 use App\Models\SasaranPTModel;
 use App\Controllers\BaseController;
@@ -218,6 +222,7 @@ class PTController extends BaseController
             $nkpPTModel = new NKPPTModel();
     
             $data=[
+                'nilai_nkp' => $nkp,
                 'nilai' => $nkp,
                 'periode'=>$this->request->getPost('periode'),
                 'status'=> "proses",
@@ -334,6 +339,16 @@ class PTController extends BaseController
             // $file->move(ROOTPATH . 'public/assets/img/',$nama);
             return redirect()->to('/pt/nkp');
         }
+
+        public function deleteNKP($id)
+        {
+            $nktPTModel = new NKPPTModel();
+            $nktPTModel->delete($id);
+    
+    
+            return redirect()->to('/pt/nkp');
+        }
+    
         //NKT
         public function NKTVIew()
         {
@@ -390,6 +405,7 @@ class PTController extends BaseController
             $nktPTModel = new NKTPTModel();
     
             $data=[
+                'nilai_nkt' => $nkt,
                 'nilai' => $nkt,
                 'periode'=>$this->request->getPost('periode'),
                 'status'=> "proses",
@@ -529,13 +545,13 @@ class PTController extends BaseController
             if(!$this->validate([
                 'kuant1' => 'required',
                 'kual1' => 'required',
-                'waPtu1' => 'required',
+                'waktu1' => 'required',
                 'kuant2' => 'required',
                 'kual2' => 'required',
-                'waPtu2' => 'required',
+                'waktu2' => 'required',
                 'kuant3' => 'required',
                 'kual3' => 'required',
-                'waPtu3' => 'required',
+                'waktu3' => 'required',
                 'periode' =>'required',
     
                 
@@ -546,15 +562,15 @@ class PTController extends BaseController
             $data1=[
                 'kuantitas' => $this->request->getPost('kuant1'),
                 'kualitas'=> $this->request->getPost('kual1'),
-                'waPtu'=>$this->request->getPost('waPtu1'),
+                'waktu'=>$this->request->getPost('waktu1'),
     
                 'kuantitas2' => $this->request->getPost('kuant2'),
                 'kualitas2'=> $this->request->getPost('kual2'),
-                'waPtu2'=>$this->request->getPost('waPtu2'),
+                'waktu2'=>$this->request->getPost('waktu2'),
     
                 'kuantitas3' => $this->request->getPost('kuant3'),
                 'kualitas3'=> $this->request->getPost('kual3'),
-                'waPtu3'=>$this->request->getPost('waPtu3'),
+                'waktu3'=>$this->request->getPost('waktu3'),
     
                 'periode_pt'=>$this->request->getPost('periode'),
                 'catatan_pt'=>$this->request->getPost('catatan'),
@@ -607,13 +623,13 @@ class PTController extends BaseController
             if(!$this->validate([
                 'kuant1' => 'required',
                 'kual1' => 'required',
-                'waPtu1' => 'required',
+                'waktu1' => 'required',
                 'kuant2' => 'required',
                 'kual2' => 'required',
-                'waPtu2' => 'required',
+                'waktu2' => 'required',
                 'kuant3' => 'required',
                 'kual3' => 'required',
-                'waPtu3' => 'required',
+                'waktu3' => 'required',
                 'periode' =>'required',
     
                 
@@ -624,15 +640,15 @@ class PTController extends BaseController
             $data1=[
                 'kuantitas' => $this->request->getPost('kuant1'),
                 'kualitas'=> $this->request->getPost('kual1'),
-                'waPtu'=>$this->request->getPost('waPtu1'),
+                'waktu'=>$this->request->getPost('waktu1'),
     
                 'kuantitas2' => $this->request->getPost('kuant2'),
                 'kualitas2'=> $this->request->getPost('kual2'),
-                'waPtu2'=>$this->request->getPost('waPtu2'),
+                'waktu2'=>$this->request->getPost('waktu2'),
     
                 'kuantitas3' => $this->request->getPost('kuant3'),
                 'kualitas3'=> $this->request->getPost('kual3'),
-                'waPtu3'=>$this->request->getPost('waPtu3'),
+                'waktu3'=>$this->request->getPost('waktu3'),
     
                 'periode_pt'=>$this->request->getPost('periode'),
                 'catatan_pt'=>$this->request->getPost('catatan'),
@@ -722,52 +738,375 @@ class PTController extends BaseController
 
         //Anggota
           //NKP
-        public function DetailNKPAnggota()
+        public function DetailNKPAnggota($id)
         {
-            return view ("pt/anggota/detail_nkp");
+            $nkpATModel = new NKPATModel();
+            $nkp = $nkpATModel->find($id);
+            $nkpModel = new NkpModel();
+            $soal = $nkpModel->getAT();
+            $data= [
+                'nkp'=>$nkp,
+                'soal'=>$soal
+    
+            ];
+            return view ("pt/anggota/detail_nkp",$data);
         }
 
         public function ReviewNKP()
         {
-            return view ("pt/anggota/review_nkp");
+            $nkpATModel = new NKPATModel();
+            $nkpAT = $nkpATModel->findAll();
+         
+            $data= [
+                'nkpAT'=>$nkpAT
+            ];
+            return view ("pt/anggota/review_nkp",$data);
         }
 
-        //NPT
-        public function DetailNPTAnggota()
+        public function saveNKPAT($id)
         {
-            return view ("pt/anggota/detail_nPt");
+            // $file = $this->request->getFile('foto');
+            // $nama = $file ->getRandomName();
+            if(!$this->validate([
+                'periode' => 'required',
+    
+                
+            ])){
+                return redirect()->to('/pt/anggota/do_review_nkp/'.$id);
+            }
+    
+            $no = 1;
+            $no1 = $this->request->getPost('nilai'.''.$no) * 0.25;
+            $no2 = $this->request->getPost('nilai'.''.$no+1) * 0.25;
+            $no3 = $this->request->getPost('nilai'.''.$no+2) * 0.2;
+            $no4 = $this->request->getPost('nilai'.''.$no+3) * 0.3;
+            $total1 = $no1+$no2+$no3+$no4;
+            $total1 = $total1*0.3;
+    
+            $no5 = $this->request->getPost('nilai'.''.$no+4) * 0.4;
+            $no6 = $this->request->getPost('nilai'.''.$no+5) * 0.6;
+            $total2 = $no5+$no6;
+            $total2 = $total2*0.2;
+    
+            $no7 = $this->request->getPost('nilai'.''.$no+6) * 0.5;
+            $no8 = $this->request->getPost('nilai'.''.$no+7) * 0.5;
+            $total3 = $no7+$no8;
+            $total3 = $total3*0.3;
+    
+            $no9 = $this->request->getPost('nilai'.''.$no+8) * 0.2;
+            $no10 = $this->request->getPost('nilai'.''.$no+9) * 0.25;
+            $no11 = $this->request->getPost('nilai'.''.$no+10) * 0.25;
+            $no12 = $this->request->getPost('nilai'.''.$no+11) * 0.3;
+            $total4 = $no9+$no10+$no11+$no12;
+            $total4 = $total4*0.2;
+    
+            $nkp = $total1+$total2+$total3+$total4;
+         
+            
+            
+            $nkpATModel = new NKPATModel();
+           
+            $data=[
+                'nilai_nkp' => $nkp,
+                'review_nilai' => $nkp,
+                'periode'=>$this->request->getPost('periode'),
+                'status'=> "review",
+
+    
+                // 'nilai'=>$this->request->getPost('pt'),
+                // 'tanggal'=>$this->request->getPost('periode'),
+                
+            ];
+   
+    
+    
+            $nkpATModel->protect(false)->update($id,$data);
+            // $nkpSoalModel->protect(false)->save($data1);
+    
+                    
+            // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+            return redirect()->to('/pt/anggota/detail_nkp/'.$id);
         }
 
-        public function ReviewNPT()
+        //NKT
+        public function DetailNKTAnggota($id)
         {
-            return view ("pt/anggota/review_nPt");
+            $nktATModel = new NKTATModel();
+            $nkt = $nktATModel->find($id);
+            $nktModel = new NktModel();
+            $soal = $nktModel->getAT();
+            $data= [
+                'nkt'=>$nkt,
+                'soal'=>$soal
+    
+            ];
+
+            return view ("pt/anggota/detail_nkt",$data);
+        }
+
+        public function ReviewNKT()
+        {
+            $nktATModel = new NKTATModel();
+            $nktAT = $nktATModel->findAll();
+         
+            $data= [
+                'nktAT'=>$nktAT
+            ];
+          
+            return view ("pt/anggota/review_nkt",$data);
+        }
+
+        public function saveNKTAT($id)
+        {
+            // $file = $this->request->getFile('foto');
+            // $nama = $file ->getRandomName();
+            if(!$this->validate([
+                'periode' => 'required',
+    
+                
+            ])){
+                return redirect()->to('/pt/anggota/do_review_nkt/'.$id);
+            }
+    
+            $no = 1;
+            $no1 = $this->request->getPost('nilai'.''.$no) * 0.4;
+            $no2 = $this->request->getPost('nilai'.''.$no+1) * 0.6;
+            $total1 = $no1+$no2;
+            $total1 = $total1*0.1;
+    
+            $no3 = $this->request->getPost('nilai'.''.$no+2) * 0.2;
+            $no4 = $this->request->getPost('nilai'.''.$no+3) * 0.3;
+            $no5 = $this->request->getPost('nilai'.''.$no+4) * 0.5;
+            $total2 = $no3+$no4+$no5;
+            $total2 = $total2*0.25;
+    
+            $no6 = $this->request->getPost('nilai'.''.$no+5) * 0.5;
+            $no7 = $this->request->getPost('nilai'.''.$no+6) * 0.3;
+            $no8 = $this->request->getPost('nilai'.''.$no+7) * 0.2;
+            $total3 = $no6+$no7+$no8;
+            $total3 = $total3*0.25;
+    
+            $no9 = $this->request->getPost('nilai'.''.$no+8) * 0.33;
+            $no10 = $this->request->getPost('nilai'.''.$no+9) * 0.34;
+            $no11 = $this->request->getPost('nilai'.''.$no+10) * 0.33;
+            $total4 = $no9+$no10+$no11;
+            $total4 = $total4*0.25;
+    
+            $no12 = $this->request->getPost('nilai'.''.$no+11) * 0.4;
+            $no13 = $this->request->getPost('nilai'.''.$no+11) * 0.2;
+            $no14 = $this->request->getPost('nilai'.''.$no+11) * 0.4;
+            $total5 = $no12+$no13+$no14;
+            $total5 = $total5*0.15;
+    
+            $nkt = $total1+$total2+$total3+$total4+$total5;
+         
+         
+            
+            
+            $nktATModel = new NKTATModel();
+       
+            $data=[
+                'nilai_nkt' => $nkt,
+                'review_nilai' => $nkt,
+                'periode'=>$this->request->getPost('periode'),
+    
+                'status'=> "sudah review",
+    
+                // 'nilai'=>$this->request->getPost('pt'),
+                // 'tanggal'=>$this->request->getPost('periode'),
+                
+            ];
+    
+    
+    
+            $nktATModel->protect(false)->update($id,$data);
+        
+    
+                    
+            // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+            return redirect()->to('/pt/anggota/detail_nkt/'.$id);
         }
 
         //Sasaran
-        public function DetailSasaranAnggota()
+        public function DetailSasaranAnggota($id)
         {
-            return view ("pt/anggota/detail_sasaran");
+            $SasaranATModel = new SasaranATModel();
+
+            $sasaranAT = $SasaranATModel->find($id);
+         
+            $data= [
+                'sasaranAT'=>$sasaranAT
+            ];
+            return view ("pt/anggota/detail_sasaran",$data);
         }
 
         public function ReviewSasaran()
         {
-            return view ("pt/anggota/review_sasaran");
+            $SasaranATModel = new SasaranATModel();
+        
+            $sasaranAT = $SasaranATModel->findAll();
+         
+            $data= [
+                'sasaranAT'=>$sasaranAT
+            ];
+            return view ("pt/anggota/review_sasaran",$data);
+        }
+
+        public function saveSasaranAT($id)
+        {
+            // $file = $this->request->getFile('foto');
+            // $nama = $file ->getRandomName();
+            if(!$this->validate([
+                'kuant' => 'required',
+                'kual' => 'required',
+                'waktu' => 'required',
+                'kuant2' => 'required',
+                'kual2' => 'required',
+                'waktu2' => 'required',
+                'periode' =>'required',
+    
+                
+            ])){
+                return redirect()->to('/pt/anggota/do_review_sasaran/'.$id);
+            }
+
+            $sasaranModel = new SasaranATModel();
+
+            //no1
+            $waktuTarget = (int)$this->request->getPost('waktuAT1');
+   
+            $waktuRealisasi = (int)$this->request->getPost('waktu');
+
+            //no2
+            $waktuTarget2 = (int)$this->request->getPost('waktuAT2');
+         
+            $waktuRealisasi2 = (int)$this->request->getPost('waktu2');
+            
+            // var_dump($waktuTarget);
+
+            //RUmus Persentase1
+            $totalPersentase = 0;
+            
+            $persenWaktu = 100 - (($waktuTarget / $waktuRealisasi)* 100) ;
+    
+
+            if($persenWaktu > 24)
+            {
+                $totalPersentase = ((((1.76 * $waktuTarget / $waktuRealisasi) / $waktuTarget)*100)-100);
+                
+
+            }
+            else if($persenWaktu < 24)
+            {
+                $totalPersentase = 1.76 * $waktuTarget / $waktuRealisasi * 100;
+                
+            }
+
+            //Rumus persentase2
+            $totalPersentase2 = 0;
+
+            $persenWaktu2 = 100 - (($waktuTarget2 / $waktuRealisasi2)* 100) ;
+
+            
+            if($persenWaktu2 > 24)
+            {
+                $totalPersentase2 = ((((1.76 * $waktuTarget2 / $waktuRealisasi2) / $waktuTarget2)*100)-100);
+            }
+            else if($persenWaktu2 < 24)
+            {
+                $totalPersentase2 = 1.76 * $waktuTarget2 / $waktuRealisasi2 * 100;
+            }
+            
+            //Rumus Perhitungan no 1
+            $perhitungan1 = $waktuTarget + $waktuRealisasi + $totalPersentase;
+            
+            //Rumus Perhitungan no 2
+            $perhitungan2 = $waktuTarget2 + $waktuRealisasi2 + $totalPersentase2;
+
+            //Kotak merah
+            $nilaiSKP1 = $perhitungan1/3;
+            $nilaiSKP2 = $perhitungan2/3;
+
+            // var_dump($perhitungan1);
+            // var_dump($nilaiSKP1);
+            // var_dump($nilaiSKP2);
+
+
+
+            //Kotak hijau
+            $TotalnilaiSKP = $nilaiSKP1 + $nilaiSKP2 /2;
+           
+
+            $data1=[
+                'review_kuantitas' => $this->request->getPost('kuant'),
+                'review_kualitas'=> $this->request->getPost('kual'),
+                'review_waktu'=>$this->request->getPost('waktu'),
+                'review_kuantitas2' => $this->request->getPost('kuant2'),
+                'review_kualitas2'=> $this->request->getPost('kual2'),
+                'review_waktu2'=>$this->request->getPost('waktu2'),
+                'periode_at'=>$this->request->getPost('periode'),
+                'status'=>"sudah",
+                'nilai'=>$nilaiSKP1,
+                'nilai2'=>$nilaiSKP2,
+                'nilai_skp'=>$TotalnilaiSKP,
+                'review_nilai'=>$TotalnilaiSKP,
+                // 'realisasi_nilai_at'=>$TotalnilaiSKP,
+                // 'nilai'=>$this->request->getPost('pt'),
+                // 'tanggal'=>$this->request->getPost('periode'),
+                
+            ];
+    
+    
+            $sasaranModel->protect(false)
+            ->update($id,$data1);
+            
+                    
+            // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+            return redirect()->to('/pt/anggota/detail_sasaran/'.$id);
         }
 
         //Do
-        public function DoReviewNKP()
+        public function DoReviewNKP($id)
         {
-            return view ("pt/anggota/do_review_nkp");
+            $nkpATModel = new NKPATModel();
+            $nkp = $nkpATModel->find($id);
+            $nkpModel = new NkpModel();
+            $soal = $nkpModel->getAT();
+    
+            $data= [
+               'nkp'=>$nkp,
+                'soal'=>$soal
+    
+            ];
+            return view ("pt/anggota/do_review_nkp",$data);
         }
 
-        public function DoReviewNPT()
+        public function DoReviewNKT($id)
         {
-            return view ("pt/anggota/do_review_nPt");
+            $nktATModel = new NKTATModel();
+            $nkt = $nktATModel->find($id);
+            $nktModel = new NktModel();
+            $soal = $nktModel->getAT();
+    
+            $data= [
+               'nkt'=>$nkt,
+                'soal'=>$soal
+    
+            ];
+
+            return view ("pt/anggota/do_review_nkt",$data);
         }
 
-        public function DoReviewSasaran()
+        public function DoReviewSasaran($id)
         {
-            return view ("pt/anggota/do_review_sasaran");
+            $SasaranATModel = new SasaranATModel();
+        
+            $sasaranAT = $SasaranATModel->find($id);
+         
+            $data= [
+                'sasaranAT'=>$sasaranAT
+            ];
+            return view ("pt/anggota/do_review_sasaran",$data);
         }
 
         //KEtua
@@ -863,6 +1202,7 @@ class PTController extends BaseController
             $nkpKTModel = new NKPKTModel();
     
             $data=[
+                'nilai_nkp' => $nkp,
                 'realisasi_nilai' => $nkp,
                 'periode'=>$this->request->getPost('periode'),
                 'status'=> "realisasi",
@@ -884,20 +1224,118 @@ class PTController extends BaseController
     
 
         //NKT
-        public function DetailNKT_Ketua()
+        public function DetailNKT_Ketua($id)
         {
-            return view ("pt/ketua/detail_nkt");
+            $nktKTModel = new NKTKTModel();
+            $nkt = $nktKTModel->find($id);
+            $nktModel = new NktModel();
+            $soal = $nktModel->getKT();
+            $data= [
+                'nkt'=>$nkt,
+                'soal'=>$soal
+    
+            ];
+            return view ("pt/ketua/detail_nkt",$data);
         }
 
         public function NKT_Ketua()
         {
-            return view ("pt/ketua/nkt");
+            $nktKTModel = new NKTKTModel();
+            $nktKT = $nktKTModel->findAll();
+         
+            $data= [
+                'nktKT'=>$nktKT
+            ];
+          
+            return view ("pt/ketua/nkt",$data);
         }
 
-        public function RealisasiNKT()
+        public function RealisasiNKT($id)
         {
-            return view ("pt/ketua/realisasi_nkt");
+            $nktKTModel = new NKTKTModel();
+            $nkt = $nktKTModel->find($id);
+            $nktModel = new NktModel();
+            $soal = $nktModel->getAT();
+    
+            $data= [
+               'nkt'=>$nkt,
+                'soal'=>$soal
+    
+            ];
+            return view ("pt/ketua/realisasi_nkt",$data);
         }
+
+        public function saveNKTKT($id)
+        {
+            // $file = $this->request->getFile('foto');
+            // $nama = $file ->getRandomName();
+            if(!$this->validate([
+                'periode' => 'required',
+    
+                
+            ])){
+                return redirect()->to('pt/ketua/realisasi_nkt/'.$id);
+            }
+    
+            $no = 1;
+            $no1 = $this->request->getPost('nilai'.''.$no) * 0.2;
+            $no2 = $this->request->getPost('nilai'.''.$no+1) * 0.3;
+            $no3 = $this->request->getPost('nilai'.''.$no+2) * 0.5;
+            $total1 = $no1+$no2+$no3;
+            $total1 = $total1*0.2;
+    
+    
+            $no4 = $this->request->getPost('nilai'.''.$no+3) * 0.2;
+            $no5 = $this->request->getPost('nilai'.''.$no+4) * 0.4;
+            $no6 = $this->request->getPost('nilai'.''.$no+5) * 0.4;
+            $total2 = $no4+$no5+$no6;
+            $total2 = $total2*0.15;
+    
+            $no7 = $this->request->getPost('nilai'.''.$no+6) * 0.2;
+            $no8 = $this->request->getPost('nilai'.''.$no+7) * 0.4;
+            $no9 = $this->request->getPost('nilai'.''.$no+8) * 0.4;
+            $total3 = $no7+$no8+$no9;
+            $total3 = $total3*0.15;
+    
+            $no10 = $this->request->getPost('nilai'.''.$no+9) * 0.3;
+            $no11 = $this->request->getPost('nilai'.''.$no+10) * 0.3;
+            $no12 = $this->request->getPost('nilai'.''.$no+11) * 0.4;
+            $total4 = $no10+$no11+$no12 ;
+            $total4 = $total4*0.2;
+    
+    
+    
+            $no13 = $this->request->getPost('nilai'.''.$no+12) * 1;
+            $total5 = $no13;
+            $total5 = $total5*0.3;
+    
+            $nkt = $total1+$total2+$total3+$total4+$total5;
+         
+            
+            
+            $nktKTModel = new NKTKTModel();
+    
+            $data=[
+                'nilai_nkt' => $nkt,
+                'realisasi_nilai' => $nkt,
+                'periode'=>$this->request->getPost('periode'),
+                'status'=> "sudah realisasi",
+
+    
+                // 'nilai'=>$this->request->getPost('pt'),
+                // 'tanggal'=>$this->request->getPost('periode'),
+                
+            ];
+    
+    
+            $nktKTModel->protect(false)->update($id,$data);
+    
+    
+                    
+            // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+            return redirect()->to('/pt/ketua/detail_nkt/'.$id);
+        }
+    
 
         //NSKP
         public function Realisasi($id)
@@ -1067,9 +1505,9 @@ class PTController extends BaseController
            
 
             $data1=[
-                'realisasi_kuantitas' => $this->request->getPost('kuant'),
-                'realisasi_kualitas'=> $this->request->getPost('kual'),
-                'realisasi_waktu'=>$this->request->getPost('waktu'),
+                'realisasi_kuantitas' => $this->request->getPost('kuant1'),
+                'realisasi_kualitas'=> $this->request->getPost('kual1'),
+                'realisasi_waktu'=>$this->request->getPost('waktu1'),
                 'realisasi_kuantitas2' => $this->request->getPost('kuant2'),
                 'realisasi_kualitas2'=> $this->request->getPost('kual2'),
                 'realisasi_waktu2'=>$this->request->getPost('waktu2'),
@@ -1083,8 +1521,8 @@ class PTController extends BaseController
                 'status'=>"sudah",
                 'nilai'=>$nilaiSKP1,
                 'nilai2'=>$nilaiSKP2,
-                'nilai3'=>$nilaiSKP1,
-                'nilai4'=>$nilaiSKP2,
+                'nilai3'=>$nilaiSKP3,
+                'nilai4'=>$nilaiSKP4,
                 'nilai_skp'=>$TotalnilaiSKP,
                 // 'realisasi_nilai_kt'=>$TotalnilaiSKP,
                 // 'nilai'=>$this->request->getPost('pt'),
@@ -1115,15 +1553,67 @@ class PTController extends BaseController
         }
 
         //Tanggapan
-        public function DoTanggapan()
+        public function DoTanggapan($id)
         {
-            return view ("pt/ketua/do_tanggapan");
+            $bimbinganModel = new Bimbingan();
+            $bimbingan = $bimbinganModel->find($id);
+    
+            $data=[
+                'bimbingan' => $bimbingan
+            ];
+
+
+            $bimbinganModel = new Bimbingan();
+
+
+            return view ("pt/ketua/do_tanggapan",$data);
+        }
+
+        public function SaveTanggapan($id)
+        {
+
+            if(!$this->validate([
+                'tanggapan1' => 'required',
+                'tanggapan2' => 'required',
+                
+            ])){
+                return redirect()->to('/pt/ketua/do_tanggapan/'.$id);
+            }
+
+            $bimbinganModel = new Bimbingan();
+
+            $data2=[
+                'tanggapan_satu' => $this->request->getPost('tanggapan1'),
+                'tanggapan_dua'=> $this->request->getPost('tanggapan2'),
+                // 'nama'=>$this->request->getPost('nama'),
+                // 'periode'=>$this->request->getPost('periode'),
+                // 'nip' => $this->request->getPost('nip'),
+                // 'bagian' =>"at",
+                'status' => "sudah ditanggapi",
+    
+                // 'nilai'=>$this->request->getPost('pt'),
+                // 'tanggal'=>$this->request->getPost('periode'),
+                
+            ];
+    
+    
+            $bimbinganModel->protect(false)
+            ->update($id,$data2);
+
+            return redirect()->to("pt/ketua/tanggapan_bimbingan");
+          
         }
 
         //Bimbingan
         public function TanggapanBimbingan()
         {
-            return view ("pt/ketua/tanggapanbimbingan");
+            $bimbinganModel = new Bimbingan();
+            $bimbingan = $bimbinganModel->getKT();
+    
+            $data=[
+                'bimbingan' => $bimbingan
+            ];
+            return view ("pt/ketua/tanggapanbimbingan",$data);
         }
 
 

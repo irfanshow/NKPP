@@ -60,6 +60,7 @@
 
                     <!-- Page Heading -->
                     <div class="row">
+                    <form action="/pj/pengendali/saveTanggapan/<?php echo $bimbingan['idBimbingan']?>" method="POST" enctype="multipart/form-data">
                         <div class="card-body">
                             <table id="example2" class="table table-bordered table-hover">
                                 <tr>
@@ -69,6 +70,12 @@
                                     <th>Bimbingan 1</th>
                                     <th>Bimbingan 2</th>
 
+                                </tr>
+                                <tr>
+                                    <th><?php echo $bimbingan['nama']; ?></th>
+                                    <th><?php echo $bimbingan['nip']; ?></th>
+                                    <th><?php echo $bimbingan['bimbingan_satu']; ?></th>
+                                    <th><?php echo $bimbingan['bimbingan_dua']; ?></th>
                                 </tr>
                             </table>
                             <hr class="sidebar-divider my-0">
@@ -86,6 +93,7 @@
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>

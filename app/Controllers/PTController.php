@@ -1529,6 +1529,7 @@ class PTController extends BaseController
                 'nilai3'=>$nilaiSKP3,
                 'nilai4'=>$nilaiSKP4,
                 'nilai_skp'=>$TotalnilaiSKP,
+                'realisasi_nilai'=>$TotalnilaiSKP,
                 // 'realisasi_nilai_kt'=>$TotalnilaiSKP,
                 // 'nilai'=>$this->request->getPost('pt'),
                 // 'tanggal'=>$this->request->getPost('periode'),

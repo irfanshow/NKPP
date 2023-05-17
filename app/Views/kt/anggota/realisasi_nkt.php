@@ -92,6 +92,9 @@
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
+                            <input type="hidden" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="nip" value="<?php echo $nkp['nip_at']?>">
+                            <input type="hidden" class="form-control" id="catatan" aria-describedby="emailHelp" placeholder="Masukan catatan jika perlu" name="id_nkp" value="<?php echo $nkp['id_nkp_at']?>">
+                            <div class="px-2">
 
                             <div class="px-2">
                                 <button type="submit" class="btn btn-primary">Submit</button>

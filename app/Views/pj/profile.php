@@ -75,9 +75,15 @@
                                         <label for="exampleInputEmail1">Periode</label>
                                         <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukan Periode" name="periode" value ="<?php echo $pj['periode_pj']?>">
                                     </div>
+                                    <label for="file-upload">Foto Saat ini </label>
+                                    <div class="form-group">
+                                        
+                                        <img src='<?php echo base_url() ?>/assets/img/<?php echo $pj['foto_pj']?>' alt="Tidak ditermukan foto" height="200" width="250">
+
+                                    </div>
                                     <div class="form-group">
                                         <label for="file-upload">Upload Gambar </label>
-                                        <input type="file" id="file-upload" name="file-upload">
+                                        <input type="file" id="file-upload" name="foto" >
                                     </div>
                                     <hr>
                                     <div class="col-md-4-px-2">

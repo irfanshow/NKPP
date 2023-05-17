@@ -788,18 +788,23 @@ class KTController extends BaseController
         ])){
             return redirect()->to('/at/profile');
         }
+
+        $file = $this->request->getFile('foto');
+        $nama = $file ->getRandomName();
+
         $ktModel = new KtModel();
         $data1=[
             'nama_kt' => $this->request->getPost('nama'),
             'nip_kt'=> $this->request->getPost('nip'),
             'unit_kerja_kt'=>$this->request->getPost('unit'),
             'periode_kt'=>$this->request->getPost('periode'),
+            'foto_kt'=>$nama,
 
             //Foto
             
         ];
 
-
+        $file->move(ROOTPATH . 'public/assets/img/',$nama);
         $ktModel->protect(false)
         ->update($id,$data1);
 
@@ -1077,6 +1082,23 @@ class KTController extends BaseController
                 // 'tanggal'=>$this->request->getPost('periode'),
                 
             ];
+
+            $nkppModel = new NkppModel();
+
+            $data2=[
+                'nilai_nkt' => $nkt,
+                'nilai_kinerja_nkt' => $nilai_kinerja,
+                'periode'=>$this->request->getPost('periode'),
+                'status'=> "realisasi",
+                'bagian' => "at",
+                'nip' =>$this->request->getPost('nip'),
+                'id_nkt' =>$this->request->getPost('id_nkt'),
+                
+    
+                
+            ];
+    
+            $nkppModel->protect(false)->save($data2);
     
     
     

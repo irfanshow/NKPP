@@ -53,18 +53,23 @@ class PJController extends BaseController
         ])){
             return redirect()->to('/pt/profile/'.$id);
         }
+
+        $file = $this->request->getFile('foto');
+        $nama = $file ->getRandomName();
+
         $pjModel = new PjModel();
         $data1=[
             'nama_pj' => $this->request->getPost('nama'),
             'nip_pj'=> $this->request->getPost('nip'),
             // 'unit_kerja_pt'=>$this->request->getPost('unit'),
             'periode_pj'=>$this->request->getPost('periode'),
+            'foto_pj'=>$nama,
 
             //Foto
             
         ];
 
-
+        $file->move(ROOTPATH . 'public/assets/img/',$nama);
         $pjModel->protect(false)
         ->update($id,$data1);
 

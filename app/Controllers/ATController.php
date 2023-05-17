@@ -739,20 +739,26 @@ class ATController extends BaseController
         ])){
             return redirect()->to('/at/profile');
         }
+
+        $file = $this->request->getFile('foto');
+        $nama = $file ->getRandomName();
+
         $atModel = new AtModel();
         $data1=[
             'nama_at' => $this->request->getPost('nama'),
             'nip_at'=> $this->request->getPost('nip'),
             'unit_kerja_at'=>$this->request->getPost('unit'),
             'periode_at'=>$this->request->getPost('periode'),
+            'foto_at'=>$nama,
 
             //Foto
             
         ];
 
-
+        $file->move(ROOTPATH . 'public/assets/img/',$nama);
         $atModel->protect(false)
         ->update($id,$data1);
+        
 
                 
         // $file->move(ROOTPATH . 'public/assets/img/',$nama);

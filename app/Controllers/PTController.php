@@ -705,18 +705,23 @@ class PTController extends BaseController
             ])){
                 return redirect()->to('/pt/profile/'.$id);
             }
+
+            $file = $this->request->getFile('foto');
+            $nama = $file ->getRandomName();
+
             $ptModel = new PtModel();
             $data1=[
                 'nama_pt' => $this->request->getPost('nama'),
                 'nip_pt'=> $this->request->getPost('nip'),
                 'unit_kerja_pt'=>$this->request->getPost('unit'),
                 'periode_pt'=>$this->request->getPost('periode'),
+                'foto_pt'=>$nama,
     
                 //Foto
                 
             ];
     
-    
+            $file->move(ROOTPATH . 'public/assets/img/',$nama);
             $ptModel->protect(false)
             ->update($id,$data1);
     

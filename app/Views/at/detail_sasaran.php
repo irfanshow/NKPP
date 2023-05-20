@@ -59,7 +59,19 @@
                     <a style="float: right;" href="/at/edit_sasaran/<?php echo $sasaranAT['id_kinerja_anggota'];?>" class="btn btn-primary">Edit Sasaran Kinerja</a>
                     <h3 class="px-2 mb-0 text-gray-800">Detail Data Sasaran Kinerja</h3>
 
-                    <div class="alert alert-success mt-3" role="alert">Sasaran kinerja sudah di realisasi!</div>
+                    <?php 
+                    if ($sasaranAT['status'] == 'belum'){ ?>
+                        <div class="alert alert-danger mt-3" role="alert">Sasaran kinerja belum di realisasi!</div>
+                    <?php }
+                    else{ ?>
+                        
+                        <div class="alert alert-success mt-3" role="alert">Sasaran kinerja sudah di realisasi!</div>
+                    
+                        <?php
+                    }
+                    
+                    ?>
+
                     <table style="text-align: center;" id="example4" class="table table-bordered table-hover">
                         <th style="width: 1100px;">Periode : <?php echo $sasaranAT['periode_at'];?></th>
                     </table>

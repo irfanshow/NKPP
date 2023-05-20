@@ -152,9 +152,33 @@
                             </table><a href="/pj/ketua/do_review_sasaran/<?php echo $sasaranKT['id_kinerja_kt']; ?>" class="btn btn-danger">
                                 <span class="text">Denail</span>
                             </a>
-                            <a href="#" class="btn btn-success" style=" width: 100px;">
-                                <span class="text">Approved</span>
-                            </a>
+                            <form action="/pj/approveSasaranKT/<?php echo $sasaranKT['id_kinerja_kt']; ?>" method="post" enctype="multipart/form-data">
+                                        <input type="hidden" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan realisasi kuantitas yang dihasilkan" name="kuant" required value = <?php echo $sasaranKT['kuantitas'];?> >
+
+                                        <input type="hidden" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan realisasi kualitas yang dihasilkan" name="kual" required value = <?php echo $sasaranKT['kualitas'];?>>
+
+                                        <input type="hidden"  class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan realisasi waktu" name="waktu" required value = <?php echo $sasaranKT['waktu'];?>>
+                                        
+                                        <input type="hidden"  class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan realisasi kuantitas yang dihasilkan" name="kuant2" required value = <?php echo $sasaranKT['kuantitas2'];?>>
+
+                                        <input type="hidden"  class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan realisasi kualitas yang dihasilkan" name="kual2" required value = <?php echo $sasaranKT['kualitas2'];?>>
+
+                                        <input type="hidden"  class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan realisasi waktu" name="waktu2" required value = <?php echo $sasaranKT['waktu2'];?>>
+                                                                                
+                                        <input type="hidden"  class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan realisasi kuantitas yang dihasilkan" name="kuant3" required value = <?php echo $sasaranKT['kuantitas3'];?>>
+
+                                        <input type="hidden"  class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan realisasi kualitas yang dihasilkan" name="kual3" required value = <?php echo $sasaranKT['kualitas3'];?>>
+
+                                        <input type="hidden"  class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan realisasi waktu" name="waktu3" required value = <?php echo $sasaranKT['waktu3'];?>>
+
+                                        <input type="hidden"  class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan realisasi kuantitas yang dihasilkan" name="kuant4" required value = <?php echo $sasaranKT['kuantitas4'];?>>
+
+                                        <input type="hidden"  class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan realisasi kualitas yang dihasilkan" name="kual4" required value = <?php echo $sasaranKT['kualitas4'];?>>
+
+                                        <input type="hidden"  class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan realisasi waktu" name="waktu4" required value = <?php echo $sasaranKT['waktu4'];?>>
+
+                                        <button type="submit" class="btn btn-success">Approve</button>
+                                        </form>
                         </div>
                     </div>
                 </div>

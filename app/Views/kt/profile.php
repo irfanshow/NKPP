@@ -60,6 +60,30 @@
 
                     <h3 class="px-2 mb-0 text-gray-800">Mengubah Profile</h3>
 
+                                                                       <!-- Button trigger modal -->
+                                                                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                Edit Foto
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+
+                                    <form action="/kt/saveFotoProfile/<?php echo $_SESSION['id']?>" method="POST" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                                    <label for="file-upload">Upload Gambar </label>
+                                                    <input type="file" id="file-upload" name="foto" >
+                                                </div>
+
+                                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                        </form>
+
+                                    </div>
+                                </div>
+                                </div>
+
+
                     <div class="row">
                     <form action="/kt/saveProfile/<?php echo $_SESSION['id']?>" method="POST" enctype="multipart/form-data">
                         <div class="col-md-4-px-2">
@@ -87,10 +111,10 @@
                                         <img src='<?php echo base_url() ?>/assets/img/<?php echo $kt['foto_kt']?>' alt="Tidak ditermukan foto" height="200" width="250">
 
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label for="file-upload">Upload Gambar </label>
                                         <input type="file" id="file-upload" name="foto" >
-                                    </div>
+                                    </div> -->
                                     <hr>
                                     <div class="col-md-4-px-2">
                                         <button type="submit" class="btn btn-primary">Submit</button>

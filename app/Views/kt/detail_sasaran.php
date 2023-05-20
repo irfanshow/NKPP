@@ -60,7 +60,18 @@
                     <a style="float: right;" href="/kt/edit_sasaran/<?php echo $sasaranKT['id_kinerja_kt'];?>" class="btn btn-primary">Edit Sasaran Kinerja</a>
                     <h3 class="px-2 mb-0 text-gray-800">Detail Data Sasaran Kinerja</h3>
 
-                    <div class="alert alert-success mt-3" role="alert">Sasaran kinerja sudah di realisasi!</div>
+                    <?php 
+                    if ($sasaranKT['status'] == 'belum'){ ?>
+                        <div class="alert alert-danger mt-3" role="alert">Sasaran kinerja belum di realisasi!</div>
+                    <?php }
+                    else{ ?>
+                        
+                        <div class="alert alert-success mt-3" role="alert">Sasaran kinerja sudah di realisasi!</div>
+                    
+                        <?php
+                    }
+                    
+                    ?>
                     <table style="text-align: center;" id="example4" class="table table-bordered table-hover">
                         <th style="width: 1100px;">Periode : <?php echo $sasaranKT['periode_kt'];?></th>
                     </table>
@@ -96,15 +107,15 @@
                         <tr>
                             <td>2.</td>
                             <td>Mereviu KKP seluruh AT atau yang telah direviu oleh KST, berdasarkan tanggung jawab PKP masing-masing </td>
-                            <td><?php echo $sasaranKT['kuantitas'];?> PKP</td>
-                            <td><?php echo $sasaranKT['kualitas'];?></td>
-                            <td><?php echo $sasaranKT['waktu'];?> Hari</td>
-                            <td><?php echo $sasaranKT['realisasi_kuantitas'];?> PKP</td>
-                            <td><?php echo $sasaranKT['realisasi_kualitas'];?></td>
-                            <td><?php echo $sasaranKT['realisasi_waktu'];?> Hari</td>
-                            <td><?php echo $sasaranKT['review_kuantitas'];?> PKP</td>
-                            <td><?php echo $sasaranKT['review_kualitas'];?></td>
-                            <td><?php echo $sasaranKT['review_waktu'];?> Hari</td>
+                            <td><?php echo $sasaranKT['kuantitas2'];?> PKP</td>
+                            <td><?php echo $sasaranKT['kualitas2'];?></td>
+                            <td><?php echo $sasaranKT['waktu2'];?> Hari</td>
+                            <td><?php echo $sasaranKT['realisasi_kuantitas2'];?> PKP</td>
+                            <td><?php echo $sasaranKT['realisasi_kualitas2'];?></td>
+                            <td><?php echo $sasaranKT['realisasi_waktu2'];?> Hari</td>
+                            <td><?php echo $sasaranKT['review_kuantitas2'];?> PKP</td>
+                            <td><?php echo $sasaranKT['review_kualitas2'];?></td>
+                            <td><?php echo $sasaranKT['review_waktu2'];?> Hari</td>
                             <td><?php echo $sasaranKT['nilai2'];?></td>
                         </tr>
 

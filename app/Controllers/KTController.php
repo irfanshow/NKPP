@@ -789,8 +789,8 @@ class KTController extends BaseController
             return redirect()->to('/at/profile');
         }
 
-        $file = $this->request->getFile('foto');
-        $nama = $file ->getRandomName();
+        // $file = $this->request->getFile('foto');
+        // $nama = $file ->getRandomName();
 
         $ktModel = new KtModel();
         $data1=[
@@ -798,6 +798,31 @@ class KTController extends BaseController
             'nip_kt'=> $this->request->getPost('nip'),
             'unit_kerja_kt'=>$this->request->getPost('unit'),
             'periode_kt'=>$this->request->getPost('periode'),
+            // 'foto_kt'=>$nama,
+
+            //Foto
+            
+        ];
+
+        // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+        $ktModel->protect(false)
+        ->update($id,$data1);
+
+                
+        // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+        return redirect()->to('/kt/index/'.$id);
+    }
+
+    public function saveFotoProfile($id)
+    {
+
+        $file = $this->request->getFile('foto');
+        $nama = $file ->getRandomName();
+        $rules = [];
+
+        $ktModel = new KtModel();
+        $data1=[
+
             'foto_kt'=>$nama,
 
             //Foto
@@ -807,10 +832,11 @@ class KTController extends BaseController
         $file->move(ROOTPATH . 'public/assets/img/',$nama);
         $ktModel->protect(false)
         ->update($id,$data1);
+        
 
                 
         // $file->move(ROOTPATH . 'public/assets/img/',$nama);
-        return redirect()->to('/kt/index/'.$id);
+        return redirect()->to('/kt/profile/'.$id);
     }
 
     //NKPP
@@ -1145,12 +1171,124 @@ class KTController extends BaseController
             $sasaranModel = new SasaranATModel();
 
             //no1
-            $waktuTarget = (int)$this->request->getPost('waktuAT1');
+            $waktuTarget = (int)$this->request->getPost('waktu');
    
             $waktuRealisasi = (int)$this->request->getPost('waktu');
 
             //no2
             $waktuTarget2 = (int)$this->request->getPost('waktuAT2');
+         
+            $waktuRealisasi2 = (int)$this->request->getPost('waktu2');
+            
+            // var_dump($waktuTarget);
+
+            //RUmus Persentase1
+            $totalPersentase = 0;
+            
+            $persenWaktu = 100 - (($waktuTarget / $waktuRealisasi)* 100) ;
+    
+
+            if($persenWaktu > 24)
+            {
+                $totalPersentase = ((((1.76 * $waktuTarget / $waktuRealisasi) / $waktuTarget)*100)-100);
+                
+
+            }
+            else if($persenWaktu < 24)
+            {
+                $totalPersentase = 1.76 * $waktuTarget / $waktuRealisasi * 100;
+                
+            }
+
+            //Rumus persentase2
+            $totalPersentase2 = 0;
+
+            $persenWaktu2 = 100 - (($waktuTarget2 / $waktuRealisasi2)* 100) ;
+
+            
+            if($persenWaktu2 > 24)
+            {
+                $totalPersentase2 = ((((1.76 * $waktuTarget2 / $waktuRealisasi2) / $waktuTarget2)*100)-100);
+            }
+            else if($persenWaktu2 < 24)
+            {
+                $totalPersentase2 = 1.76 * $waktuTarget2 / $waktuRealisasi2 * 100;
+            }
+            
+            //Rumus Perhitungan no 1
+            $perhitungan1 = $waktuTarget + $waktuRealisasi + $totalPersentase;
+            
+            //Rumus Perhitungan no 2
+            $perhitungan2 = $waktuTarget2 + $waktuRealisasi2 + $totalPersentase2;
+
+            //Kotak merah
+            $nilaiSKP1 = $perhitungan1/3;
+            $nilaiSKP2 = $perhitungan2/3;
+
+            // var_dump($perhitungan1);
+            // var_dump($nilaiSKP1);
+            // var_dump($nilaiSKP2);
+
+
+
+            //Kotak hijau
+            $TotalnilaiSKP = $nilaiSKP1 + $nilaiSKP2 /2;
+           
+
+            $data1=[
+                'realisasi_kuantitas' => $this->request->getPost('kuant'),
+                'realisasi_kualitas'=> $this->request->getPost('kual'),
+                'realisasi_waktu'=>$this->request->getPost('waktu'),
+                'realisasi_kuantitas2' => $this->request->getPost('kuant2'),
+                'realisasi_kualitas2'=> $this->request->getPost('kual2'),
+                'realisasi_waktu2'=>$this->request->getPost('waktu2'),
+                'periode_at'=>$this->request->getPost('periode'),
+                'status'=>"sudah",
+                'nilai'=>$nilaiSKP1,
+                'nilai2'=>$nilaiSKP2,
+                'realisasi_nilai'=>$TotalnilaiSKP,
+                'nilai_skp'=>$TotalnilaiSKP,
+                // 'realisasi_nilai_at'=>$TotalnilaiSKP,
+                // 'nilai'=>$this->request->getPost('pt'),
+                // 'tanggal'=>$this->request->getPost('periode'),
+                
+            ];
+    
+    
+            $sasaranModel->protect(false)
+            ->update($id,$data1);
+            
+                    
+            // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+            return redirect()->to('/kt/anggota/detail_nskp/'.$id);
+        }
+
+        public function approveSasaranAT($id)
+        {
+            // $file = $this->request->getFile('foto');
+            // $nama = $file ->getRandomName();
+            if(!$this->validate([
+                'kuant' => 'required',
+                'kual' => 'required',
+                'waktu' => 'required',
+                'kuant2' => 'required',
+                'kual2' => 'required',
+                'waktu2' => 'required',
+    
+                
+            ])){
+                return redirect()->to('/kt/anggota/realisasi/'.$id);
+            }
+
+            $sasaranModel = new SasaranATModel();
+
+            //no1
+            $waktuTarget = (int)$this->request->getPost('waktu');
+   
+            $waktuRealisasi = (int)$this->request->getPost('waktu');
+
+            //no2
+            $waktuTarget2 = (int)$this->request->getPost('waktu2');
          
             $waktuRealisasi2 = (int)$this->request->getPost('waktu2');
             

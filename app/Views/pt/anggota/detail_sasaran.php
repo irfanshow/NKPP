@@ -124,9 +124,24 @@
                             </table><a href="/pt/anggota/do_review_sasaran/<?php echo $sasaranAT['id_kinerja_anggota']; ?>" class="btn btn-danger">
                                 <span class="text">Denail</span>
                             </a>
-                            <a href="#" class="btn btn-success" style=" width: 100px;">
-                                <span class="text">Approved</span>
-                            </a>
+                            <form action="/pt/approveSasaranAT/<?php echo $sasaranAT['id_kinerja_anggota']; ?>" method="post" enctype="multipart/form-data">
+                                        <input type="hidden" class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan realisasi kuantitas yang dihasilkan" name="kuant" required value = <?php echo $sasaranAT['kuantitas'];?> >
+
+                                        <input type="hidden" class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan realisasi kualitas yang dihasilkan" name="kual" required value = <?php echo $sasaranAT['kualitas'];?>>
+
+                                        <input type="hidden"  class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan realisasi waktu" name="waktu" required value = <?php echo $sasaranAT['waktu'];?>>
+                                        
+                                        <input type="hidden"  class="form-control" id="kuantititas" aria-describedby="emailHelp" placeholder="Masukan realisasi kuantitas yang dihasilkan" name="kuant2" required value = <?php echo $sasaranAT['kuantitas2'];?>>
+
+                                        <input type="hidden"  class="form-control" id="kualitas" aria-describedby="emailHelp" placeholder="Masukan realisasi kualitas yang dihasilkan" name="kual2" required value = <?php echo $sasaranAT['kualitas2'];?>>
+
+                                        <input type="hidden"  class="form-control" id="waktu" aria-describedby="emailHelp" placeholder="Masukan realisasi waktu" name="waktu2" required value = <?php echo $sasaranAT['waktu2'];?>>
+
+                                        <!-- <a href="/kt/approveSasaranAT/<?php echo $sasaranAT['id_kinerja_anggota']; ?>" class="btn btn-success" style=" width: 100px;">
+                                            <span class="text">Approved</span>
+                                        </a> -->
+                                        <button type="submit" class="btn btn-success">Approve</button>
+                                        </form>
                         </div>
                     </div>
                 </div>

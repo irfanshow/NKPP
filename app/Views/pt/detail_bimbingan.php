@@ -59,7 +59,19 @@
                     <a style="float: right;" href="/pt/edit_bimbingan/<?php echo $bimbingan['idBimbingan']?>" class="btn btn-primary">Edit Bimbingan</a>
                     <h3 class="px-2 mb-0 text-gray-800">Detail Bimbingan</h3>
 
-                    <div class="alert alert-success mt-3" role="alert">Bimbingan sudah ditanggapi!</div>
+                    <?php 
+                    if ($bimbingan['status'] == 'sudah ditanggapi'){ ?>
+                        <div class="alert alert-success mt-3" role="alert">Bimbingan sudah ditanggapi</div>
+                    <?php }
+                    else{ ?>
+                        
+                        <div class="alert alert-danger mt-3" role="alert">Bimbingan belum ditanggapi</div>
+                    
+                        <?php
+                    }
+                    
+                    ?>
+                    
                     <table style="text-align: center;" id="example2" class="table table-bordered table-hover mt-2">
                         <table id="example2" class="table table-bordered table-hover">
                             <tr>

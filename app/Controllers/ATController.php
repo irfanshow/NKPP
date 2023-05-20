@@ -7,6 +7,7 @@ use App\Models\NkpModel;
 use App\Models\NktModel;
 use App\Models\Bimbingan;
 use App\Models\NkppModel;
+use App\Models\NilainkpAT;
 use App\Models\NKPATModel;
 use App\Models\NKTATModel;
 use App\Models\SoalNKPModel;
@@ -217,6 +218,7 @@ class ATController extends BaseController
         
         
         $nkpATModel = new NKPATModel();
+        // $nilaiSoal = new NilainkpAT();
 
         $data=[
             'nilai_nkp' => $nkp,
@@ -230,6 +232,28 @@ class ATController extends BaseController
             // 'tanggal'=>$this->request->getPost('periode'),
             
         ];
+
+        // $data2=[
+        //     'no1' => $this->request->getPost('nilai1'),
+        //     'no2' => $this->request->getPost('nilai2'),
+        //     'no3' => $this->request->getPost('nilai3'),
+        //     'no4' => $this->request->getPost('nilai4'),
+        //     'no5' => $this->request->getPost('nilai5'),
+        //     'no6' => $this->request->getPost('nilai6'),
+        //     'no7' => $this->request->getPost('nilai7'),
+        //     'no8' => $this->request->getPost('nilai8'),
+        //     'no9' => $this->request->getPost('nilai9'),
+        //     'no10' => $this->request->getPost('nilai10'),
+        //     'no11' => $this->request->getPost('nilai11'),
+        //     'no12' => $this->request->getPost('nilai12'),
+        //     'id_at' => $this->request->getPost('nip'),
+
+
+
+        //     // 'nilai'=>$this->request->getPost('pt'),
+        //     // 'tanggal'=>$this->request->getPost('periode'),
+            
+        // ];
 
         $nkppModel = new NkppModel();
 
@@ -737,11 +761,19 @@ class ATController extends BaseController
             'periode' => 'required',
             
         ])){
-            return redirect()->to('/at/profile');
+            return redirect()->to('/at/profile'.$id);
         }
 
         $file = $this->request->getFile('foto');
-        $nama = $file ->getRandomName();
+        // $nama = $file ->getRandomName();
+        $rules = [];
+        if ($this->request->getMethod() == 'POST'){
+            $rules =[
+                'foto' => 'uploaded[foto]'
+            ];
+        }
+
+
 
         $atModel = new AtModel();
         $data1=[
@@ -749,6 +781,37 @@ class ATController extends BaseController
             'nip_at'=> $this->request->getPost('nip'),
             'unit_kerja_at'=>$this->request->getPost('unit'),
             'periode_at'=>$this->request->getPost('periode'),
+            // 'foto_at'=>$nama,
+
+            //Foto
+            
+        ];
+        
+        if ($this->validate($rules))
+        {
+            
+        }
+
+        // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+        $atModel->protect(false)
+        ->update($id,$data1);
+        
+
+                
+        // $file->move(ROOTPATH . 'public/assets/img/',$nama);
+        return redirect()->to('/at/index/'.$id);
+    }
+
+    public function saveFotoProfile($id)
+    {
+
+        $file = $this->request->getFile('foto');
+        $nama = $file ->getRandomName();
+        $rules = [];
+
+        $atModel = new AtModel();
+        $data1=[
+
             'foto_at'=>$nama,
 
             //Foto
@@ -762,7 +825,7 @@ class ATController extends BaseController
 
                 
         // $file->move(ROOTPATH . 'public/assets/img/',$nama);
-        return redirect()->to('/at/index/'.$id);
+        return redirect()->to('/at/profile/'.$id);
     }
 
     //NKPP

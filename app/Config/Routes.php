@@ -29,7 +29,7 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Home::login');
 $routes->get('/login', 'Home::login');
 $routes->post('/proses_login', 'Home::proses_login');
 $routes->get('/logout', 'Home::logout');
@@ -104,6 +104,7 @@ $routes->get('/admin/index', 'AdminController::index');
 
     $routes->get('/at/profile/(:num)', 'ATController::ProfileView/$1');
     $routes->post('/at/saveProfile/(:num)', 'ATController::saveProfile/$1');
+    $routes->post('/at/saveFotoProfile/(:num)', 'ATController::saveFotoProfile/$1');
 
     $routes->get('/at/nkpp', 'ATController::NKPPView');
     $routes->post('/at/detail_nkpp/(:num)', 'ATController::DetailNKPP/$1');
@@ -145,6 +146,7 @@ $routes->get('/admin/index', 'AdminController::index');
 
     $routes->get('/kt/profile/(:num)', 'KTController::ProfileView/$1');
     $routes->post('/kt/saveProfile/(:num)', 'KTController::saveProfile/$1');
+    $routes->post('/kt/saveFotoProfile/(:num)', 'KTController::saveFotoProfile/$1');
 
     $routes->get('/kt/nkpp', 'KTController::NKPPView');
     $routes->post('/kt/detail_nkpp/(:num)', 'KTController::DetailNKPP/$1');
@@ -171,6 +173,7 @@ $routes->get('/admin/index', 'AdminController::index');
     $routes->get('/kt/anggota/detail_nskp/(:num)', 'KTController::DetailNSKP_Anggota/$1');
     $routes->get('/kt/anggota/realisasi/(:num)', 'KTController::Realisasi/$1');
     $routes->post('/kt/saveSasaranAT/(:num)', 'KTController::saveSasaranAT/$1');
+    $routes->post('/kt/approveSasaranAT/(:num)', 'KTController::approveSasaranAT/$1');
 
 
 
@@ -185,6 +188,7 @@ $routes->get('/admin/index', 'AdminController::index');
     $routes->get('/pj/index/(:num)', 'PJController::index/$1');
     $routes->get('/pj/profile/(:num)', 'PJController::Profile/$1');
     $routes->post('/pj/saveProfile/(:num)', 'PJController::saveProfile/$1');
+    $routes->post('/pj/saveFotoProfile/(:num)', 'PJController::saveFotoProfile/$1');
 
         //Ketua
             //NKP
@@ -201,6 +205,7 @@ $routes->get('/admin/index', 'AdminController::index');
             $routes->get('/pj/ketua/detail_sasaran/(:num)', 'PJController::DetailSasaran/$1');
             $routes->get('/pj/ketua/review_sasaran', 'PJController::ReviewSasaran');
             $routes->post('/pj/saveSasaranKT/(:num)', 'PJController::saveSasaranKT/$1');
+            $routes->post('/pj/approveSasaranKT/(:num)', 'PJController::approveSasaranKT/$1');
 
             //DO
             $routes->get('/pj/ketua/do_review_nkp/(:num)', 'PJController::DoReviewNKP/$1');
@@ -228,6 +233,7 @@ $routes->get('/admin/index', 'AdminController::index');
             $routes->get('/pj/pengendali/realisasi/(:num)', 'PJController::Realisasi/$1');
             $routes->get('/pj/pengendali/detail_nskp/(:num)', 'PJController::DetailNSKP_Pengendali/$1');
             $routes->post('/pj/saveSasaranPT/(:num)', 'PJController::saveSasaranPT/$1');
+            $routes->post('/pj/approveSasaranPT/(:num)', 'PJController::approveSasaranPT/$1');
 
             //Tanggapan
             $routes->get('/pj/pengendali/do_tanggapan/(:num)', 'PJController::DoTanggapan/$1');
@@ -276,6 +282,7 @@ $routes->get('/pt/sasaran/delete/(:num)', 'PTController::deleteSasaran/$1');
 
 $routes->get('/pt/profile/(:num)', 'PTController::ProfileView/$1');
 $routes->post('/pt/saveProfile/(:num)', 'PTController::saveProfile/$1');
+$routes->post('/pt/saveFotoProfile/(:num)', 'PTController::saveFotoProfile/$1');
 
 $routes->get('/pt/nkpp', 'PTController::NKPPView');
 $routes->get('/pt/detail_nkpp', 'PTController::DetailNKPP');
@@ -297,6 +304,8 @@ $routes->get('/pt/detail_nkpp', 'PTController::DetailNKPP');
         $routes->get('/pt/anggota/review_sasaran', 'PTController::ReviewSasaran');
         $routes->get('/pt/anggota/detail_sasaran/(:num)', 'PTController::DetailSasaranAnggota/$1');
         $routes->post('/pt/saveSasaranAT/(:num)', 'PTController::saveSasaranAT/$1');
+        $routes->post('/pt/approveSasaranAT/(:num)', 'PTController::approveSasaranAT/$1');
+
         //DO
         $routes->get('/pt/anggota/do_review_nkp/(:num)', 'PTController::DoReviewNKP/$1');
         $routes->get('/pt/anggota/do_review_nkt/(:num)', 'PTController::DoReviewNKT/$1');
@@ -322,6 +331,7 @@ $routes->get('/pt/detail_nkpp', 'PTController::DetailNKPP');
         $routes->get('/pt/ketua/detail_nskp/(:num)', 'PTController::DetailNSKP_Ketua/$1');
         $routes->get('/pt/ketua/realisasi/(:num)', 'PTController::Realisasi/$1');
         $routes->post('/pt/saveSasaranKT/(:num)', 'PTController::saveSasaranKT/$1');
+        $routes->post('/pt/approveSasaranKT/(:num)', 'PTController::approveSasaranKT/$1');
     
 
     //Tanggapan

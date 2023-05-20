@@ -60,7 +60,18 @@
                     <a style="float: right;" href="/kt/edit_nkt/<?= $nkt['id_nkt_kt']?>" class="btn btn-primary">Edit NKT</a>
                     <h3 class="px-2 mb-0 text-gray-800">Detail NKT</h3>
 
-                    <div class="alert alert-success mt-3" role="alert">NKT sudah di realisasi!</div>
+                    <?php 
+                    if ($nkt['status'] == 'proses'){ ?>
+                        <div class="alert alert-danger mt-3" role="alert">NKT belum di realisasi!</div>
+                    <?php }
+                    else{ ?>
+                        
+                        <div class="alert alert-success mt-3" role="alert">NKT  sudah di realisasi!</div>
+                    
+                        <?php
+                    }
+                    
+                    ?>
                     <table style="text-align: center;" id="example2" class="table table-bordered table-hover mt-3">
                         <thead>
                             <tr>
